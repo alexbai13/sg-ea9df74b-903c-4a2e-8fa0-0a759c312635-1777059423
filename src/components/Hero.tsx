@@ -1,13 +1,15 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Easing } from "framer-motion";
 import { ArrowRight, Shield, ChevronDown } from "lucide-react";
+
+const EASE: Easing = [0.25, 0.46, 0.45, 0.94];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.15, ease: "easeOut" },
+    transition: { duration: 0.7, delay: i * 0.15, ease: EASE },
   }),
 };
 

@@ -2,6 +2,13 @@ import React from "react";
 import { SEO } from "@/components/SEO";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { ServicesSection } from "@/components/ServicesSection";
+import { HowItWorks } from "@/components/HowItWorks";
+import { ValuesSection } from "@/components/ValuesSection";
+import { LeadForm } from "@/components/LeadForm";
+import { FAQ } from "@/components/FAQ";
+import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -10,23 +17,14 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <section id="servicios" className="py-24 bg-muted/30">
-          <div className="container text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Nuestros Servicios
-            </h2>
-            <p className="text-muted-foreground mt-3">Próximamente...</p>
-          </div>
-        </section>
-        <section id="contacto" className="py-24">
-          <div className="container text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Contáctanos
-            </h2>
-            <p className="text-muted-foreground mt-3">Próximamente...</p>
-          </div>
-        </section>
+        <ServicesSection />
+        <HowItWorks />
+        <ValuesSection />
+        <LeadForm />
+        <FAQ />
       </main>
+      <Footer />
+      <WhatsAppButton />
     </>
   );
 }
