@@ -1,6 +1,6 @@
 ---
 title: Services + How it works + Values sections
-status: todo
+status: done
 priority: high
 type: feature
 tags: [services, sections]

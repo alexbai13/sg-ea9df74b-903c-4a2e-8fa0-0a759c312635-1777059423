@@ -1,6 +1,6 @@
 ---
 title: Aviso de privacidad
-status: todo
+status: done
 priority: medium
 type: feature
 tags: [legal, privacy]

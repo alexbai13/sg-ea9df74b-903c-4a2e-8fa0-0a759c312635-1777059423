@@ -1,6 +1,6 @@
 ---
 title: Lead form + FAQ + Footer + WhatsApp
-status: todo
+status: done
 priority: high
 type: feature
 tags: [form, faq, footer, cro]
