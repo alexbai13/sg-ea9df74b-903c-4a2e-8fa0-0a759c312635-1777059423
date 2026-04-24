@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const servicios = [
   "Crédito Hipotecario",
@@ -20,6 +21,7 @@ interface FormData {
 }
 
 export function LeadForm() {
+  const router = useRouter();
   const [form, setForm] = useState<FormData>({
     nombre: "",
     edad: "",
@@ -28,7 +30,6 @@ export function LeadForm() {
     servicio: "",
     privacidad: false,
   });
-  const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
   const validate = (): boolean => {
@@ -46,7 +47,7 @@ export function LeadForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      setSubmitted(true);
+      router.push("/gracias");
     }
   };
 
@@ -60,30 +61,6 @@ export function LeadForm() {
       });
     }
   };
-
-  if (submitted) {
-    return (
-      <section id="contacto" className="py-20 md:py-28">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="max-w-lg mx-auto text-center bg-muted/50 rounded-2xl p-10 border border-primary/20"
-          >
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-              <CheckCircle size={32} className="text-primary" />
-            </div>
-            <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
-              ¡Solicitud recibida!
-            </h3>
-            <p className="text-muted-foreground">
-              Un asesor certificado te contactará en las próximas horas para ayudarte con tu {form.servicio.toLowerCase()}.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="contacto" className="py-20 md:py-28 relative overflow-hidden">

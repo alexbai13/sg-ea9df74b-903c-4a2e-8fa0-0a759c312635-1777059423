@@ -1,6 +1,6 @@
 ---
 title: Confirmation Page (Success)
-status: in_progress
+status: done
 priority: medium
 type: feature
 tags: [cro, ux, form]
