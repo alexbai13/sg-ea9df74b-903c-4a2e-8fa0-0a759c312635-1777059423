@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ValuesSection } from "@/components/ValuesSection";
+import { BlogPreview } from "@/components/BlogPreview";
 import { LeadForm } from "@/components/LeadForm";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <ServicesSection />
         <HowItWorks />
         <ValuesSection />
+        <BlogPreview />
         <LeadForm />
         <FAQ />
       </main>
