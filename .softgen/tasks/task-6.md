@@ -1,6 +1,6 @@
 ---
 title: Blog section — artículos financieros
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [blog, content, seo]

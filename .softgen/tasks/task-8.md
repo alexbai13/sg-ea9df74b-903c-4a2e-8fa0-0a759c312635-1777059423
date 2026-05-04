@@ -1,6 +1,6 @@
 ---
 title: Animaciones parallax en Servicios y Valores
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [animation, parallax]

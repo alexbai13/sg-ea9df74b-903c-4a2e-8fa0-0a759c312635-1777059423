@@ -1,6 +1,6 @@
 ---
 title: Modo oscuro con paleta de marca
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [dark-mode, design]
