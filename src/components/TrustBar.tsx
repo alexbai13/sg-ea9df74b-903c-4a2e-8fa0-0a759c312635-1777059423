@@ -40,7 +40,7 @@ export function TrustBar() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-6 md:gap-10 flex-wrap"
+            className="flex items-center justify-center gap-4 md:gap-10 flex-wrap"
           >
             {banks.map((bank, i) => (
               <motion.div
@@ -50,10 +50,10 @@ export function TrustBar() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.06, ease: EASE }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-muted/40 border border-border/50 hover:border-primary/30 hover:bg-muted/70 transition-colors cursor-default"
+                className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-muted/40 border border-border/50 hover:border-primary/30 hover:bg-muted/70 transition-colors cursor-default"
               >
-                <Building2 size={16} style={{ color: bank.color }} />
-                <span className="text-sm font-semibold text-foreground/70 whitespace-nowrap">
+                <Building2 size={16} className="shrink-0" style={{ color: bank.color }} />
+                <span className="text-xs md:text-sm font-semibold text-foreground/70 whitespace-nowrap">
                   {bank.name}
                 </span>
               </motion.div>
@@ -66,18 +66,18 @@ export function TrustBar() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4, ease: EASE }}
-          className="flex items-center justify-center gap-6 mt-8 text-center"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-8 text-center"
         >
           {[
             { value: "+2,500", label: "Familias asesoradas" },
             { value: "$0", label: "Costo para ti" },
             { value: "98%", label: "Satisfacción" },
           ].map((stat) => (
-            <div key={stat.label} className="px-4">
-              <p className="text-2xl md:text-3xl font-heading font-bold text-primary">
+            <div key={stat.label} className="px-2 md:px-4 min-w-[100px]">
+              <p className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-primary">
                 {stat.value}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground mt-1">{stat.label}</p>
             </div>
           ))}
         </motion.div>

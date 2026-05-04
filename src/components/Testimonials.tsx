@@ -92,29 +92,29 @@ export function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-foreground/90 leading-relaxed mb-6 text-[15px]">
+              <p className="text-foreground/90 leading-relaxed mb-6 text-[14px] md:text-[15px]">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <div className="flex items-center justify-between pt-4 border-t border-border/50">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-border/50">
                 <div>
                   <p className="font-heading font-bold text-foreground text-sm">
                     {t.name}
                   </p>
                   <div className="flex items-center gap-1 mt-1">
-                    <MapPin size={12} className="text-primary" />
-                    <span className="text-xs text-muted-foreground">
+                    <MapPin size={12} className="text-primary shrink-0" />
+                    <span className="text-xs text-muted-foreground line-clamp-1">
                       {t.zone}
                     </span>
                   </div>
-                  <span className="inline-block mt-2 text-xs font-medium bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
+                  <span className="inline-block mt-2 text-[11px] font-medium bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
                     {t.type}
                   </span>
                 </div>
                 {t.savings && (
-                  <div className="text-right">
-                    <p className="text-xs text-muted-foreground">Ahorro</p>
-                    <p className="text-lg font-heading font-bold text-accent">
+                  <div className="sm:text-right bg-accent/5 sm:bg-transparent p-3 sm:p-0 rounded-lg">
+                    <p className="text-[11px] sm:text-xs text-muted-foreground">Ahorro</p>
+                    <p className="text-lg md:text-xl font-heading font-bold text-accent">
                       {t.savings}
                     </p>
                   </div>

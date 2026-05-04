@@ -27,23 +27,24 @@ export function StickyCTA() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
         >
-          <div className="bg-card/95 backdrop-blur-lg border-t border-border px-4 py-3 flex items-center gap-3">
+          <div className="bg-card/95 backdrop-blur-lg border-t border-border px-4 pt-3 pb-[max(16px,env(safe-area-inset-bottom))] flex items-center gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
             <button
               onClick={() =>
                 document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold px-6 py-3 rounded-full text-sm transition-all"
+              className="flex-1 inline-flex items-center justify-center min-h-[52px] gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold px-6 py-3 rounded-full text-[15px] transition-all"
             >
               Asesoría Gratis
-              <ArrowRight size={16} />
+              <ArrowRight size={18} />
             </button>
             <a
               href="https://wa.me/525541389710?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20financiera%20gratuita"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-[#25D366] text-white shrink-0"
+              className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-[#25D366] text-white shrink-0 hover:scale-105 transition-transform"
+              aria-label="Contactar por WhatsApp"
             >
-              <MessageCircle size={22} />
+              <MessageCircle size={24} />
             </a>
           </div>
         </motion.div>

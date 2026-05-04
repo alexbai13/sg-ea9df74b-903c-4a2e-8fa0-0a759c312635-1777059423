@@ -58,24 +58,24 @@ export function ComparisonSection() {
           transition={{ duration: 0.6, ease: EASE }}
           className="max-w-3xl mx-auto"
         >
-          <div className="grid grid-cols-[1fr_auto_auto] md:grid-cols-[1fr_160px_160px] items-center bg-card border border-border rounded-2xl overflow-hidden">
-            <div className="p-4 md:p-5 bg-muted/30 border-b border-border" />
-            <div className="p-3 md:p-5 text-center border-b border-l border-border bg-muted/50">
-              <div className="flex items-center justify-center gap-1.5">
-                <Building2 size={16} className="text-muted-foreground" />
-                <span className="text-sm font-heading font-bold text-muted-foreground">
+          <div className="grid grid-cols-[1fr_80px_80px] sm:grid-cols-[1fr_120px_120px] md:grid-cols-[1fr_160px_160px] items-center bg-card border border-border rounded-2xl overflow-hidden">
+            <div className="p-3 md:p-5 bg-muted/30 border-b border-border h-full" />
+            <div className="p-2 sm:p-3 md:p-5 text-center border-b border-l border-border bg-muted/50 h-full flex flex-col justify-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5">
+                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+                <span className="text-[10px] sm:text-xs md:text-sm font-heading font-bold text-muted-foreground leading-tight">
                   Solo al banco
                 </span>
               </div>
             </div>
-            <div className="p-3 md:p-5 text-center border-b border-l border-border bg-primary/5">
-              <div className="flex items-center justify-center gap-1.5">
+            <div className="p-2 sm:p-3 md:p-5 text-center border-b border-l border-border bg-primary/5 h-full flex flex-col justify-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5">
                 <img
                   src="/AD_Imagotipo_color.png"
                   alt="ALDALU"
-                  className="w-5 h-5 object-contain"
+                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                 />
-                <span className="text-sm font-heading font-bold text-primary">
+                <span className="text-[10px] sm:text-xs md:text-sm font-heading font-bold text-primary leading-tight">
                   Con ALDALU
                 </span>
               </div>
@@ -88,37 +88,36 @@ export function ComparisonSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.05, ease: EASE }}
-                  className={`p-4 md:p-5 text-sm text-foreground font-medium ${i < comparisons.length - 1 ? "border-b border-border" : ""}`}
+                  className={`p-3 md:p-5 text-[11px] sm:text-sm text-foreground font-medium flex items-center h-full ${i < comparisons.length - 1 ? "border-b border-border" : ""}`}
                 >
                   {row.label}
                 </motion.div>
                 <div
-                  className={`p-3 md:p-5 text-center border-l ${i < comparisons.length - 1 ? "border-b" : ""} border-border`}
+                  className={`p-2 sm:p-3 md:p-5 text-center flex items-center justify-center h-full border-l ${i < comparisons.length - 1 ? "border-b" : ""} border-border`}
                 >
                   {row.soloText ? (
-                    <span className="text-xs md:text-sm text-muted-foreground">
+                    <span className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-tight">
                       {row.soloText}
                     </span>
                   ) : row.solo ? (
-                    <Check size={18} className="mx-auto text-green-500" />
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
                   ) : (
-                    <X size={18} className="mx-auto text-red-400" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
                   )}
                 </div>
                 <div
-                  className={`p-3 md:p-5 text-center border-l ${i < comparisons.length - 1 ? "border-b" : ""} border-border bg-primary/[0.02]`}
+                  className={`p-2 sm:p-3 md:p-5 text-center flex items-center justify-center h-full border-l ${i < comparisons.length - 1 ? "border-b" : ""} border-border bg-primary/[0.02]`}
                 >
                   {row.aldaluText ? (
-                    <span className="text-xs md:text-sm font-semibold text-primary">
+                    <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-primary leading-tight">
                       {row.aldaluText}
                     </span>
                   ) : row.aldalu ? (
                     <Check
-                      size={18}
-                      className="mx-auto text-primary"
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
                     />
                   ) : (
-                    <X size={18} className="mx-auto text-red-400" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
                   )}
                 </div>
               </React.Fragment>
@@ -130,13 +129,13 @@ export function ComparisonSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4, ease: EASE }}
-            className="text-center mt-8"
+            className="text-center mt-8 px-4 sm:px-0"
           >
             <button
               onClick={() =>
                 document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold px-8 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
+              className="inline-flex items-center justify-center min-h-[56px] gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold px-8 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-lg hover:shadow-accent/25 w-full sm:w-auto"
             >
               Quiero la mejor tasa
               <ArrowRight size={18} />
