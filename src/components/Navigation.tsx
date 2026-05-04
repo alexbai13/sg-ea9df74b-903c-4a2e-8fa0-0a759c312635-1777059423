@@ -40,18 +40,12 @@ export function Navigation() {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative w-8 h-8 md:w-9 md:h-9">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              <circle cx="20" cy="20" r="18" fill="hsl(174, 72%, 56%)" opacity="0.15" />
-              <path d="M12 28L20 10L28 28" stroke="hsl(174, 72%, 56%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M15 22H25" stroke="hsl(330, 82%, 52%)" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="20" cy="10" r="2" fill="hsl(330, 82%, 52%)" />
-            </svg>
-          </div>
-          <span className="font-heading font-bold text-xl md:text-2xl text-foreground tracking-tight">
-            ALDALU
-          </span>
+        <Link href="/" className="flex items-center">
+          <img
+            src="/AD_Logo_color_horizontal.png"
+            alt="ALDALU"
+            className="h-8 md:h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

@@ -15,14 +15,12 @@ export function Footer() {
       <div className="container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
-                <circle cx="20" cy="20" r="18" fill="hsl(174, 72%, 56%)" opacity="0.2" />
-                <path d="M12 28L20 10L28 28" stroke="hsl(174, 72%, 56%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M15 22H25" stroke="hsl(330, 82%, 52%)" strokeWidth="2.5" strokeLinecap="round" />
-                <circle cx="20" cy="10" r="2" fill="hsl(330, 82%, 52%)" />
-              </svg>
-              <span className="font-heading font-bold text-xl tracking-tight">ALDALU</span>
+            <div className="mb-5">
+              <img
+                src="/AD_Logo_bco_horizontal.png"
+                alt="ALDALU"
+                className="h-9 w-auto"
+              />
             </div>
             <p className="text-sm text-background/60 leading-relaxed mb-4">
               Tu guía financiero personal en Querétaro. Comparamos bancos para que tú tomes la mejor decisión.

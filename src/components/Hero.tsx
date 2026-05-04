@@ -130,9 +130,11 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Shield size={20} className="text-primary" />
-                  </div>
+                  <img
+                    src="/AD_Imagotipo_color.png"
+                    alt="ALDALU"
+                    className="w-10 h-10 object-contain"
+                  />
                   <div>
                     <p className="text-sm font-semibold text-foreground">Tu guía financiero personal</p>
                     <p className="text-xs text-muted-foreground">Nosotros lo hacemos por ti — sin complicaciones</p>

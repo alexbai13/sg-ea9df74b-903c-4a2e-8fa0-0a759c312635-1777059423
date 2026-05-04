@@ -53,6 +53,12 @@ export function ServicesSection() {
     <section id="servicios" className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/20 blur-3xl" />
+      <img
+        src="/AD_Imagotipo_color.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute top-8 right-8 w-24 h-24 object-contain opacity-[0.04] pointer-events-none select-none"
+      />
 
       <div className="container relative">
         <motion.div

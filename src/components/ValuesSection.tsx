@@ -37,6 +37,12 @@ export function ValuesSection() {
         <div className="absolute top-10 right-10 w-[300px] h-[300px] rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-10 left-10 w-[250px] h-[250px] rounded-full bg-accent/10 blur-3xl" />
       </div>
+      <img
+        src="/AD_Imagotipo_bco.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute bottom-8 right-8 w-32 h-32 object-contain opacity-[0.04] pointer-events-none select-none"
+      />
 
       <div className="container relative">
         <motion.div
