@@ -1,24 +1,31 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { SEO } from "@/components/SEO";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
-import { ServicesSection } from "@/components/ServicesSection";
-import { HowItWorks } from "@/components/HowItWorks";
-import { ComparisonSection } from "@/components/ComparisonSection";
-import { Testimonials } from "@/components/Testimonials";
-import { ValuesSection } from "@/components/ValuesSection";
-import { BlogPreview } from "@/components/BlogPreview";
-import { LeadForm } from "@/components/LeadForm";
-import { FAQ } from "@/components/FAQ";
-import { Footer } from "@/components/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { StickyCTA } from "@/components/StickyCTA";
+
+// Lazy loaded components for below-the-fold content to improve initial load time
+const ServicesSection = dynamic(() => import("@/components/ServicesSection").then(mod => mod.ServicesSection));
+const HowItWorks = dynamic(() => import("@/components/HowItWorks").then(mod => mod.HowItWorks));
+const ComparisonSection = dynamic(() => import("@/components/ComparisonSection").then(mod => mod.ComparisonSection));
+const Testimonials = dynamic(() => import("@/components/Testimonials").then(mod => mod.Testimonials));
+const ValuesSection = dynamic(() => import("@/components/ValuesSection").then(mod => mod.ValuesSection));
+const BlogPreview = dynamic(() => import("@/components/BlogPreview").then(mod => mod.BlogPreview));
+const LeadForm = dynamic(() => import("@/components/LeadForm").then(mod => mod.LeadForm));
+const FAQ = dynamic(() => import("@/components/FAQ").then(mod => mod.FAQ));
+const Footer = dynamic(() => import("@/components/Footer").then(mod => mod.Footer));
+const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton").then(mod => mod.WhatsAppButton));
+const StickyCTA = dynamic(() => import("@/components/StickyCTA").then(mod => mod.StickyCTA));
 
 export default function Home() {
   return (
     <>
-      <SEO />
+      <SEO 
+        title="ALDALU | Asesoría Financiera y Créditos en Querétaro" 
+        description="Encuentra la mejor tasa para tu crédito hipotecario, automotriz o préstamo IMSS en Querétaro. Comparamos +15 bancos sin costo."
+        image="/og-image.png"
+      />
       <Navigation />
       <main>
         <Hero />

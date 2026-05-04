@@ -1,6 +1,6 @@
 ---
 title: SEO, 404 Branded & Performance Optimization
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [seo, performance, 404]

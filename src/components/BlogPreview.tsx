@@ -66,6 +66,7 @@ export function BlogPreview() {
                   <img
                     src={article.image}
                     alt={article.title}
+                    loading="lazy"
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <span className={`absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[article.category] || "bg-muted text-muted-foreground"}`}>

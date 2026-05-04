@@ -13,6 +13,7 @@ export default function Gracias() {
       <SEO 
         title="¡Gracias por tu registro! | ALDALU" 
         description="Hemos recibido tu información. Un asesor experto se pondrá en contacto contigo muy pronto."
+        image="/og-image.png"
       />
       <Navigation />
       <main className="min-h-screen pt-28 pb-16 flex items-center justify-center bg-muted/30">

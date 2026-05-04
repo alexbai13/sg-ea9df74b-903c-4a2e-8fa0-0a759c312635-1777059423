@@ -7,7 +7,11 @@ import Link from "next/link";
 export default function Privacidad() {
   return (
     <>
-      <SEO title="Aviso de Privacidad | ALDALU" description="Aviso de privacidad de ALDALU conforme a la LFPDPPP." />
+      <SEO 
+        title="Aviso de Privacidad | ALDALU" 
+        description="Aviso de privacidad de ALDALU conforme a la LFPDPPP." 
+        image="/og-image.png"
+      />
       <Navigation />
       <main className="pt-28 pb-20">
         <div className="container max-w-3xl">
