@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeSwitch } from "@/components/ThemeSwitch";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
   { label: "Cómo funciona", href: "#como-funciona" },
   { label: "Nosotros", href: "#valores" },
   { label: "FAQ", href: "#faq" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Navigation() {
@@ -20,11 +22,13 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const handleNav = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = href;
     }
   };
 
@@ -49,31 +53,46 @@ export function Navigation() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollToSection(link.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
-            </button>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith("#") ? (
+              <button
+                key={link.href}
+                onClick={() => handleNav(link.href)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+              </Link>
+            )
+          )}
+          <ThemeSwitch />
           <button
-            onClick={() => scrollToSection("#contacto")}
+            onClick={() => handleNav("#contacto")}
             className="bg-accent text-accent-foreground px-5 py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-accent/20"
           >
             Asesoría Gratis
           </button>
         </nav>
 
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-foreground"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeSwitch />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -85,17 +104,28 @@ export function Navigation() {
             className="md:hidden bg-background/98 backdrop-blur-md border-b border-border overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left text-base font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) =>
+                link.href.startsWith("#") ? (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNav(link.href)}
+                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <button
-                onClick={() => scrollToSection("#contacto")}
+                onClick={() => handleNav("#contacto")}
                 className="bg-accent text-accent-foreground px-5 py-3 rounded-lg text-sm font-semibold mt-2 hover:opacity-90 transition-opacity"
               >
                 Asesoría Gratis

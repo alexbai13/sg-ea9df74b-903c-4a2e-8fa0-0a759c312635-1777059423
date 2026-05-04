@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Home, Car, HeartHandshake, ArrowRight } from "lucide-react";
 
 const services = [
@@ -44,33 +44,58 @@ const colorMap = {
 };
 
 export function ServicesSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const blob1Y = useSpring(useTransform(scrollYProgress, [0, 1], [80, -80]), { stiffness: 60, damping: 25 });
+  const blob2Y = useSpring(useTransform(scrollYProgress, [0, 1], [-60, 100]), { stiffness: 60, damping: 25 });
+  const blob1X = useTransform(scrollYProgress, [0, 0.5, 1], [0, 30, 0]);
+  const watermarkRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const watermarkScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="servicios" className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/20 blur-3xl" />
-      <img
+    <section ref={sectionRef} id="servicios" className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
+      <motion.div
+        className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]"
+        style={{ y: blob1Y, x: blob1X }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/20 blur-[100px]"
+        style={{ y: blob2Y }}
+      />
+      <motion.img
         src="/AD_Imagotipo_color.png"
         alt=""
         aria-hidden="true"
         className="absolute top-8 right-8 w-24 h-24 object-contain opacity-[0.04] pointer-events-none select-none"
+        style={{ rotate: watermarkRotate, scale: watermarkScale }}
       />
 
       <div className="container relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="inline-block bg-primary/10 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-block bg-primary/10 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4"
+          >
             Tu supermercado financiero
-          </span>
+          </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
             Tres caminos, un mismo compromiso
           </h2>
@@ -86,16 +111,24 @@ export function ServicesSection() {
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className={`group bg-background rounded-2xl p-6 lg:p-8 border ${colors.border} ${colors.hover} transition-all hover:shadow-lg hover:shadow-primary/5 cursor-pointer`}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                whileHover={{ y: -8, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                className={`group bg-card rounded-2xl p-6 lg:p-8 border ${colors.border} ${colors.hover} transition-colors hover:shadow-xl hover:shadow-primary/8 cursor-pointer`}
                 onClick={() => scrollTo("#contacto")}
               >
-                <div className={`w-14 h-14 rounded-xl ${colors.bg} flex items-center justify-center mb-5`}>
+                <motion.div
+                  className={`w-14 h-14 rounded-xl ${colors.bg} flex items-center justify-center mb-5`}
+                  whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
+                >
                   <Icon size={28} className={colors.text} />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                   {service.title}
                 </h3>
@@ -103,14 +136,21 @@ export function ServicesSection() {
                   {service.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {service.features.map((f) => (
-                    <span key={f} className={`text-xs font-medium px-3 py-1 rounded-full ${colors.pill}`}>
+                  {service.features.map((f, fi) => (
+                    <motion.span
+                      key={f}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: 0.4 + index * 0.2 + fi * 0.08 }}
+                      className={`text-xs font-medium px-3 py-1 rounded-full ${colors.pill}`}
+                    >
                       {f}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
                 <div className={`flex items-center gap-2 text-sm font-semibold ${colors.text} group-hover:gap-3 transition-all`}>
-                  Solicitar asesoría <ArrowRight size={16} />
+                  Solicitar asesoría <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
             );
@@ -118,11 +158,11 @@ export function ServicesSection() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center text-sm text-muted-foreground mt-10 bg-foreground/5 rounded-xl py-4 px-6 max-w-2xl mx-auto"
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="text-center text-sm text-muted-foreground mt-10 bg-card border border-border rounded-xl py-4 px-6 max-w-2xl mx-auto"
         >
           <strong className="text-foreground">Asesoría 100% Gratuita</strong> + Análisis Perfilado + Comparación de Mercado = El banco paga, tú ahorras.
         </motion.p>
