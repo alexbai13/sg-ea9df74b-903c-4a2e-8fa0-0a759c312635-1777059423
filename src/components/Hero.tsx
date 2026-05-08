@@ -227,7 +227,7 @@ export function Hero() {
             >
               <Shield size={16} className="text-primary" />
               <span className="text-sm font-medium text-muted-foreground">
-                Asesores certificados en Querétaro
+                Brokers de Creditaria en Querétaro
               </span>
             </motion.div>
 
@@ -268,8 +268,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
               className="text-lg md:text-xl text-muted-foreground mt-6 leading-relaxed max-w-lg"
             >
-              Buscamos entre bancos para darte la mejor opción de crédito.
-              Hipotecario, automotriz o préstamos IMSS —{" "}
+              Buscamos entre bancos para darte la mejor opción de crédito. Expertos en <strong>hipotecario</strong>, <strong>automotriz asociados a Kavak</strong> y <strong>préstamos personales para pensionados del IMSS</strong> —{" "}
               <strong className="text-foreground">sin costo para ti.</strong>
             </motion.p>
 

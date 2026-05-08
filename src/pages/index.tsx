@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="ALDALU | Asesoría Financiera y Créditos en Querétaro" 
-        description="Encuentra la mejor tasa para tu crédito hipotecario, automotriz o préstamo IMSS en Querétaro. Comparamos +15 bancos sin costo."
+        title="ALDALU | Brokers de Creditaria en Querétaro" 
+        description="Brokers de Creditaria en Querétaro. Encuentra la mejor tasa para tu crédito hipotecario, crédito automotriz asociados a Kavak o préstamos personales para pensionados del IMSS."
         image="/og-image.png"
       />
       <Navigation />

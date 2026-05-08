@@ -23,7 +23,7 @@ export function Footer() {
               />
             </div>
             <p className="text-sm text-background/60 leading-relaxed mb-4">
-              Tu guía financiero personal en Querétaro. Comparamos bancos para que tú tomes la mejor decisión.
+              Brokers de Creditaria en Querétaro. Expertos en crédito hipotecario, automotriz asociados a Kavak y préstamos personales a pensionados del IMSS.
             </p>
             <p className="text-xs text-background/40 italic">
               Donde las grandes decisiones encuentran respaldo.
@@ -34,9 +34,8 @@ export function Footer() {
             <h4 className="font-heading font-bold text-sm mb-4 text-primary">Servicios</h4>
             <ul className="space-y-2.5">
               <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Crédito Hipotecario</button></li>
-              <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Cambio de Hipoteca</button></li>
-              <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Crédito Automotriz</button></li>
-              <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Préstamos IMSS</button></li>
+              <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Crédito Automotriz (Kavak)</button></li>
+              <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Préstamos Personales IMSS</button></li>
             </ul>
           </div>
 
