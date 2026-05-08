@@ -124,18 +124,18 @@ export function LeadForm() {
               </motion.div>
 
               <motion.div
-                className="absolute -top-6 -right-6 w-28 h-28 sm:w-32 sm:h-32 overflow-hidden border-[4px] border-background shadow-xl z-30 hidden lg:block pointer-events-none"
+                className="absolute -top-4 -right-8 w-24 h-24 sm:w-28 sm:h-28 overflow-hidden border-[3px] border-background shadow-lg z-10 hidden lg:block pointer-events-none opacity-90"
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -8, 0],
                   borderRadius: [
-                    "60% 40% 30% 70% / 60% 30% 70% 40%",
-                    "40% 60% 70% 30% / 40% 50% 60% 50%",
-                    "60% 40% 30% 70% / 60% 30% 70% 40%"
+                    "50% 50% 55% 45% / 52% 48% 52% 48%",
+                    "55% 45% 45% 55% / 48% 52% 48% 52%",
+                    "50% 50% 55% 45% / 52% 48% 52% 48%"
                   ]
                 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               >
-                <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover scale-110" />
+                <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover object-center scale-105" />
               </motion.div>
             </div>
           </motion.div>

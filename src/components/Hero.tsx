@@ -213,19 +213,19 @@ export function Hero() {
       <div className="container py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
           <motion.div
-            className="absolute top-0 -left-8 lg:-left-12 w-24 h-24 lg:w-32 lg:h-32 overflow-hidden border-[4px] border-background shadow-xl z-20 hidden md:block"
+            className="absolute -top-12 -left-16 w-20 h-20 lg:w-28 lg:h-28 overflow-hidden border-[3px] border-background shadow-lg z-0 hidden lg:block opacity-80"
             style={{ y: springImageY }}
             animate={{
               borderRadius: [
-                "50% 50% 50% 70% / 50% 50% 70% 50%",
-                "50% 70% 50% 50% / 70% 50% 50% 50%",
-                "50% 50% 50% 70% / 50% 50% 70% 50%"
+                "45% 55% 60% 40% / 50% 45% 55% 50%",
+                "55% 45% 40% 60% / 60% 50% 50% 40%",
+                "45% 55% 60% 40% / 50% 45% 55% 50%"
               ]
             }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           >
-            <img src="/p3.png" alt="Cliente feliz" className="w-full h-full object-cover scale-110" />
-            <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none" />
+            <img src="/p3.png" alt="Cliente feliz" className="w-full h-full object-cover object-center scale-105" />
+            <div className="absolute inset-0 bg-primary/5 mix-blend-overlay pointer-events-none" />
           </motion.div>
 
           <motion.div

@@ -95,33 +95,33 @@ export function ServicesSection() {
       </motion.div>
 
       <motion.div
-        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 overflow-hidden border-[4px] border-background shadow-lg z-20 hidden md:block pointer-events-none"
+        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-90"
         style={{ y: blob2Y }}
         animate={{
           borderRadius: [
-            "40% 60% 70% 30% / 40% 50% 60% 50%",
-            "60% 40% 30% 70% / 60% 30% 70% 40%",
-            "40% 60% 70% 30% / 40% 50% 60% 50%"
+            "48% 52% 60% 40% / 45% 50% 50% 55%",
+            "52% 48% 40% 60% / 55% 45% 55% 45%",
+            "48% 52% 60% 40% / 45% 50% 50% 55%"
           ]
         }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       >
-        <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover scale-110" />
+        <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover object-center scale-105" />
       </motion.div>
 
       <motion.div
-        className="absolute bottom-40 left-4 lg:left-10 w-24 h-24 lg:w-36 lg:h-36 overflow-hidden border-[4px] border-background shadow-lg z-20 hidden md:block pointer-events-none"
+        className="absolute bottom-20 left-4 lg:left-10 w-24 h-24 lg:w-32 lg:h-32 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-85"
         style={{ y: blob1Y }}
         animate={{
           borderRadius: [
-            "30% 70% 70% 30% / 30% 30% 70% 70%",
-            "70% 30% 30% 70% / 70% 70% 30% 30%",
-            "30% 70% 70% 30% / 30% 30% 70% 70%"
+            "50% 50% 55% 45% / 48% 52% 48% 52%",
+            "55% 45% 45% 55% / 52% 48% 52% 48%",
+            "50% 50% 55% 45% / 48% 52% 48% 52%"
           ]
         }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       >
-        <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover scale-110" />
+        <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover object-center scale-105" />
       </motion.div>
 
       <div className="container relative z-10">
