@@ -6,9 +6,8 @@ import { useRouter } from "next/router";
 
 const servicios = [
   "Crédito Hipotecario",
-  "Cambio de Hipoteca",
-  "Crédito Automotriz",
-  "Préstamo IMSS Pensionados",
+  "Crédito Automotriz (Kavak)",
+  "Préstamos Personales IMSS",
 ];
 
 interface FormData {
@@ -37,7 +36,7 @@ export function LeadForm() {
     if (!form.nombre.trim()) newErrors.nombre = "Requerido";
     if (!form.edad.trim() || isNaN(Number(form.edad))) newErrors.edad = "Edad válida requerida";
     if (!form.correo.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)) newErrors.correo = "Correo válido requerido";
-    if (!form.telefono.trim() || form.telefono.replace(/\D/g, "").length < 10) newErrors.telefono = "Teléfono de 10 dígitos";
+    if (!form.telefono.trim() || !/^\d{10}$/.test(form.telefono.replace(/\D/g, ""))) newErrors.telefono = "Debe tener 10 dígitos exactos";
     if (!form.servicio) newErrors.servicio = "Selecciona un servicio";
     if (!form.privacidad) newErrors.privacidad = "Acepta el aviso de privacidad";
     setErrors(newErrors);
