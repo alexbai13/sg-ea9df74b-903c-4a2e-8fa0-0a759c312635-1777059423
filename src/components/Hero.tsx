@@ -205,10 +205,10 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 -z-10 pointer-events-none" style={{ x: springMouseX, y: springMouseY }}>
+      <motion.div className="absolute inset-0 -z-10 pointer-events-none" style={{ x: springMouseX, y: springMouseY }}>
         <div className="absolute top-[15%] left-[10%] w-32 h-32 rounded-full bg-primary/[0.04] blur-xl" />
         <div className="absolute bottom-[20%] right-[15%] w-40 h-40 rounded-full bg-accent/[0.04] blur-xl" />
-      </div>
+      </motion.div>
 
       <div className="container py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
