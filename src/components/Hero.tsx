@@ -343,15 +343,28 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.5, ease: EASE }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
-                <motion.img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&q=80"
-                  alt="Casa moderna en Querétaro"
-                  className="w-full h-[500px] object-cover"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+              <div className="relative overflow-visible shadow-2xl shadow-primary/10">
+                <motion.div
+                  className="w-full h-[500px] overflow-hidden bg-primary/5 relative"
+                  animate={{
+                    borderRadius: [
+                      "30% 70% 70% 30% / 30% 30% 70% 70%",
+                      "70% 30% 30% 70% / 70% 70% 30% 30%",
+                      "30% 70% 70% 30% / 30% 30% 70% 70%"
+                    ]
+                  }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <motion.img
+                    src="/Gemini_Generated_Image_7be7hq7be7hq7be7.png"
+                    alt="Casa moderna en Querétaro"
+                    className="w-full h-full object-cover scale-110"
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" />
+                </motion.div>
+
                 <div className="absolute bottom-6 left-6 right-6">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}

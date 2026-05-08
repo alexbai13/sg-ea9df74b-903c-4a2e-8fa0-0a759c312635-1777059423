@@ -79,7 +79,22 @@ export function ServicesSection() {
         style={{ rotate: watermarkRotate, scale: watermarkScale }}
       />
 
-      <div className="container relative">
+      <motion.div
+        className="absolute top-40 left-0 lg:-left-20 w-64 h-64 lg:w-[500px] lg:h-[500px] opacity-[0.15] pointer-events-none overflow-hidden mix-blend-luminosity"
+        style={{ y: blob1Y, x: blob1X }}
+        animate={{
+          borderRadius: [
+            "40% 60% 70% 30% / 40% 50% 60% 50%",
+            "60% 40% 30% 70% / 60% 30% 70% 40%",
+            "40% 60% 70% 30% / 40% 50% 60% 50%"
+          ]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <img src="/Gemini_Generated_Image_ez5nrsez5nrsez5n.png" alt="Fondo" className="w-full h-full object-cover scale-110" />
+      </motion.div>
+
+      <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
