@@ -107,7 +107,7 @@ export function LeadForm() {
                 }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               >
-                <img src="/Gemini_Generated_Image_kd0vm7kd0vm7kd0v.png" alt="Servicios Financieros" className="w-full h-full object-cover scale-110" />
+                <img src="/7.png" alt="Servicios Financieros" className="w-full h-full object-cover scale-110" />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none" />
               </motion.div>
 
@@ -119,8 +119,23 @@ export function LeadForm() {
                 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                <img src="/Gemini_Generated_Image_sa3arjsa3arjsa3a.png" alt="Asesoría ALDALU" className="w-full h-full object-cover scale-110" />
+                <img src="/11.png" alt="Asesoría ALDALU" className="w-full h-full object-cover scale-110" />
                 <div className="absolute inset-0 bg-accent/10 mix-blend-overlay pointer-events-none" />
+              </motion.div>
+
+              <motion.div
+                className="absolute -top-6 -right-6 w-28 h-28 sm:w-32 sm:h-32 overflow-hidden border-[4px] border-background shadow-xl z-30 hidden lg:block pointer-events-none"
+                animate={{
+                  y: [0, -10, 0],
+                  borderRadius: [
+                    "60% 40% 30% 70% / 60% 30% 70% 40%",
+                    "40% 60% 70% 30% / 40% 50% 60% 50%",
+                    "60% 40% 30% 70% / 60% 30% 70% 40%"
+                  ]
+                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              >
+                <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover scale-110" />
               </motion.div>
             </div>
           </motion.div>

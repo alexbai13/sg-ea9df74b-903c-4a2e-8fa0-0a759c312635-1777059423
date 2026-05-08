@@ -91,7 +91,37 @@ export function ServicesSection() {
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       >
-        <img src="/Gemini_Generated_Image_ez5nrsez5nrsez5n.png" alt="Fondo" className="w-full h-full object-cover scale-110" />
+        <img src="/4.png" alt="Fondo" className="w-full h-full object-cover scale-110" />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 overflow-hidden border-[4px] border-background shadow-lg z-20 hidden md:block pointer-events-none"
+        style={{ y: blob2Y }}
+        animate={{
+          borderRadius: [
+            "40% 60% 70% 30% / 40% 50% 60% 50%",
+            "60% 40% 30% 70% / 60% 30% 70% 40%",
+            "40% 60% 70% 30% / 40% 50% 60% 50%"
+          ]
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover scale-110" />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-40 left-4 lg:left-10 w-24 h-24 lg:w-36 lg:h-36 overflow-hidden border-[4px] border-background shadow-lg z-20 hidden md:block pointer-events-none"
+        style={{ y: blob1Y }}
+        animate={{
+          borderRadius: [
+            "30% 70% 70% 30% / 30% 30% 70% 70%",
+            "70% 30% 30% 70% / 70% 70% 30% 30%",
+            "30% 70% 70% 30% / 30% 30% 70% 70%"
+          ]
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      >
+        <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover scale-110" />
       </motion.div>
 
       <div className="container relative z-10">

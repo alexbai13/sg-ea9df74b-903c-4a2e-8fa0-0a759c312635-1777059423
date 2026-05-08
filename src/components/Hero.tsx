@@ -205,16 +205,29 @@ export function Hero() {
         />
       </div>
 
-      <motion.div
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{ x: springMouseX, y: springMouseY }}
-      >
+      <div className="absolute inset-0 -z-10 pointer-events-none" style={{ x: springMouseX, y: springMouseY }}>
         <div className="absolute top-[15%] left-[10%] w-32 h-32 rounded-full bg-primary/[0.04] blur-xl" />
         <div className="absolute bottom-[20%] right-[15%] w-40 h-40 rounded-full bg-accent/[0.04] blur-xl" />
-      </motion.div>
+      </div>
 
       <div className="container py-12 md:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
+          <motion.div
+            className="absolute top-0 -left-8 lg:-left-12 w-24 h-24 lg:w-32 lg:h-32 overflow-hidden border-[4px] border-background shadow-xl z-20 hidden md:block"
+            style={{ y: springImageY }}
+            animate={{
+              borderRadius: [
+                "50% 50% 50% 70% / 50% 50% 70% 50%",
+                "50% 70% 50% 50% / 70% 50% 50% 50%",
+                "50% 50% 50% 70% / 50% 50% 70% 50%"
+              ]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <img src="/p3.png" alt="Cliente feliz" className="w-full h-full object-cover scale-110" />
+            <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none" />
+          </motion.div>
+
           <motion.div
             className="max-w-2xl"
             style={{ y: springContentY, opacity: contentOpacity }}
@@ -356,7 +369,7 @@ export function Hero() {
                   transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                 >
                   <motion.img
-                    src="/Gemini_Generated_Image_7be7hq7be7hq7be7.png"
+                    src="/1.png"
                     alt="Casa moderna en Querétaro"
                     className="w-full h-full object-cover scale-110"
                     whileHover={{ scale: 1.15 }}
