@@ -124,6 +124,10 @@ export function LeadForm() {
               </motion.div>
 
               <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
                 className="absolute -top-4 -right-8 w-24 h-24 sm:w-28 sm:h-28 overflow-hidden border-[3px] border-background shadow-lg z-10 hidden lg:block pointer-events-none opacity-90"
                 animate={{
                   y: [0, -8, 0],

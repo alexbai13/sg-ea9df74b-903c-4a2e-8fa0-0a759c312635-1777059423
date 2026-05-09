@@ -210,24 +210,15 @@ export function Hero() {
         <div className="absolute bottom-[20%] right-[15%] w-40 h-40 rounded-full bg-accent/[0.04] blur-xl" />
       </motion.div>
 
+      <div 
+        className="absolute inset-0 -z-10 opacity-[0.015] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
       <div className="container py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
-          <motion.div
-            className="absolute -top-12 -left-16 w-20 h-20 lg:w-28 lg:h-28 overflow-hidden border-[3px] border-background shadow-lg z-0 hidden lg:block opacity-80"
-            style={{ y: springImageY }}
-            animate={{
-              borderRadius: [
-                "45% 55% 60% 40% / 50% 45% 55% 50%",
-                "55% 45% 40% 60% / 60% 50% 50% 40%",
-                "45% 55% 60% 40% / 50% 45% 55% 50%"
-              ]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img src="/p3.png" alt="Cliente feliz" className="w-full h-full object-cover object-center scale-105" />
-            <div className="absolute inset-0 bg-primary/5 mix-blend-overlay pointer-events-none" />
-          </motion.div>
-
           <motion.div
             className="max-w-2xl"
             style={{ y: springContentY, opacity: contentOpacity }}

@@ -95,6 +95,10 @@ export function ServicesSection() {
       </motion.div>
 
       <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-90"
         style={{ y: blob2Y }}
         animate={{
@@ -110,6 +114,10 @@ export function ServicesSection() {
       </motion.div>
 
       <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
         className="absolute bottom-20 left-4 lg:left-10 w-24 h-24 lg:w-32 lg:h-32 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-85"
         style={{ y: blob1Y }}
         animate={{
