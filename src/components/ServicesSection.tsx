@@ -99,18 +99,22 @@ export function ServicesSection() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-90"
+        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 z-0 hidden lg:block pointer-events-none opacity-90"
         style={{ y: blob2Y }}
-        animate={{
-          borderRadius: [
-            "48% 52% 60% 40% / 45% 50% 50% 55%",
-            "52% 48% 40% 60% / 55% 45% 55% 45%",
-            "48% 52% 60% 40% / 45% 50% 50% 55%"
-          ]
-        }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       >
-        <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover object-center scale-105" />
+        <motion.div
+          animate={{
+            borderRadius: [
+              "48% 52% 60% 40% / 45% 50% 50% 55%",
+              "52% 48% 40% 60% / 55% 45% 55% 45%",
+              "48% 52% 60% 40% / 45% 50% 50% 55%"
+            ]
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg"
+        >
+          <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover object-center scale-105" />
+        </motion.div>
       </motion.div>
 
       <motion.div
@@ -118,18 +122,22 @@ export function ServicesSection() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-        className="absolute bottom-20 left-4 lg:left-10 w-24 h-24 lg:w-32 lg:h-32 overflow-hidden border-[4px] border-background shadow-lg z-0 hidden lg:block pointer-events-none opacity-85"
+        className="absolute bottom-20 left-4 lg:left-10 w-24 h-24 lg:w-32 lg:h-32 z-0 hidden lg:block pointer-events-none opacity-85"
         style={{ y: blob1Y }}
-        animate={{
-          borderRadius: [
-            "50% 50% 55% 45% / 48% 52% 48% 52%",
-            "55% 45% 45% 55% / 52% 48% 52% 48%",
-            "50% 50% 55% 45% / 48% 52% 48% 52%"
-          ]
-        }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       >
-        <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover object-center scale-105" />
+        <motion.div
+          animate={{
+            borderRadius: [
+              "50% 50% 55% 45% / 48% 52% 48% 52%",
+              "55% 45% 45% 55% / 52% 48% 52% 48%",
+              "50% 50% 55% 45% / 48% 52% 48% 52%"
+            ]
+          }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg"
+        >
+          <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover object-center scale-105" />
+        </motion.div>
       </motion.div>
 
       <div className="container relative z-10">

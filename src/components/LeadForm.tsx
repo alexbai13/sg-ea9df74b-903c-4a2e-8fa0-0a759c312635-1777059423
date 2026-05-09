@@ -128,18 +128,22 @@ export function LeadForm() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-                className="absolute -top-4 -right-8 w-24 h-24 sm:w-28 sm:h-28 overflow-hidden border-[3px] border-background shadow-lg z-10 hidden lg:block pointer-events-none opacity-90"
-                animate={{
-                  y: [0, -8, 0],
-                  borderRadius: [
-                    "50% 50% 55% 45% / 52% 48% 52% 48%",
-                    "55% 45% 45% 55% / 48% 52% 48% 52%",
-                    "50% 50% 55% 45% / 52% 48% 52% 48%"
-                  ]
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -top-4 -right-8 w-24 h-24 sm:w-28 sm:h-28 z-10 hidden lg:block pointer-events-none opacity-90"
               >
-                <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover object-center scale-105" />
+                <motion.div
+                  animate={{
+                    y: [0, -8, 0],
+                    borderRadius: [
+                      "50% 50% 55% 45% / 52% 48% 52% 48%",
+                      "55% 45% 45% 55% / 48% 52% 48% 52%",
+                      "50% 50% 55% 45% / 52% 48% 52% 48%"
+                    ]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="w-full h-full overflow-hidden border-[3px] border-background shadow-lg"
+                >
+                  <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover object-center scale-105" />
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
