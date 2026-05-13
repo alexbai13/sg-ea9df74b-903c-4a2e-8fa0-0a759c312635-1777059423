@@ -14,6 +14,7 @@ const ValuesSection = dynamic(() => import("@/components/ValuesSection").then(mo
 const BlogPreview = dynamic(() => import("@/components/BlogPreview").then(mod => mod.BlogPreview));
 const LeadForm = dynamic(() => import("@/components/LeadForm").then(mod => mod.LeadForm));
 const FAQ = dynamic(() => import("@/components/FAQ").then(mod => mod.FAQ));
+const Newsletter = dynamic(() => import("@/components/Newsletter").then(mod => mod.Newsletter));
 const Footer = dynamic(() => import("@/components/Footer").then(mod => mod.Footer));
 const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton").then(mod => mod.WhatsAppButton));
 const StickyCTA = dynamic(() => import("@/components/StickyCTA").then(mod => mod.StickyCTA));
@@ -38,6 +39,7 @@ export default function Home() {
         <BlogPreview />
         <LeadForm />
         <FAQ />
+        <Newsletter />
       </main>
       <Footer />
       <WhatsAppButton />
