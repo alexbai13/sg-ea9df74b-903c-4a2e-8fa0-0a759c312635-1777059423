@@ -63,8 +63,8 @@ export function LeadForm() {
 
   return (
     <section id="contacto" className="py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-secondary/30 blur-3xl translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-muted/50 blur-3xl -translate-x-1/3" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-secondary/30 blur-3xl translate-x-1/3" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-muted/50 blur-3xl -translate-x-1/3" aria-hidden="true" />
 
       <div className="container relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -162,61 +162,81 @@ export function LeadForm() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5">Nombre completo *</label>
+                <label htmlFor="nombre" className="block text-sm font-medium text-foreground mb-1.5">Nombre completo *</label>
                 <input
+                  id="nombre"
                   type="text"
                   value={form.nombre}
                   onChange={(e) => handleChange("nombre", e.target.value)}
                   placeholder="Tu nombre completo"
+                  aria-required="true"
+                  aria-invalid={!!errors.nombre}
+                  aria-describedby={errors.nombre ? "nombre-error" : undefined}
                   className={`w-full px-4 py-3 rounded-lg border ${errors.nombre ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                 />
-                {errors.nombre && <p className="text-xs text-destructive mt-1">{errors.nombre}</p>}
+                {errors.nombre && <p id="nombre-error" className="text-xs text-destructive mt-1" role="alert">{errors.nombre}</p>}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">Edad *</label>
+                  <label htmlFor="edad" className="block text-sm font-medium text-foreground mb-1.5">Edad *</label>
                   <input
+                    id="edad"
                     type="number"
                     value={form.edad}
                     onChange={(e) => handleChange("edad", e.target.value)}
                     placeholder="Edad"
                     min="18"
                     max="99"
+                    aria-required="true"
+                    aria-invalid={!!errors.edad}
+                    aria-describedby={errors.edad ? "edad-error" : undefined}
                     className={`w-full px-4 py-3 rounded-lg border ${errors.edad ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                   />
-                  {errors.edad && <p className="text-xs text-destructive mt-1">{errors.edad}</p>}
+                  {errors.edad && <p id="edad-error" className="text-xs text-destructive mt-1" role="alert">{errors.edad}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">Teléfono *</label>
+                  <label htmlFor="telefono" className="block text-sm font-medium text-foreground mb-1.5">Teléfono *</label>
                   <input
+                    id="telefono"
                     type="tel"
                     value={form.telefono}
                     onChange={(e) => handleChange("telefono", e.target.value)}
                     placeholder="10 dígitos"
+                    aria-required="true"
+                    aria-invalid={!!errors.telefono}
+                    aria-describedby={errors.telefono ? "telefono-error" : undefined}
                     className={`w-full px-4 py-3 rounded-lg border ${errors.telefono ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                   />
-                  {errors.telefono && <p className="text-xs text-destructive mt-1">{errors.telefono}</p>}
+                  {errors.telefono && <p id="telefono-error" className="text-xs text-destructive mt-1" role="alert">{errors.telefono}</p>}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5">Correo electrónico *</label>
+                <label htmlFor="correo" className="block text-sm font-medium text-foreground mb-1.5">Correo electrónico *</label>
                 <input
+                  id="correo"
                   type="email"
                   value={form.correo}
                   onChange={(e) => handleChange("correo", e.target.value)}
                   placeholder="tu@correo.com"
+                  aria-required="true"
+                  aria-invalid={!!errors.correo}
+                  aria-describedby={errors.correo ? "correo-error" : undefined}
                   className={`w-full px-4 py-3 rounded-lg border ${errors.correo ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                 />
-                {errors.correo && <p className="text-xs text-destructive mt-1">{errors.correo}</p>}
+                {errors.correo && <p id="correo-error" className="text-xs text-destructive mt-1" role="alert">{errors.correo}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5">Servicio de interés *</label>
+                <label htmlFor="servicio" className="block text-sm font-medium text-foreground mb-1.5">Servicio de interés *</label>
                 <select
+                  id="servicio"
                   value={form.servicio}
                   onChange={(e) => handleChange("servicio", e.target.value)}
+                  aria-required="true"
+                  aria-invalid={!!errors.servicio}
+                  aria-describedby={errors.servicio ? "servicio-error" : undefined}
                   className={`w-full px-4 py-3 rounded-lg border ${errors.servicio ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                 >
                   <option value="">Selecciona un servicio</option>
@@ -224,7 +244,7 @@ export function LeadForm() {
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
-                {errors.servicio && <p className="text-xs text-destructive mt-1">{errors.servicio}</p>}
+                {errors.servicio && <p id="servicio-error" className="text-xs text-destructive mt-1" role="alert">{errors.servicio}</p>}
               </div>
 
               <div className="flex items-start gap-3 pt-1">
@@ -233,6 +253,9 @@ export function LeadForm() {
                   checked={form.privacidad}
                   onChange={(e) => handleChange("privacidad", e.target.checked)}
                   id="privacidad"
+                  aria-required="true"
+                  aria-invalid={!!errors.privacidad}
+                  aria-describedby={errors.privacidad ? "privacidad-error" : undefined}
                   className="mt-1 w-4 h-4 rounded border-input text-primary focus:ring-primary/30"
                 />
                 <label htmlFor="privacidad" className="text-xs text-muted-foreground leading-relaxed">
@@ -243,13 +266,14 @@ export function LeadForm() {
                   y autorizo el contacto comercial por teléfono, correo o WhatsApp. *
                 </label>
               </div>
-              {errors.privacidad && <p className="text-xs text-destructive -mt-2">{errors.privacidad}</p>}
+              {errors.privacidad && <p id="privacidad-error" className="text-xs text-destructive -mt-2" role="alert">{errors.privacidad}</p>}
 
               <button
                 type="submit"
-                className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 mt-2"
+                className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 mt-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                aria-label="Enviar solicitud de asesoría"
               >
-                <Send size={18} />
+                <Send size={18} aria-hidden="true" />
                 Enviar solicitud
               </button>
             </div>

@@ -153,7 +153,7 @@ export function Hero() {
         <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full bg-muted/30 blur-[80px] -translate-x-1/2 -translate-y-1/2" />
       </motion.div>
 
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <FloatingShape
           className="w-4 h-4 rounded-full bg-primary/20"
           delay={0}
@@ -205,13 +205,14 @@ export function Hero() {
         />
       </div>
 
-      <motion.div className="absolute inset-0 -z-10 pointer-events-none" style={{ x: springMouseX, y: springMouseY }}>
+      <motion.div className="absolute inset-0 -z-10 pointer-events-none" style={{ x: springMouseX, y: springMouseY }} aria-hidden="true">
         <div className="absolute top-[15%] left-[10%] w-32 h-32 rounded-full bg-primary/[0.04] blur-xl" />
         <div className="absolute bottom-[20%] right-[15%] w-40 h-40 rounded-full bg-accent/[0.04] blur-xl" />
       </motion.div>
 
       <div 
         className="absolute inset-0 -z-10 opacity-[0.015] pointer-events-none mix-blend-overlay"
+        aria-hidden="true"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}
@@ -284,10 +285,11 @@ export function Hero() {
             >
               <motion.button
                 onClick={() => scrollTo("#contacto")}
-                className="group relative bg-accent text-accent-foreground px-7 py-3.5 rounded-lg font-semibold text-base shadow-lg shadow-accent/25 flex items-center justify-center gap-2 overflow-hidden"
+                className="group relative bg-accent text-accent-foreground px-7 py-3.5 rounded-lg font-semibold text-base shadow-lg shadow-accent/25 flex items-center justify-center gap-2 overflow-hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                aria-label="Solicitar asesoría financiera gratuita"
               >
                 <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
                 <span className="relative z-10 flex items-center gap-2">
@@ -295,12 +297,13 @@ export function Hero() {
                   <ArrowRight
                     size={18}
                     className="group-hover:translate-x-1.5 transition-transform duration-300"
+                    aria-hidden="true"
                   />
                 </span>
               </motion.button>
               <motion.button
                 onClick={() => scrollTo("#servicios")}
-                className="group bg-background border-2 border-primary/20 text-foreground px-7 py-3.5 rounded-lg font-semibold text-base flex items-center justify-center gap-2"
+                className="group bg-background border-2 border-primary/20 text-foreground px-7 py-3.5 rounded-lg font-semibold text-base flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 whileHover={{
                   scale: 1.03,
                   y: -2,
@@ -309,6 +312,7 @@ export function Hero() {
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                aria-label="Conocer servicios financieros disponibles"
               >
                 Conoce nuestros servicios
               </motion.button>
@@ -353,12 +357,12 @@ export function Hero() {
                 >
                   <motion.img
                     src="/1.png"
-                    alt="Casa moderna en Querétaro"
+                    alt="Familia feliz frente a casa moderna en Querétaro - Crédito hipotecario ALDALU"
                     className="w-full h-full object-cover object-[50%_15%] scale-105"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" aria-hidden="true" />
                 </motion.div>
 
                 <div className="absolute bottom-6 left-6 right-6">
@@ -371,7 +375,8 @@ export function Hero() {
                     <div className="flex items-center gap-3">
                       <img
                         src="/AD_Imagotipo_color.png"
-                        alt="ALDALU"
+                        alt=""
+                        aria-hidden="true"
                         className="w-10 h-10 object-contain"
                       />
                       <div>
@@ -392,6 +397,7 @@ export function Hero() {
                 style={{ y: decorY1 }}
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
               >
                 <span className="text-accent font-heading font-bold text-lg">$0</span>
               </motion.div>
@@ -401,12 +407,14 @@ export function Hero() {
                 style={{ y: decorY2 }}
                 animate={{ scale: [1, 1.1, 1], rotate: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
               />
 
               <motion.div
                 className="absolute top-1/2 -right-8 w-3 h-3 rounded-full bg-primary/40"
                 animate={{ y: [0, -20, 0], opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
               />
             </motion.div>
           </motion.div>
@@ -421,12 +429,13 @@ export function Hero() {
       >
         <motion.button
           onClick={() => scrollTo("#servicios")}
-          className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+          className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:text-primary focus:ring-2 focus:ring-primary rounded-lg p-2"
           whileHover={{ y: -3 }}
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          aria-label="Desplazarse a la sección de servicios"
         >
           <span className="text-xs font-medium">Descubre más</span>
-          <ChevronDown size={20} className="animate-bounce" />
+          <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />
         </motion.button>
       </motion.div>
     </section>

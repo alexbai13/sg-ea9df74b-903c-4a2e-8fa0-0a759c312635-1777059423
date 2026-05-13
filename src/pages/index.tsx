@@ -27,7 +27,7 @@ export default function Home() {
         image="/og-image.png"
       />
       <Navigation />
-      <main>
+      <main id="main-content">
         <Hero />
         <TrustBar />
         <ServicesSection />
