@@ -1,0 +1,23 @@
+# robots.txt para ALDALU - Brokers de Creditaria en Querétaro
+# https://www.aldalu.com.mx
+
+User-agent: *
+Allow: /
+
+# Permitir indexación de todas las páginas públicas
+Allow: /blog/
+Allow: /privacidad
+
+# Bloquear páginas de agradecimiento (no aportan valor SEO)
+Disallow: /gracias
+
+# Bloquear archivos del sistema y directorios técnicos
+Disallow: /_next/
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://www.aldalu.com.mx/sitemap.xml
+
+# Rastreo recomendado
+Crawl-delay: 1
