@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 const zones = ["Juriquilla", "Zibatá", "Corregidora", "Zakia", "El Refugio", "Centro Sur", "Candiles", "Tres Cantos"];
@@ -15,11 +16,13 @@ export function Footer() {
       <div className="container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="mb-5">
-              <img
+            <div className="mb-5 relative h-9" style={{ width: "140px" }}>
+              <Image
                 src="/AD_Logo_bco_horizontal.png"
                 alt="ALDALU"
-                className="h-9 w-auto"
+                fill
+                sizes="140px"
+                className="object-contain object-left"
               />
             </div>
             <p className="text-sm text-background/60 leading-relaxed mb-4">

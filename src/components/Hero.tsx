@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -355,12 +356,15 @@ export function Hero() {
                 <motion.div
                   className="w-full h-[450px] sm:h-[500px] overflow-hidden bg-primary/5 relative rounded-[2.5rem] shadow-2xl shadow-primary/10 border border-border/40"
                 >
-                  <motion.img
+                  <Image
                     src="/1.png"
                     alt="Familia feliz frente a casa moderna en Querétaro - Crédito hipotecario ALDALU"
-                    className="w-full h-full object-cover object-[50%_15%] scale-105"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    fill
+                    priority
+                    quality={90}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-[50%_15%] scale-105"
+                    style={{ transform: "scale(1.05)" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" aria-hidden="true" />
                 </motion.div>
@@ -373,12 +377,16 @@ export function Hero() {
                     className="bg-background/90 backdrop-blur-md rounded-xl p-4 border border-border"
                   >
                     <div className="flex items-center gap-3">
-                      <img
-                        src="/AD_Imagotipo_color.png"
-                        alt=""
-                        aria-hidden="true"
-                        className="w-10 h-10 object-contain"
-                      />
+                      <div className="relative w-10 h-10">
+                        <Image
+                          src="/AD_Imagotipo_color.png"
+                          alt=""
+                          aria-hidden="true"
+                          fill
+                          sizes="40px"
+                          className="object-contain"
+                        />
+                      </div>
                       <div>
                         <p className="text-sm font-semibold text-foreground">
                           Tu guía financiero personal

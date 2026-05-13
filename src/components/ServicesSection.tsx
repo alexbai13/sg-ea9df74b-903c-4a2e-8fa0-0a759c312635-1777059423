@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Home, Car, HeartHandshake, ArrowRight } from "lucide-react";
 
@@ -66,18 +67,22 @@ export function ServicesSection() {
       <motion.div
         className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]"
         style={{ y: blob1Y, x: blob1X }}
+        aria-hidden="true"
       />
       <motion.div
         className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/20 blur-[100px]"
         style={{ y: blob2Y }}
-      />
-      <motion.img
-        src="/AD_Imagotipo_color.png"
-        alt=""
         aria-hidden="true"
-        className="absolute top-8 right-8 w-24 h-24 object-contain opacity-[0.04] pointer-events-none select-none"
-        style={{ rotate: watermarkRotate, scale: watermarkScale }}
       />
+      <div className="absolute top-8 right-8 w-24 h-24" aria-hidden="true">
+        <Image
+          src="/AD_Imagotipo_color.png"
+          alt=""
+          fill
+          sizes="96px"
+          className="object-contain opacity-[0.04] pointer-events-none select-none"
+        />
+      </div>
 
       <motion.div
         className="absolute top-40 left-0 lg:-left-20 w-64 h-64 lg:w-[500px] lg:h-[500px] opacity-[0.15] pointer-events-none overflow-hidden mix-blend-luminosity"
@@ -91,7 +96,13 @@ export function ServicesSection() {
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       >
-        <img src="/4.png" alt="Fondo" className="w-full h-full object-cover scale-110" />
+        <Image
+          src="/4.png"
+          alt="Fondo"
+          fill
+          sizes="(max-width: 1024px) 256px, 500px"
+          className="object-cover scale-110"
+        />
       </motion.div>
 
       <motion.div
@@ -111,9 +122,15 @@ export function ServicesSection() {
             ]
           }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg"
+          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
         >
-          <img src="/p2.png" alt="Cliente IMSS" className="w-full h-full object-cover object-center scale-105" />
+          <Image
+            src="/p2.png"
+            alt="Cliente IMSS"
+            fill
+            sizes="160px"
+            className="object-cover object-center scale-105"
+          />
         </motion.div>
       </motion.div>
 
@@ -134,9 +151,15 @@ export function ServicesSection() {
             ]
           }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg"
+          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
         >
-          <img src="/p4.png" alt="Cliente Automotriz" className="w-full h-full object-cover object-center scale-105" />
+          <Image
+            src="/p4.png"
+            alt="Cliente Automotriz"
+            fill
+            sizes="128px"
+            className="object-cover object-center scale-105"
+          />
         </motion.div>
       </motion.div>
 

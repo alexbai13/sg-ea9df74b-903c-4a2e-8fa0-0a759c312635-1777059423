@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -100,26 +101,38 @@ export function LeadForm() {
 
             <div className="mt-12 relative h-[250px] sm:h-[300px] w-full max-w-sm mx-auto lg:mx-0 hidden sm:block">
               <motion.div
-                className="absolute top-0 left-0 w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border-[6px] border-background shadow-2xl z-10"
+                className="absolute top-0 left-0 w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border-[6px] border-background shadow-2xl z-10 relative"
                 animate={{
                   y: [0, -15, 0],
                   borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 50%"]
                 }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               >
-                <img src="/7.png" alt="Servicios Financieros" className="w-full h-full object-cover scale-110" />
+                <Image
+                  src="/7.png"
+                  alt="Servicios Financieros"
+                  fill
+                  sizes="224px"
+                  className="object-cover scale-110"
+                />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none" />
               </motion.div>
 
               <motion.div
-                className="absolute bottom-0 right-0 w-40 h-40 sm:w-48 sm:h-48 overflow-hidden border-[6px] border-background shadow-xl z-20"
+                className="absolute bottom-0 right-0 w-40 h-40 sm:w-48 sm:h-48 overflow-hidden border-[6px] border-background shadow-xl z-20 relative"
                 animate={{
                   y: [0, 20, 0],
                   borderRadius: ["50% 50% 50% 70% / 50% 50% 70% 50%", "50% 70% 50% 50% / 70% 50% 50% 50%", "50% 50% 50% 70% / 50% 50% 70% 50%"]
                 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                <img src="/11.png" alt="Asesoría ALDALU" className="w-full h-full object-cover scale-110" />
+                <Image
+                  src="/11.png"
+                  alt="Asesoría ALDALU"
+                  fill
+                  sizes="192px"
+                  className="object-cover scale-110"
+                />
                 <div className="absolute inset-0 bg-accent/10 mix-blend-overlay pointer-events-none" />
               </motion.div>
 
@@ -140,9 +153,15 @@ export function LeadForm() {
                     ]
                   }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="w-full h-full overflow-hidden border-[3px] border-background shadow-lg"
+                  className="w-full h-full overflow-hidden border-[3px] border-background shadow-lg relative"
                 >
-                  <img src="/p1.png" alt="Cliente Premium" className="w-full h-full object-cover object-center scale-105" />
+                  <Image
+                    src="/p1.png"
+                    alt="Cliente Premium"
+                    fill
+                    sizes="112px"
+                    className="object-cover object-center scale-105"
+                  />
                 </motion.div>
               </motion.div>
             </div>

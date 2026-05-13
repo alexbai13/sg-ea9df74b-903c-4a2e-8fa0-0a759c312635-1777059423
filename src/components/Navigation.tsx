@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
@@ -64,11 +65,17 @@ export function Navigation() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
-            <img
-              src="/AD_Logo_color_horizontal.png"
-              alt="ALDALU - Brokers de Creditaria"
-              className="h-8 md:h-10 w-auto"
-            />
+            <div className="relative h-8 md:h-10 w-auto" style={{ width: "120px" }}>
+              <Image
+                src="/AD_Logo_color_horizontal.png"
+                alt="ALDALU - Brokers de Creditaria"
+                fill
+                priority
+                quality={95}
+                sizes="120px"
+                className="object-contain object-left"
+              />
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" role="navigation" aria-label="Navegación principal">
