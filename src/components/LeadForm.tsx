@@ -4,74 +4,88 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useToast } from "@/hooks/use-toast";
 
 const servicios = [
   "Crédito Hipotecario",
   "Crédito Automotriz (Kavak)",
   "Préstamos Personales IMSS",
-];
+] as const;
 
-interface FormData {
-  nombre: string;
-  edad: string;
-  correo: string;
-  telefono: string;
-  servicio: string;
-  valorInmueble: string;
-  enganche: string;
-  ingresos: string;
-  situacionLaboral: string;
-  estadoCivil: string;
-  estatusInfonavit: string;
-  privacidad: boolean;
-}
+const leadFormSchema = z.object({
+  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
+  edad: z.string().refine((val) => {
+    const num = Number(val);
+    return !isNaN(num) && num >= 18 && num <= 99;
+  }, "Debes ser mayor de edad (18-99 años)"),
+  correo: z.string().email("Ingresa un correo electrónico válido"),
+  telefono: z.string().regex(/^\d{10}$/, "El teléfono debe tener exactamente 10 dígitos"),
+  servicio: z.string().min(1, "Debes seleccionar un servicio"),
+  valorInmueble: z.string().optional(),
+  enganche: z.string().optional(),
+  ingresos: z.string().optional(),
+  situacionLaboral: z.string().optional(),
+  estadoCivil: z.string().optional(),
+  estatusInfonavit: z.string().optional(),
+  privacidad: z.literal(true, {
+    errorMap: () => ({ message: "Debes aceptar el aviso de privacidad" }),
+  }),
+});
+
+type FormData = z.infer<typeof leadFormSchema>;
 
 export function LeadForm() {
   const router = useRouter();
-  const [form, setForm] = useState<FormData>({
-    nombre: "",
-    edad: "",
-    correo: "",
-    telefono: "",
-    servicio: "",
-    valorInmueble: "",
-    enganche: "",
-    ingresos: "",
-    situacionLaboral: "",
-    estadoCivil: "",
-    estatusInfonavit: "",
-    privacidad: false,
+  const { toast } = useToast();
+  
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+    reset
+  } = useForm<FormData>({
+    resolver: zodResolver(leadFormSchema),
+    defaultValues: {
+      nombre: "",
+      edad: "",
+      correo: "",
+      telefono: "",
+      servicio: "",
+      valorInmueble: "",
+      enganche: "",
+      ingresos: "",
+      situacionLaboral: "",
+      estadoCivil: "",
+      estatusInfonavit: "",
+    },
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
-  const validate = (): boolean => {
-    const newErrors: Partial<Record<keyof FormData, string>> = {};
-    if (!form.nombre.trim()) newErrors.nombre = "Requerido";
-    if (!form.edad.trim() || isNaN(Number(form.edad))) newErrors.edad = "Edad válida requerida";
-    if (!form.correo.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)) newErrors.correo = "Correo válido requerido";
-    if (!form.telefono.trim() || !/^\d{10}$/.test(form.telefono.replace(/\D/g, ""))) newErrors.telefono = "Debe tener 10 dígitos exactos";
-    if (!form.servicio) newErrors.servicio = "Selecciona un servicio";
-    if (!form.privacidad) newErrors.privacidad = "Acepta el aviso de privacidad";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const selectedServicio = watch("servicio");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
+  const onSubmit = async (data: FormData) => {
+    // Aquí iría la lógica para enviar a tu API o base de datos (Supabase)
+    console.log("Form Data Validated:", data);
+    
+    // Simulamos un retraso de red
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    toast({
+      title: "¡Solicitud enviada con éxito!",
+      description: "Un asesor certificado te contactará muy pronto.",
+      variant: "default",
+      className: "bg-primary text-primary-foreground border-none",
+    });
+
+    reset();
+    
+    // Opcional: Redirigir a página de gracias después de unos segundos
+    setTimeout(() => {
       router.push("/gracias");
-    }
-  };
-
-  const handleChange = (field: keyof FormData, value: string | boolean) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[field];
-        return next;
-      });
-    }
+    }, 2000);
   };
 
   return (
@@ -184,7 +198,7 @@ export function LeadForm() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="bg-background rounded-2xl p-6 md:p-8 border border-border shadow-xl shadow-primary/5"
           >
             <h3 className="text-xl font-heading font-bold text-foreground mb-6">
@@ -197,15 +211,14 @@ export function LeadForm() {
                 <input
                   id="nombre"
                   type="text"
-                  value={form.nombre}
-                  onChange={(e) => handleChange("nombre", e.target.value)}
+                  {...register("nombre")}
                   placeholder="Tu nombre completo"
                   aria-required="true"
                   aria-invalid={!!errors.nombre}
                   aria-describedby={errors.nombre ? "nombre-error" : undefined}
                   className={`w-full px-4 py-3 rounded-lg border ${errors.nombre ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                 />
-                {errors.nombre && <p id="nombre-error" className="text-xs text-destructive mt-1" role="alert">{errors.nombre}</p>}
+                {errors.nombre && <p id="nombre-error" className="text-xs text-destructive mt-1" role="alert">{errors.nombre.message}</p>}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -214,8 +227,7 @@ export function LeadForm() {
                   <input
                     id="edad"
                     type="number"
-                    value={form.edad}
-                    onChange={(e) => handleChange("edad", e.target.value)}
+                    {...register("edad")}
                     placeholder="Edad"
                     min="18"
                     max="99"
@@ -224,22 +236,21 @@ export function LeadForm() {
                     aria-describedby={errors.edad ? "edad-error" : undefined}
                     className={`w-full px-4 py-3 rounded-lg border ${errors.edad ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                   />
-                  {errors.edad && <p id="edad-error" className="text-xs text-destructive mt-1" role="alert">{errors.edad}</p>}
+                  {errors.edad && <p id="edad-error" className="text-xs text-destructive mt-1" role="alert">{errors.edad.message}</p>}
                 </div>
                 <div>
                   <label htmlFor="telefono" className="block text-sm font-medium text-foreground mb-1.5">Teléfono *</label>
                   <input
                     id="telefono"
                     type="tel"
-                    value={form.telefono}
-                    onChange={(e) => handleChange("telefono", e.target.value)}
+                    {...register("telefono")}
                     placeholder="10 dígitos"
                     aria-required="true"
                     aria-invalid={!!errors.telefono}
                     aria-describedby={errors.telefono ? "telefono-error" : undefined}
                     className={`w-full px-4 py-3 rounded-lg border ${errors.telefono ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                   />
-                  {errors.telefono && <p id="telefono-error" className="text-xs text-destructive mt-1" role="alert">{errors.telefono}</p>}
+                  {errors.telefono && <p id="telefono-error" className="text-xs text-destructive mt-1" role="alert">{errors.telefono.message}</p>}
                 </div>
               </div>
 
@@ -248,23 +259,21 @@ export function LeadForm() {
                 <input
                   id="correo"
                   type="email"
-                  value={form.correo}
-                  onChange={(e) => handleChange("correo", e.target.value)}
+                  {...register("correo")}
                   placeholder="tu@correo.com"
                   aria-required="true"
                   aria-invalid={!!errors.correo}
                   aria-describedby={errors.correo ? "correo-error" : undefined}
                   className={`w-full px-4 py-3 rounded-lg border ${errors.correo ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                 />
-                {errors.correo && <p id="correo-error" className="text-xs text-destructive mt-1" role="alert">{errors.correo}</p>}
+                {errors.correo && <p id="correo-error" className="text-xs text-destructive mt-1" role="alert">{errors.correo.message}</p>}
               </div>
 
               <div>
                 <label htmlFor="servicio" className="block text-sm font-medium text-foreground mb-1.5">Servicio de interés *</label>
                 <select
                   id="servicio"
-                  value={form.servicio}
-                  onChange={(e) => handleChange("servicio", e.target.value)}
+                  {...register("servicio")}
                   aria-required="true"
                   aria-invalid={!!errors.servicio}
                   aria-describedby={errors.servicio ? "servicio-error" : undefined}
@@ -275,10 +284,10 @@ export function LeadForm() {
                     <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
-                {errors.servicio && <p id="servicio-error" className="text-xs text-destructive mt-1" role="alert">{errors.servicio}</p>}
+                {errors.servicio && <p id="servicio-error" className="text-xs text-destructive mt-1" role="alert">{errors.servicio.message}</p>}
               </div>
 
-              {form.servicio === "Crédito Hipotecario" && (
+              {selectedServicio === "Crédito Hipotecario" && (
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
@@ -293,8 +302,7 @@ export function LeadForm() {
                     <label htmlFor="situacionLaboral" className="block text-xs font-medium text-foreground mb-1">Situación Laboral</label>
                     <select
                       id="situacionLaboral"
-                      value={form.situacionLaboral}
-                      onChange={(e) => handleChange("situacionLaboral", e.target.value)}
+                      {...register("situacionLaboral")}
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     >
                       <option value="">Selecciona una opción</option>
@@ -308,8 +316,7 @@ export function LeadForm() {
                     <label htmlFor="estadoCivil" className="block text-xs font-medium text-foreground mb-1">Estado Civil</label>
                     <select
                       id="estadoCivil"
-                      value={form.estadoCivil}
-                      onChange={(e) => handleChange("estadoCivil", e.target.value)}
+                      {...register("estadoCivil")}
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     >
                       <option value="">Selecciona una opción</option>
@@ -323,8 +330,7 @@ export function LeadForm() {
                     <label htmlFor="estatusInfonavit" className="block text-xs font-medium text-foreground mb-1">Estatus Infonavit / Fovissste</label>
                     <select
                       id="estatusInfonavit"
-                      value={form.estatusInfonavit}
-                      onChange={(e) => handleChange("estatusInfonavit", e.target.value)}
+                      {...register("estatusInfonavit")}
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     >
                       <option value="">Selecciona una opción</option>
@@ -340,8 +346,7 @@ export function LeadForm() {
                     <input
                       id="valorInmueble"
                       type="number"
-                      value={form.valorInmueble}
-                      onChange={(e) => handleChange("valorInmueble", e.target.value)}
+                      {...register("valorInmueble")}
                       placeholder="$"
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
@@ -351,8 +356,7 @@ export function LeadForm() {
                     <input
                       id="enganche"
                       type="number"
-                      value={form.enganche}
-                      onChange={(e) => handleChange("enganche", e.target.value)}
+                      {...register("enganche")}
                       placeholder="$"
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
@@ -362,8 +366,7 @@ export function LeadForm() {
                     <input
                       id="ingresos"
                       type="number"
-                      value={form.ingresos}
-                      onChange={(e) => handleChange("ingresos", e.target.value)}
+                      {...register("ingresos")}
                       placeholder="$"
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
@@ -374,8 +377,7 @@ export function LeadForm() {
               <div className="flex items-start gap-3 pt-3">
                 <input
                   type="checkbox"
-                  checked={form.privacidad}
-                  onChange={(e) => handleChange("privacidad", e.target.checked)}
+                  {...register("privacidad")}
                   id="privacidad"
                   aria-required="true"
                   aria-invalid={!!errors.privacidad}
@@ -390,15 +392,22 @@ export function LeadForm() {
                   y autorizo el contacto comercial por teléfono, correo o WhatsApp. *
                 </label>
               </div>
-              {errors.privacidad && <p id="privacidad-error" className="text-xs text-destructive -mt-2" role="alert">{errors.privacidad}</p>}
+              {errors.privacidad && <p id="privacidad-error" className="text-xs text-destructive -mt-2" role="alert">{errors.privacidad.message}</p>}
 
               <button
                 type="submit"
-                className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 mt-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                disabled={isSubmitting}
+                className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 mt-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Enviar solicitud de asesoría"
               >
-                <Send size={18} aria-hidden="true" />
-                Enviar solicitud
+                {isSubmitting ? (
+                  <div className="w-5 h-5 border-2 border-accent-foreground border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <Send size={18} aria-hidden="true" />
+                    Enviar solicitud
+                  </>
+                )}
               </button>
             </div>
           </motion.form>
