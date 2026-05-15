@@ -65,14 +65,14 @@ export function Navigation() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
-            <div className="relative h-8 md:h-10 w-auto" style={{ width: "120px" }}>
+            <div className="relative h-10 md:h-14 w-auto" style={{ width: "160px" }}>
               <Image
                 src="/AD_Logo_color_horizontal.png"
-                alt="ALDALU - Brokers de Creditaria"
+                alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
                 quality={95}
-                sizes="120px"
+                sizes="160px"
                 className="object-contain object-left"
               />
             </div>

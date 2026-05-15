@@ -17,6 +17,10 @@ interface FormData {
   correo: string;
   telefono: string;
   servicio: string;
+  valorInmueble: string;
+  enganche: string;
+  ingresos: string;
+  puntosInfonavit: string;
   privacidad: boolean;
 }
 
@@ -28,6 +32,10 @@ export function LeadForm() {
     correo: "",
     telefono: "",
     servicio: "",
+    valorInmueble: "",
+    enganche: "",
+    ingresos: "",
+    puntosInfonavit: "",
     privacidad: false,
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -109,8 +117,8 @@ export function LeadForm() {
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Image
-                  src="/7.png"
-                  alt="Servicios Financieros"
+                  src="/generated/young-friends-planning.png"
+                  alt="Servicios Financieros Jóvenes"
                   fill
                   sizes="224px"
                   className="object-cover scale-110"
@@ -127,8 +135,8 @@ export function LeadForm() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
                 <Image
-                  src="/11.png"
-                  alt="Asesoría ALDALU"
+                  src="/generated/young-man-keys.png"
+                  alt="Asesoría ALDALU Nueva Casa"
                   fill
                   sizes="192px"
                   className="object-cover scale-110"
@@ -156,8 +164,8 @@ export function LeadForm() {
                   className="w-full h-full overflow-hidden border-[3px] border-background shadow-lg relative"
                 >
                   <Image
-                    src="/p1.png"
-                    alt="Cliente Premium"
+                    src="/generated/young-woman-signing.png"
+                    alt="Cliente Premium Firmando"
                     fill
                     sizes="112px"
                     className="object-cover object-center scale-105"
@@ -266,7 +274,64 @@ export function LeadForm() {
                 {errors.servicio && <p id="servicio-error" className="text-xs text-destructive mt-1" role="alert">{errors.servicio}</p>}
               </div>
 
-              <div className="flex items-start gap-3 pt-1">
+              {form.servicio === "Crédito Hipotecario" && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  className="grid grid-cols-2 gap-4 mt-4 bg-muted/40 p-5 rounded-xl border border-primary/10"
+                >
+                  <div className="col-span-2">
+                    <p className="text-sm font-semibold text-foreground mb-1">Precalificación Hipotecaria (Opcional)</p>
+                    <p className="text-xs text-muted-foreground mb-3">Estos datos nos ayudan a darte una mejor respuesta más rápido.</p>
+                  </div>
+                  <div>
+                    <label htmlFor="valorInmueble" className="block text-xs font-medium text-foreground mb-1">Valor del Inmueble</label>
+                    <input
+                      id="valorInmueble"
+                      type="number"
+                      value={form.valorInmueble}
+                      onChange={(e) => handleChange("valorInmueble", e.target.value)}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="enganche" className="block text-xs font-medium text-foreground mb-1">Enganche disp.</label>
+                    <input
+                      id="enganche"
+                      type="number"
+                      value={form.enganche}
+                      onChange={(e) => handleChange("enganche", e.target.value)}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="ingresos" className="block text-xs font-medium text-foreground mb-1">Ingresos Mensuales</label>
+                    <input
+                      id="ingresos"
+                      type="number"
+                      value={form.ingresos}
+                      onChange={(e) => handleChange("ingresos", e.target.value)}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="puntosInfonavit" className="block text-xs font-medium text-foreground mb-1">Puntos Infonavit</label>
+                    <input
+                      id="puntosInfonavit"
+                      type="number"
+                      value={form.puntosInfonavit}
+                      onChange={(e) => handleChange("puntosInfonavit", e.target.value)}
+                      placeholder="Ej. 1080"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                </motion.div>
+              )}
+
+              <div className="flex items-start gap-3 pt-3">
                 <input
                   type="checkbox"
                   checked={form.privacidad}

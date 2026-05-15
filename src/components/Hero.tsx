@@ -94,7 +94,7 @@ function FloatingShape({
   );
 }
 
-const headlineWords = ["Donde", "las", "grandes", "decisiones", "encuentran", "respaldo"];
+const headlineWords = ["Los", "mejores", "brokers", "hipotecarios,", "a", "tu", "lado"];
 
 const stats = [
   { value: "100", suffix: "%", label: "Gratis para ti" },
@@ -233,7 +233,7 @@ export function Hero() {
             >
               <Shield size={16} className="text-primary" />
               <span className="text-sm font-medium text-muted-foreground">
-                Brokers de Creditaria en Querétaro
+                Brokers Hipotecarios de Creditaria
               </span>
             </motion.div>
 
@@ -249,13 +249,13 @@ export function Hero() {
                     ease: EASE,
                   }}
                   className={`inline-block mr-[0.3em] ${
-                    word === "encuentran" || word === "respaldo"
+                    word === "hipotecarios," || word === "lado"
                       ? "relative"
                       : ""
                   }`}
                 >
                   {word}
-                  {word === "respaldo" && (
+                  {word === "hipotecarios," && (
                     <motion.span
                       className="absolute bottom-1 left-0 w-full h-3 bg-primary/20 -z-10 rounded"
                       initial={{ scaleX: 0 }}
@@ -274,8 +274,8 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
               className="text-lg md:text-xl text-muted-foreground mt-6 leading-relaxed max-w-lg"
             >
-              Buscamos entre bancos para darte la mejor opción de crédito. Expertos en <strong>hipotecario</strong>, <strong>automotriz asociados a Kavak</strong> y <strong>préstamos personales para pensionados del IMSS</strong> —{" "}
-              <strong className="text-foreground">sin costo para ti.</strong>
+              Comparamos entre múltiples bancos para asegurarte la mejor opción de <strong>crédito hipotecario</strong>. También somos expertos en crédito <strong>automotriz</strong> y <strong>préstamos IMSS</strong> —{" "}
+              <strong className="text-foreground">totalmente sin costo para ti.</strong>
             </motion.p>
 
             <motion.div
@@ -357,8 +357,8 @@ export function Hero() {
                   className="w-full h-[450px] sm:h-[500px] overflow-hidden bg-primary/5 relative rounded-[2.5rem] shadow-2xl shadow-primary/10 border border-border/40"
                 >
                   <Image
-                    src="/1.png"
-                    alt="Familia feliz frente a casa moderna en Querétaro - Crédito hipotecario ALDALU"
+                    src="/generated/young-couple-house.png"
+                    alt="Jóvenes felices frente a casa moderna - Crédito hipotecario ALDALU"
                     fill
                     priority
                     quality={90}
