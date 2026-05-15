@@ -9,7 +9,7 @@ export default function Document() {
         <SEOElements />
         {/* Volley Widget */}
         <link rel="stylesheet" href="https://widget.meetvolley.com/static/css/widget.css" />
-        <script type="text/javascript" data-widget="https://api.meetvolley.com/api/public/get-widget/944c1b5e-9f91-42f1-8ae9-33094314fda2" src="https://widget.meetvolley.com/widget.js"></script>
+        <script type="text/javascript" data-widget="https://api.meetvolley.com/api/public/get-widget/944c1b5e-9f91-42f1-8ae9-33094314fda2" src="https://widget.meetvolley.com/widget.js" defer></script>
         
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
