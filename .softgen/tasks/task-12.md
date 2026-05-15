@@ -1,6 +1,6 @@
 ---
 title: "Ajustes de Diseño y Copy (Hipotecario)"
-status: todo
+status: done
 priority: high
 type: feature
 tags: ["design", "copy", "accessibility"]
@@ -16,7 +16,9 @@ position: 1
 - Asegurar que las imágenes apunten a un demográfico joven (20-45 años).
 
 ## Checklist
-- [ ] Mejorar contraste de colores en `globals.css` y `tailwind.config.ts`.
-- [ ] Aumentar el tamaño del logo en `Navigation.tsx`.
-- [ ] Cambiar el copy y las imágenes del `Hero.tsx` a un enfoque de jóvenes e hipotecas.
-- [ ] Revisar y corregir funcionalidad de los botones de navegación interna.
+- [x] Cambiar imágenes por fotografías de personas jóvenes (20-45 años) en Hero, ServicesSection y LeadForm.
+- [x] Modificar texto principal en Hero a "Brokers hipotecarios" y reforzar el enfoque en toda la página.
+- [x] Aumentar el tamaño del logo en la navegación y el footer.
+- [x] Modificar el color primary (aqua) por una versión más oscura para garantizar legibilidad.
+- [x] Validar que las imágenes tengan estilos responsive (object-cover y márgenes adecuados) para jóvenes e hipotecas.
+- [x] Revisar y corregir funcionalidad de los botones de navegación interna.
