@@ -24,12 +24,22 @@ const leadFormSchema = z.object({
   correo: z.string().email("Ingresa un correo electrónico válido"),
   telefono: z.string().regex(/^\d{10}$/, "El teléfono debe tener exactamente 10 dígitos"),
   servicio: z.string().min(1, "Debes seleccionar un servicio"),
+  // Campos Hipotecario
   valorInmueble: z.string().optional(),
   enganche: z.string().optional(),
   ingresos: z.string().optional(),
   situacionLaboral: z.string().optional(),
   estadoCivil: z.string().optional(),
   estatusInfonavit: z.string().optional(),
+  // Campos Auto
+  valorAuto: z.string().optional(),
+  engancheAuto: z.string().optional(),
+  historialCrediticio: z.string().optional(),
+  // Campos IMSS
+  tipoPension: z.string().optional(),
+  montoPension: z.string().optional(),
+  prestamoActivo: z.string().optional(),
+  
   privacidad: z.literal(true, {
     errorMap: () => ({ message: "Debes aceptar el aviso de privacidad" }),
   }),
@@ -61,6 +71,12 @@ export function LeadForm() {
       situacionLaboral: "",
       estadoCivil: "",
       estatusInfonavit: "",
+      valorAuto: "",
+      engancheAuto: "",
+      historialCrediticio: "",
+      tipoPension: "",
+      montoPension: "",
+      prestamoActivo: "",
     },
   });
 
@@ -370,6 +386,109 @@ export function LeadForm() {
                       placeholder="$"
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
+                  </div>
+                </motion.div>
+              )}
+
+              {selectedServicio === "Crédito Automotriz (Kavak)" && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  className="grid grid-cols-2 gap-4 mt-4 bg-secondary/20 p-5 rounded-xl border border-secondary/30"
+                >
+                  <div className="col-span-2">
+                    <p className="text-sm font-semibold text-foreground mb-1">Perfil Automotriz (Opcional)</p>
+                    <p className="text-xs text-muted-foreground mb-3">Ayúdanos a encontrar el coche perfecto para ti con Kavak.</p>
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="valorAuto" className="block text-xs font-medium text-foreground mb-1">Valor del Auto (Aprox)</label>
+                    <input
+                      id="valorAuto"
+                      type="number"
+                      {...register("valorAuto")}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="engancheAuto" className="block text-xs font-medium text-foreground mb-1">Enganche Disponible</label>
+                    <input
+                      id="engancheAuto"
+                      type="number"
+                      {...register("engancheAuto")}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                    />
+                  </div>
+
+                  <div className="col-span-2">
+                    <label htmlFor="historialCrediticio" className="block text-xs font-medium text-foreground mb-1">¿Cómo consideras tu Buró de Crédito?</label>
+                    <select
+                      id="historialCrediticio"
+                      {...register("historialCrediticio")}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                    >
+                      <option value="">Selecciona una opción</option>
+                      <option value="Excelente">Excelente (Nunca me atraso)</option>
+                      <option value="Bueno">Bueno (Algunos atrasos leves)</option>
+                      <option value="Regular">Regular (Tuve problemas pero ya pagué)</option>
+                      <option value="No se / Sin historial">No tengo historial o no lo sé</option>
+                    </select>
+                  </div>
+                </motion.div>
+              )}
+
+              {selectedServicio === "Préstamos Personales IMSS" && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  className="grid grid-cols-2 gap-4 mt-4 bg-accent/5 p-5 rounded-xl border border-accent/20"
+                >
+                  <div className="col-span-2">
+                    <p className="text-sm font-semibold text-foreground mb-1">Perfil Pensionado IMSS (Opcional)</p>
+                    <p className="text-xs text-muted-foreground mb-3">Conocer tu pensión nos permite ofrecerte la mejor tasa.</p>
+                  </div>
+
+                  <div className="col-span-2">
+                    <label htmlFor="tipoPension" className="block text-xs font-medium text-foreground mb-1">Tipo de Pensión IMSS</label>
+                    <select
+                      id="tipoPension"
+                      {...register("tipoPension")}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                    >
+                      <option value="">Selecciona una opción</option>
+                      <option value="Vejez">Vejez (Ley 73)</option>
+                      <option value="Cesantia">Cesantía en Edad Avanzada</option>
+                      <option value="Viudez">Viudez</option>
+                      <option value="Incapacidad">Incapacidad Parcial/Permanente</option>
+                      <option value="Otra">Otra / No estoy seguro</option>
+                    </select>
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="montoPension" className="block text-xs font-medium text-foreground mb-1">Pensión Mensual Neta</label>
+                    <input
+                      id="montoPension"
+                      type="number"
+                      {...register("montoPension")}
+                      placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                    />
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="prestamoActivo" className="block text-xs font-medium text-foreground mb-1">¿Tienes préstamos activos?</label>
+                    <select
+                      id="prestamoActivo"
+                      {...register("prestamoActivo")}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                    >
+                      <option value="">Selecciona</option>
+                      <option value="Si">Sí, me descuentan actualmente</option>
+                      <option value="No">No, mi recibo está libre</option>
+                    </select>
                   </div>
                 </motion.div>
               )}
