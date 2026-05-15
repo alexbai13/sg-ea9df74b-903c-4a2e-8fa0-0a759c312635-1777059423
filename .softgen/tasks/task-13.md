@@ -1,6 +1,6 @@
 ---
 title: "Actualizar Formulario y Testimonios"
-status: todo
+status: done
 priority: high
 type: feature
 tags: ["forms", "content"]
@@ -14,5 +14,5 @@ position: 2
 - Humanizar los testimonios de la página.
 
 ## Checklist
-- [ ] Añadir campos a `LeadForm.tsx`: Valor inmueble, Enganche, Ingresos, Puntos Infonavit.
-- [ ] Actualizar datos en `Testimonials.tsx` para hacerlos más naturales (incluir calificaciones de 4 estrellas).
+- [x] Añadir campos a `LeadForm.tsx`: Valor inmueble, Enganche, Ingresos, Puntos Infonavit.
+- [x] Actualizar datos en `Testimonials.tsx` para hacerlos más naturales (incluir calificaciones de 4 estrellas).
