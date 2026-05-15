@@ -97,8 +97,8 @@ export function ServicesSection() {
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/4.png"
-          alt="Fondo"
+          src="/generated/young-professional-1.png"
+          alt="Joven profesional hipoteca"
           fill
           sizes="(max-width: 1024px) 256px, 500px"
           className="object-cover scale-110"
@@ -125,8 +125,8 @@ export function ServicesSection() {
           className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
         >
           <Image
-            src="/p2.png"
-            alt="Cliente IMSS"
+            src="/generated/young-professional-2.png"
+            alt="Joven cliente feliz"
             fill
             sizes="160px"
             className="object-cover object-center scale-105"
@@ -154,8 +154,8 @@ export function ServicesSection() {
           className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
         >
           <Image
-            src="/p4.png"
-            alt="Cliente Automotriz"
+            src="/generated/young-professional-3.png"
+            alt="Joven automotriz"
             fill
             sizes="128px"
             className="object-cover object-center scale-105"

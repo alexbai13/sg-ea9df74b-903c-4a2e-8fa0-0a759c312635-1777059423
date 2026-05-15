@@ -16,12 +16,12 @@ export function Footer() {
       <div className="container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="mb-5 relative h-9" style={{ width: "140px" }}>
+            <div className="mb-5 relative h-12" style={{ width: "180px" }}>
               <Image
                 src="/AD_Logo_bco_horizontal.png"
                 alt="ALDALU"
                 fill
-                sizes="140px"
+                sizes="180px"
                 className="object-contain object-left"
               />
             </div>
