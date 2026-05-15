@@ -7,6 +7,10 @@ export default function Document() {
     <Html lang="es">
       <Head>
         <SEOElements />
+        {/* Volley Widget */}
+        <link rel="stylesheet" href="https://widget.meetvolley.com/static/css/widget.css" />
+        <script type="text/javascript" data-widget="https://api.meetvolley.com/api/public/get-widget/944c1b5e-9f91-42f1-8ae9-33094314fda2" src="https://widget.meetvolley.com/widget.js"></script>
+        
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
           The Softgen AI monitoring script is essential for core app functionality.
