@@ -20,7 +20,9 @@ interface FormData {
   valorInmueble: string;
   enganche: string;
   ingresos: string;
-  puntosInfonavit: string;
+  situacionLaboral: string;
+  estadoCivil: string;
+  estatusInfonavit: string;
   privacidad: boolean;
 }
 
@@ -35,7 +37,9 @@ export function LeadForm() {
     valorInmueble: "",
     enganche: "",
     ingresos: "",
-    puntosInfonavit: "",
+    situacionLaboral: "",
+    estadoCivil: "",
+    estatusInfonavit: "",
     privacidad: false,
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -284,8 +288,55 @@ export function LeadForm() {
                     <p className="text-sm font-semibold text-foreground mb-1">Precalificación Hipotecaria (Opcional)</p>
                     <p className="text-xs text-muted-foreground mb-3">Estos datos nos ayudan a darte una mejor respuesta más rápido.</p>
                   </div>
-                  <div>
-                    <label htmlFor="valorInmueble" className="block text-xs font-medium text-foreground mb-1">Valor del Inmueble</label>
+                  
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="situacionLaboral" className="block text-xs font-medium text-foreground mb-1">Situación Laboral</label>
+                    <select
+                      id="situacionLaboral"
+                      value={form.situacionLaboral}
+                      onChange={(e) => handleChange("situacionLaboral", e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    >
+                      <option value="">Selecciona una opción</option>
+                      <option value="Asalariado">Asalariado (Nómina)</option>
+                      <option value="Independiente">Independiente (Persona Física)</option>
+                      <option value="Empresario">Empresario (Persona Moral)</option>
+                    </select>
+                  </div>
+                  
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="estadoCivil" className="block text-xs font-medium text-foreground mb-1">Estado Civil</label>
+                    <select
+                      id="estadoCivil"
+                      value={form.estadoCivil}
+                      onChange={(e) => handleChange("estadoCivil", e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    >
+                      <option value="">Selecciona una opción</option>
+                      <option value="Soltero">Soltero/a</option>
+                      <option value="Casado">Casado/a</option>
+                      <option value="Concubinato">Unión Libre / Concubinato</option>
+                    </select>
+                  </div>
+
+                  <div className="col-span-2">
+                    <label htmlFor="estatusInfonavit" className="block text-xs font-medium text-foreground mb-1">Estatus Infonavit / Fovissste</label>
+                    <select
+                      id="estatusInfonavit"
+                      value={form.estatusInfonavit}
+                      onChange={(e) => handleChange("estatusInfonavit", e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    >
+                      <option value="">Selecciona una opción</option>
+                      <option value="Tengo puntos Infonavit">Ya chequé, sí tengo puntos Infonavit</option>
+                      <option value="Tengo puntos Fovissste">Ya chequé, sí tengo Fovissste</option>
+                      <option value="No se como checarlo">No sé cómo checar mis puntos</option>
+                      <option value="No cotizo">No cotizo en ninguna institución</option>
+                    </select>
+                  </div>
+
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="valorInmueble" className="block text-xs font-medium text-foreground mb-1">Valor Inmueble (Aprox)</label>
                     <input
                       id="valorInmueble"
                       type="number"
@@ -295,8 +346,8 @@ export function LeadForm() {
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="enganche" className="block text-xs font-medium text-foreground mb-1">Enganche disp.</label>
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="enganche" className="block text-xs font-medium text-foreground mb-1">Enganche Disponible</label>
                     <input
                       id="enganche"
                       type="number"
@@ -306,7 +357,7 @@ export function LeadForm() {
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
                   </div>
-                  <div>
+                  <div className="col-span-2 sm:col-span-1">
                     <label htmlFor="ingresos" className="block text-xs font-medium text-foreground mb-1">Ingresos Mensuales</label>
                     <input
                       id="ingresos"
@@ -314,17 +365,6 @@ export function LeadForm() {
                       value={form.ingresos}
                       onChange={(e) => handleChange("ingresos", e.target.value)}
                       placeholder="$"
-                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="puntosInfonavit" className="block text-xs font-medium text-foreground mb-1">Puntos Infonavit</label>
-                    <input
-                      id="puntosInfonavit"
-                      type="number"
-                      value={form.puntosInfonavit}
-                      onChange={(e) => handleChange("puntosInfonavit", e.target.value)}
-                      placeholder="Ej. 1080"
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
                   </div>
