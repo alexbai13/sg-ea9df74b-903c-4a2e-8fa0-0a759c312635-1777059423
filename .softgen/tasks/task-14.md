@@ -1,16 +1,16 @@
 ---
 title: Mejora de Experiencia en Blog
-status: in_progress
+status: done
 priority: medium
 type: feature
-tags: [blog, ux]
+tags: [blog, ux, social-media]
 created_by: agent
-created_at: 2026-05-18
+created_at: 2026-05-18T19:50:39Z
 position: 14
 ---
 
 ## Notes
-Añadir funcionalidades interactivas a los artículos del blog para mejorar el engagement.
+Mejorar experiencia de lectura en artículos individuales del blog con funcionalidades que aumenten engagement y tiempo de permanencia.
 
 ## Checklist
 - [x] Implementar barra de progreso de lectura en `[slug].tsx`
@@ -19,6 +19,7 @@ Añadir funcionalidades interactivas a los artículos del blog para mejorar el e
 - [x] Asegurar diseño responsivo y soporte para modo oscuro
 
 ## Acceptance
-- La barra de progreso se llena conforme se hace scroll.
-- Los botones de compartir abren las plataformas correctas con la URL actual.
-- Al final del post se muestran hasta 2 artículos de la misma categoría.
+- La barra de progreso se actualiza con el scroll del artículo
+- Los botones de compartir funcionan correctamente y se adaptan a móvil
+- Se muestran hasta 2 artículos relacionados al final del post con CTAs con la URL actual
+- Al final del post se muestran hasta 2 artículos de la misma categoría
