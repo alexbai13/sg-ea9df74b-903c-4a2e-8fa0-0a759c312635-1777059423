@@ -51,17 +51,17 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-accent/10 text-accent text-sm font-medium px-4 py-1.5 rounded-full mb-4">
-            <Star size={14} className="fill-accent" />
+          <div className="inline-flex items-center gap-2 bg-accent/10 text-accent text-base font-medium px-5 py-2 rounded-full mb-5">
+            <Star size={16} className="fill-accent" />
             Lo que dicen nuestros clientes
           </div>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground px-4">
             Historias reales de{" "}
             <span className="text-primary">familias queretanas</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+          <p className="text-muted-foreground mt-5 max-w-2xl mx-auto text-xl">
             Más de 2,500 familias ya ahorraron con nuestra asesoría gratuita
           </p>
         </motion.div>
@@ -75,46 +75,46 @@ export function Testimonials() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
               whileHover={{ y: -4 }}
-              className="relative bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-xl hover:shadow-primary/5 transition-shadow"
+              className="relative bg-card border border-border rounded-3xl p-7 md:p-9 hover:shadow-xl hover:shadow-primary/5 transition-shadow"
             >
               <Quote
-                size={40}
-                className="absolute top-5 right-5 text-primary/10"
+                size={44}
+                className="absolute top-6 right-6 text-primary/10"
               />
 
-              <div className="flex items-center gap-1 mb-4">
+              <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: t.rating }).map((_, j) => (
                   <Star
                     key={j}
-                    size={16}
+                    size={18}
                     className="fill-amber-400 text-amber-400"
                   />
                 ))}
               </div>
 
-              <p className="text-foreground/90 leading-relaxed mb-6 text-[14px] md:text-[15px]">
+              <p className="text-foreground/90 leading-relaxed mb-7 text-base md:text-lg">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-border/50">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-border/50">
                 <div>
-                  <p className="font-heading font-bold text-foreground text-sm">
+                  <p className="font-heading font-bold text-foreground text-base">
                     {t.name}
                   </p>
-                  <div className="flex items-center gap-1 mt-1">
-                    <MapPin size={12} className="text-primary shrink-0" />
-                    <span className="text-xs text-muted-foreground line-clamp-1">
+                  <div className="flex items-center gap-1.5 mt-1.5">
+                    <MapPin size={14} className="text-primary shrink-0" />
+                    <span className="text-sm text-muted-foreground line-clamp-1">
                       {t.zone}
                     </span>
                   </div>
-                  <span className="inline-block mt-2 text-[11px] font-medium bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
+                  <span className="inline-block mt-2.5 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">
                     {t.type}
                   </span>
                 </div>
                 {t.savings && (
                   <div className="sm:text-right bg-accent/5 sm:bg-transparent p-3 sm:p-0 rounded-lg">
-                    <p className="text-[11px] sm:text-xs text-muted-foreground">Ahorro</p>
-                    <p className="text-lg md:text-xl font-heading font-bold text-accent">
+                    <p className="text-xs sm:text-sm text-muted-foreground">Ahorro</p>
+                    <p className="text-xl md:text-2xl font-heading font-bold text-accent">
                       {t.savings}
                     </p>
                   </div>

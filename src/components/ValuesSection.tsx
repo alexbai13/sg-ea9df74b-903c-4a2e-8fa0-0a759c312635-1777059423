@@ -87,21 +87,21 @@ export function ValuesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-block bg-primary/20 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4"
+            className="inline-block bg-primary/20 text-primary text-base font-medium px-5 py-2 rounded-full mb-5"
           >
             Nuestro ADN
           </motion.span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
             No somos vendedores, somos tu guía financiero
           </h2>
-          <p className="text-background/60 mt-4 text-lg">
+          <p className="text-background/60 mt-5 text-xl md:text-2xl">
             Actuamos como el asesor que simplifica lo complejo sin tecnicismos innecesarios.
           </p>
         </motion.div>
@@ -125,15 +125,15 @@ export function ValuesSection() {
                   backgroundColor: "rgba(255,255,255,0.1)",
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                className="bg-background/5 border border-background/10 rounded-xl p-5 transition-colors"
+                className="bg-background/5 border border-background/10 rounded-2xl p-6 transition-colors"
               >
                 <FloatingIcon delay={index * 0.4}>
-                  <div className="w-11 h-11 rounded-lg bg-primary/15 flex items-center justify-center mb-4">
-                    <Icon size={22} className="text-primary" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center mb-5">
+                    <Icon size={26} className="text-primary" />
                   </div>
                 </FloatingIcon>
-                <h3 className="text-base font-heading font-bold mb-2">{value.title}</h3>
-                <p className="text-sm text-background/60 leading-relaxed">{value.description}</p>
+                <h3 className="text-lg font-heading font-bold mb-3">{value.title}</h3>
+                <p className="text-base text-background/60 leading-relaxed">{value.description}</p>
               </motion.div>
             );
           })}

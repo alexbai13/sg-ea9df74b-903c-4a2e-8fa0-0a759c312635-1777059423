@@ -85,7 +85,7 @@ export function ServicesSection() {
       </div>
 
       <motion.div
-        className="absolute top-40 left-0 lg:-left-20 w-64 h-64 lg:w-[500px] lg:h-[500px] opacity-[0.15] pointer-events-none overflow-hidden mix-blend-luminosity"
+        className="absolute top-40 left-0 lg:-left-20 w-48 h-48 md:w-64 md:h-64 lg:w-[500px] lg:h-[500px] opacity-[0.12] lg:opacity-[0.15] pointer-events-none overflow-hidden mix-blend-luminosity"
         style={{ y: blob1Y, x: blob1X }}
         animate={{
           borderRadius: [
@@ -100,7 +100,7 @@ export function ServicesSection() {
           src="/generated/young-professional-1.png"
           alt="Joven profesional hipoteca"
           fill
-          sizes="(max-width: 1024px) 256px, 500px"
+          sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 500px"
           className="object-cover scale-110"
         />
       </motion.div>
@@ -110,7 +110,7 @@ export function ServicesSection() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-        className="absolute top-32 right-4 lg:right-20 w-32 h-32 lg:w-40 lg:h-40 z-0 hidden lg:block pointer-events-none opacity-90"
+        className="absolute top-24 right-4 md:top-32 md:right-8 lg:right-20 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 z-0 pointer-events-none opacity-85 lg:opacity-90"
         style={{ y: blob2Y }}
       >
         <motion.div
@@ -122,13 +122,13 @@ export function ServicesSection() {
             ]
           }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
+          className="w-full h-full overflow-hidden border-[3px] md:border-[4px] border-background shadow-lg relative"
         >
           <Image
             src="/generated/young-professional-2.png"
             alt="Joven cliente feliz"
             fill
-            sizes="160px"
+            sizes="(max-width: 768px) 96px, (max-width: 1024px) 128px, 160px"
             className="object-cover object-center scale-105"
           />
         </motion.div>
@@ -139,7 +139,7 @@ export function ServicesSection() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-        className="absolute bottom-20 left-4 lg:left-10 w-24 h-24 lg:w-32 lg:h-32 z-0 hidden lg:block pointer-events-none opacity-85"
+        className="absolute bottom-16 left-4 md:bottom-20 md:left-8 lg:left-10 w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 z-0 pointer-events-none opacity-80 lg:opacity-85"
         style={{ y: blob1Y }}
       >
         <motion.div
@@ -151,13 +151,13 @@ export function ServicesSection() {
             ]
           }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="w-full h-full overflow-hidden border-[4px] border-background shadow-lg relative"
+          className="w-full h-full overflow-hidden border-[3px] md:border-[4px] border-background shadow-lg relative"
         >
           <Image
             src="/generated/young-professional-3.png"
             alt="Joven automotriz"
             fill
-            sizes="128px"
+            sizes="(max-width: 768px) 80px, (max-width: 1024px) 96px, 128px"
             className="object-cover object-center scale-105"
           />
         </motion.div>
@@ -169,21 +169,21 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-block bg-primary/10 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4"
+            className="inline-block bg-primary/10 text-primary text-base font-medium px-5 py-2 rounded-full mb-5"
           >
             Tu supermercado financiero
           </motion.span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground">
             Tres caminos, un mismo compromiso
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg">
+          <p className="text-muted-foreground mt-5 text-xl md:text-2xl">
             No representamos a un banco — comparamos todas las opciones del mercado para ti.
           </p>
         </motion.div>
@@ -204,22 +204,22 @@ export function ServicesSection() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
                 whileHover={{ y: -8, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-                className={`group bg-card rounded-2xl p-6 lg:p-8 border ${colors.border} ${colors.hover} transition-colors hover:shadow-xl hover:shadow-primary/8 cursor-pointer`}
+                className={`group bg-card rounded-3xl p-7 lg:p-9 border ${colors.border} ${colors.hover} transition-colors hover:shadow-xl hover:shadow-primary/8 cursor-pointer`}
                 onClick={() => scrollTo("#contacto")}
               >
                 <motion.div
-                  className={`w-14 h-14 rounded-xl ${colors.bg} flex items-center justify-center mb-5`}
+                  className={`w-16 h-16 rounded-xl ${colors.bg} flex items-center justify-center mb-6`}
                   whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
                 >
-                  <Icon size={28} className={colors.text} />
+                  <Icon size={32} className={colors.text} />
                 </motion.div>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+                <h3 className="text-2xl font-heading font-bold text-foreground mb-4">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                <p className="text-muted-foreground text-base leading-relaxed mb-6">
                   {service.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-7">
                   {service.features.map((f, fi) => (
                     <motion.span
                       key={f}
@@ -227,14 +227,14 @@ export function ServicesSection() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.4 + index * 0.2 + fi * 0.08 }}
-                      className={`text-xs font-medium px-3 py-1 rounded-full ${colors.pill}`}
+                      className={`text-sm font-medium px-3.5 py-1.5 rounded-full ${colors.pill}`}
                     >
                       {f}
                     </motion.span>
                   ))}
                 </div>
-                <div className={`flex items-center gap-2 text-sm font-semibold ${colors.text} group-hover:gap-3 transition-all`}>
-                  Solicitar asesoría <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <div className={`flex items-center gap-2 text-base font-semibold ${colors.text} group-hover:gap-3 transition-all`}>
+                  Solicitar asesoría <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
             );
@@ -246,7 +246,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-center text-sm text-muted-foreground mt-10 bg-card border border-border rounded-xl py-4 px-6 max-w-2xl mx-auto"
+          className="text-center text-base text-muted-foreground mt-12 bg-card border border-border rounded-2xl py-5 px-7 max-w-2xl mx-auto"
         >
           <strong className="text-foreground">Asesoría 100% Gratuita</strong> + Análisis Perfilado + Comparación de Mercado = El banco paga, tú ahorras.
         </motion.p>

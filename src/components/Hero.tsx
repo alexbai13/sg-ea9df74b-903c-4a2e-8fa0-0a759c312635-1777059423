@@ -146,7 +146,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-8"
     >
       <motion.div className="absolute inset-0 -z-20" style={{ y: springBgY, scale: bgScale }}>
         <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-primary/5 blur-[100px] translate-x-1/4 -translate-y-1/4" />
@@ -229,15 +229,15 @@ export function Hero() {
               initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, ease: EASE }}
-              className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full mb-6 border border-primary/10"
+              className="inline-flex items-center gap-2 bg-muted px-5 py-2.5 rounded-full mb-8 border border-primary/10"
             >
-              <Shield size={16} className="text-primary" />
-              <span className="text-sm font-medium text-muted-foreground">
+              <Shield size={18} className="text-primary" />
+              <span className="text-base font-medium text-muted-foreground">
                 Brokers Hipotecarios de Creditaria
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-[1.1] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-[1.05] tracking-tight mb-8">
               {headlineWords.map((word, i) => (
                 <motion.span
                   key={word}
@@ -272,7 +272,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
-              className="text-lg md:text-xl text-muted-foreground mt-6 leading-relaxed max-w-lg"
+              className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-lg mb-10"
             >
               Comparamos entre múltiples bancos para asegurarte la mejor opción de <strong>crédito hipotecario</strong>. También somos expertos en crédito <strong>automotriz</strong> y <strong>préstamos IMSS</strong> —{" "}
               <strong className="text-foreground">totalmente sin costo para ti.</strong>
@@ -282,11 +282,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.1, ease: EASE }}
-              className="flex flex-col sm:flex-row gap-4 mt-8"
+              className="flex flex-col sm:flex-row gap-4 mb-12"
             >
               <motion.button
                 onClick={() => scrollTo("#contacto")}
-                className="group relative bg-accent text-accent-foreground px-7 py-3.5 rounded-lg font-semibold text-base shadow-lg shadow-accent/25 flex items-center justify-center gap-2 overflow-hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                className="group relative bg-accent text-accent-foreground px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-accent/25 flex items-center justify-center gap-2 overflow-hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -296,7 +296,7 @@ export function Hero() {
                 <span className="relative z-10 flex items-center gap-2">
                   Solicita tu asesoría gratis
                   <ArrowRight
-                    size={18}
+                    size={20}
                     className="group-hover:translate-x-1.5 transition-transform duration-300"
                     aria-hidden="true"
                   />
@@ -304,7 +304,7 @@ export function Hero() {
               </motion.button>
               <motion.button
                 onClick={() => scrollTo("#servicios")}
-                className="group bg-background border-2 border-primary/20 text-foreground px-7 py-3.5 rounded-lg font-semibold text-base flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="group bg-background border-2 border-primary/20 text-foreground px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 whileHover={{
                   scale: 1.03,
                   y: -2,
@@ -323,7 +323,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.3, ease: EASE }}
-              className="flex items-center gap-8 mt-10 pt-8 border-t border-border"
+              className="flex flex-wrap items-center gap-8 pt-8 border-t border-border"
             >
               {stats.map((stat, i) => (
                 <motion.div
@@ -332,11 +332,11 @@ export function Hero() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 + i * 0.15, ease: EASE }}
                 >
-                  <p className="text-2xl md:text-3xl font-heading font-bold text-primary tabular-nums">
+                  <p className="text-3xl md:text-4xl font-heading font-bold text-primary tabular-nums">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                     {stat.suffix === "%" ? "%" : ""}
                   </p>
-                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+                  <p className="text-base text-muted-foreground mt-1.5">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -344,7 +344,7 @@ export function Hero() {
 
           <motion.div
             style={{ y: springImageY, rotate: imageRotate }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.85, x: 60, filter: "blur(12px)" }}
@@ -354,7 +354,7 @@ export function Hero() {
             >
               <div className="relative overflow-visible">
                 <motion.div
-                  className="w-full h-[450px] sm:h-[500px] overflow-hidden bg-primary/5 relative rounded-[2.5rem] shadow-2xl shadow-primary/10 border border-border/40"
+                  className="w-full h-[350px] sm:h-[450px] lg:h-[500px] overflow-hidden bg-primary/5 relative rounded-3xl shadow-2xl shadow-primary/10 border border-border/40"
                 >
                   <Image
                     src="/generated/young-couple-house.png"
@@ -362,36 +362,36 @@ export function Hero() {
                     fill
                     priority
                     quality={90}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
                     className="object-cover object-[50%_15%] scale-105"
                     style={{ transform: "scale(1.05)" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" aria-hidden="true" />
                 </motion.div>
 
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.2, ease: EASE }}
-                    className="bg-background/90 backdrop-blur-md rounded-xl p-4 border border-border"
+                    className="bg-background/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-border"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="relative w-10 h-10">
+                      <div className="relative w-12 h-12">
                         <Image
                           src="/AD_Imagotipo_color.png"
                           alt=""
                           aria-hidden="true"
                           fill
-                          sizes="40px"
+                          sizes="48px"
                           className="object-contain"
                         />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-foreground">
+                        <p className="text-base font-semibold text-foreground">
                           Tu guía financiero personal
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-sm text-muted-foreground">
                           Nosotros lo hacemos por ti — sin complicaciones
                         </p>
                       </div>
@@ -401,17 +401,17 @@ export function Hero() {
               </div>
 
               <motion.div
-                className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center backdrop-blur-sm"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center backdrop-blur-sm"
                 style={{ y: decorY1 }}
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 aria-hidden="true"
               >
-                <span className="text-accent font-heading font-bold text-lg">$0</span>
+                <span className="text-accent font-heading font-bold text-xl">$0</span>
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-muted border border-primary/10"
+                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-muted border border-primary/10"
                 style={{ y: decorY2 }}
                 animate={{ scale: [1, 1.1, 1], rotate: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -419,7 +419,7 @@ export function Hero() {
               />
 
               <motion.div
-                className="absolute top-1/2 -right-8 w-3 h-3 rounded-full bg-primary/40"
+                className="absolute top-1/2 -right-8 w-3 h-3 rounded-full bg-primary/40 hidden lg:block"
                 animate={{ y: [0, -20, 0], opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 aria-hidden="true"
@@ -433,7 +433,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="hidden lg:block absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.button
           onClick={() => scrollTo("#servicios")}
@@ -442,8 +442,8 @@ export function Hero() {
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
           aria-label="Desplazarse a la sección de servicios"
         >
-          <span className="text-xs font-medium">Descubre más</span>
-          <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />
+          <span className="text-sm font-medium">Descubre más</span>
+          <ChevronDown size={22} className="animate-bounce" aria-hidden="true" />
         </motion.button>
       </motion.div>
     </section>
