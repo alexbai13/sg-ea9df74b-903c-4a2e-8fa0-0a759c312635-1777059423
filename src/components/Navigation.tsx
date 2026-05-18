@@ -73,7 +73,16 @@ export function Navigation() {
                 priority
                 quality={95}
                 sizes="160px"
-                className="object-contain object-left"
+                className="object-contain object-left block dark:hidden"
+              />
+              <Image
+                src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
+                alt="ALDALU - Brokers Hipotecarios"
+                fill
+                priority
+                quality={95}
+                sizes="160px"
+                className="object-contain object-left hidden dark:block"
               />
             </div>
           </Link>
