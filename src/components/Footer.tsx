@@ -1,14 +1,24 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 const zones = ["Juriquilla", "Zibatá", "Corregidora", "Zakia", "El Refugio", "Centro Sur", "Candiles", "Tres Cantos"];
 
 export function Footer() {
+  const router = useRouter();
+
   const scrollTo = (id: string) => {
+    if (router.pathname !== "/") {
+      router.push(`/${id}`);
+      return;
+    }
+    
     const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
