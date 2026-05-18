@@ -95,16 +95,16 @@ export function Navigation() {
         }`}
         role="banner"
       >
-        <div className="container flex items-center justify-between h-16 md:h-20 lg:h-24">
+        <div className="container flex items-center justify-between h-20 md:h-24 lg:h-28">
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-transform hover:scale-[1.02]" onClick={() => setMobileOpen(false)}>
-            <div className="relative h-14 md:h-20 lg:h-24 w-auto" style={{ width: "320px" }}>
+            <div className="relative h-16 md:h-24 lg:h-28 w-auto" style={{ width: "380px" }}>
               <Image
                 src="/ALDALU_Logo_imago_corregidos-01.png"
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
                 quality={100}
-                sizes="320px"
+                sizes="380px"
                 className="object-contain object-left block dark:hidden"
               />
               <Image
@@ -113,7 +113,7 @@ export function Navigation() {
                 fill
                 priority
                 quality={100}
-                sizes="320px"
+                sizes="380px"
                 className="object-contain object-left hidden dark:block"
               />
             </div>
@@ -180,7 +180,7 @@ export function Navigation() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-0 top-[72px] md:top-[88px] lg:top-[104px] z-40 bg-background md:hidden xl:flex overflow-y-auto"
+              className="fixed inset-0 top-[80px] md:top-[96px] lg:top-[112px] z-40 bg-background md:hidden xl:flex overflow-y-auto"
               role="navigation"
               aria-label="Navegación móvil"
             >
