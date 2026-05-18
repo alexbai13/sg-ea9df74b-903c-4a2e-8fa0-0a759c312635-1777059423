@@ -49,7 +49,7 @@ export const articles: BlogArticle[] = [
     slug: "credito-automotriz-nuevo-vs-seminuevo",
     title: "Crédito automotriz: ¿nuevo o seminuevo? Lo que nadie te dice",
     excerpt: "Las tasas para autos seminuevos pueden ser hasta 4 puntos más altas. Te explicamos cómo navegar el mercado automotriz con la mejor estrategia financiera.",
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=800&h=500&fit=crop&q=80",
+    image: "/generated/auto-blog-cover.png",
     category: "Automotriz",
     date: "15 Abr 2026",
     readTime: "5 min",
