@@ -77,14 +77,14 @@ export function Navigation() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
-            <div className="relative h-12 md:h-16 w-auto" style={{ width: "220px" }}>
+            <div className="relative h-14 md:h-20 w-auto" style={{ width: "280px" }}>
               <Image
                 src="/ALDALU_Logo_imago_corregidos-01.png"
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
-                quality={95}
-                sizes="220px"
+                quality={100}
+                sizes="280px"
                 className="object-contain object-left block dark:hidden"
               />
               <Image
@@ -92,8 +92,8 @@ export function Navigation() {
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
-                quality={95}
-                sizes="220px"
+                quality={100}
+                sizes="280px"
                 className="object-contain object-left hidden dark:block"
               />
             </div>
