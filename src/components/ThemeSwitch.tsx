@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeSwitch() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export function ThemeSwitch() {
     return <div className="w-9 h-9" />;
   }
 
-  const isDark = theme === "dark";
+  const isDark = theme === "dark" || resolvedTheme === "dark";
 
   return (
     <button
