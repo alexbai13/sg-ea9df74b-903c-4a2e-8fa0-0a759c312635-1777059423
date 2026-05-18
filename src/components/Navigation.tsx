@@ -67,7 +67,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
             <div className="relative h-10 md:h-14 w-auto" style={{ width: "160px" }}>
               <Image
-                src="/AD_Logo_color_horizontal.png"
+                src="/ALDALU_Logo_imago_corregidos-01.png"
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
