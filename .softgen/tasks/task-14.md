@@ -13,10 +13,10 @@ position: 14
 Añadir funcionalidades interactivas a los artículos del blog para mejorar el engagement.
 
 ## Checklist
-- [ ] Implementar barra de progreso de lectura en `[slug].tsx`
-- [ ] Añadir botones de compartir en redes sociales (WhatsApp, Facebook, LinkedIn, Twitter/X)
-- [ ] Crear sección de "Artículos Relacionados" basada en la categoría del post actual
-- [ ] Asegurar diseño responsivo y soporte para modo oscuro
+- [x] Implementar barra de progreso de lectura en `[slug].tsx`
+- [x] Añadir botones de compartir en redes sociales (WhatsApp, Facebook, LinkedIn, Twitter/X)
+- [x] Crear sección de "Artículos Relacionados" basada en la categoría del post actual
+- [x] Asegurar diseño responsivo y soporte para modo oscuro
 
 ## Acceptance
 - La barra de progreso se llena conforme se hace scroll.
