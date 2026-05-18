@@ -18,7 +18,7 @@ export function Footer() {
           <div>
             <div className="mb-5 relative h-12" style={{ width: "180px" }}>
               <Image
-                src="/AD_Logo_bco_horizontal.png"
+                src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
                 alt="ALDALU"
                 fill
                 sizes="180px"
