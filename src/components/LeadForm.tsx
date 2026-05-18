@@ -83,25 +83,42 @@ export function LeadForm() {
   const selectedServicio = watch("servicio");
 
   const onSubmit = async (data: FormData) => {
-    // Aquí iría la lógica para enviar a tu API o base de datos (Supabase)
-    console.log("Form Data Validated:", data);
-    
-    // Simulamos un retraso de red
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    toast({
-      title: "¡Solicitud enviada con éxito!",
-      description: "Un asesor certificado te contactará muy pronto.",
-      variant: "default",
-      className: "bg-primary text-primary-foreground border-none",
-    });
+      const result = await response.json();
 
-    reset();
-    
-    // Opcional: Redirigir a página de gracias después de unos segundos
-    setTimeout(() => {
-      router.push("/gracias");
-    }, 2000);
+      if (!response.ok) {
+        throw new Error(result.message || "Ocurrió un error al enviar la solicitud.");
+      }
+
+      toast({
+        title: "¡Solicitud enviada con éxito!",
+        description: "Un asesor certificado te contactará muy pronto.",
+        variant: "default",
+        className: "bg-primary text-primary-foreground border-none",
+      });
+
+      reset();
+      
+      // Opcional: Redirigir a página de gracias después de unos segundos
+      setTimeout(() => {
+        router.push("/gracias");
+      }, 2000);
+      
+    } catch (error: any) {
+      toast({
+        title: "Error al enviar",
+        description: error.message || "Por favor, inténtalo de nuevo más tarde.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
