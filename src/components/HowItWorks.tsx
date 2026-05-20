@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle, Search, BarChart3, FileCheck } from "lucide-react";
 
@@ -31,25 +32,56 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 md:py-28 relative">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <span className="inline-block bg-secondary text-secondary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-4">
-            Proceso simple
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
-            Tú no tienes que ir banco por banco
-          </h2>
-          <p className="text-muted-foreground mt-4 text-lg">
-            Nosotros lo hacemos por ti — en 4 pasos claros y sin complicaciones.
-          </p>
-        </motion.div>
+    <section id="como-funciona" className="py-20 md:py-28 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]" />
+      </div>
+
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center lg:text-left"
+          >
+            <span className="inline-block bg-secondary text-secondary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-4">
+              Proceso simple
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
+              Tú no tienes que ir banco por banco
+            </h2>
+            <p className="text-muted-foreground mt-4 text-lg lg:text-xl">
+              Nosotros lo hacemos por ti — en 4 pasos claros y sin complicaciones.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 30 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative"
+          >
+            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[450px] rounded-3xl overflow-hidden border border-border/40 shadow-2xl shadow-primary/10">
+              <Image
+                src="/13.png"
+                alt="Pareja revisando documentos financieros con asesor ALDALU"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
+                className="object-cover object-center"
+                quality={90}
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 mix-blend-overlay pointer-events-none" aria-hidden="true" />
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-accent/15 border border-accent/25 backdrop-blur-sm flex items-center justify-center">
+              <span className="text-accent font-heading font-bold text-xl">100%</span>
+            </div>
+            <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-primary/10 border border-primary/20" aria-hidden="true" />
+          </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />

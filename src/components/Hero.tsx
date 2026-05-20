@@ -357,13 +357,13 @@ export function Hero() {
                   className="w-full h-[350px] sm:h-[450px] lg:h-[500px] overflow-hidden bg-primary/5 relative rounded-3xl shadow-2xl shadow-primary/10 border border-border/40"
                 >
                   <Image
-                    src="/generated/young-couple-house.png"
-                    alt="Jóvenes felices frente a casa moderna - Crédito hipotecario ALDALU"
+                    src="/17.png"
+                    alt="Pareja feliz recibiendo llaves de su nuevo hogar - Crédito hipotecario ALDALU"
                     fill
                     priority
                     quality={90}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
-                    className="object-cover object-[50%_15%] scale-105"
+                    className="object-cover object-center scale-105"
                     style={{ transform: "scale(1.05)" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" aria-hidden="true" />
