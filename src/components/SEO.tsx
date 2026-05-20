@@ -11,7 +11,7 @@ interface SEOProps {
 export function SEOElements({
   title = "ALDALU | Brokers de Creditaria en Querétaro - Crédito Hipotecario, Automotriz Kavak y IMSS",
   description = "Brokers de Creditaria en Querétaro. Comparamos más de 15 bancos para encontrarte la mejor tasa en crédito hipotecario, crédito automotriz asociados a Kavak y préstamos personales para pensionados del IMSS. Asesoría 100% gratuita con expertos certificados.",
-  image = "/og-image-new.png",
+  image = "/17.png",
   url,
 }: SEOProps) {
   return (
@@ -43,7 +43,7 @@ export function SEOElements({
 export function SEO({
   title = "ALDALU | Brokers de Creditaria en Querétaro - Crédito Hipotecario, Automotriz Kavak y IMSS",
   description = "Brokers de Creditaria en Querétaro. Comparamos más de 15 bancos para encontrarte la mejor tasa en crédito hipotecario, crédito automotriz asociados a Kavak y préstamos personales para pensionados del IMSS. Asesoría 100% gratuita con expertos certificados.",
-  image = "/og-image-new.png",
+  image = "/17.png",
   url,
 }: SEOProps) {
   return (
