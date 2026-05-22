@@ -28,6 +28,7 @@ const leadFormSchema = z.object({
   valorInmueble: z.string().optional(),
   enganche: z.string().optional(),
   ingresos: z.string().optional(),
+  desarrollo: z.string().optional(),
   situacionLaboral: z.string().optional(),
   estadoCivil: z.string().optional(),
   estatusInfonavit: z.string().optional(),
@@ -68,6 +69,7 @@ export function LeadForm() {
       valorInmueble: "",
       enganche: "",
       ingresos: "",
+      desarrollo: "",
       situacionLaboral: "",
       estadoCivil: "",
       estatusInfonavit: "",
@@ -401,6 +403,16 @@ export function LeadForm() {
                       type="number"
                       {...register("ingresos")}
                       placeholder="$"
+                      className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                  <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="desarrollo" className="block text-xs font-medium text-foreground mb-1">Desarrollo / Fraccionamiento</label>
+                    <input
+                      id="desarrollo"
+                      type="text"
+                      {...register("desarrollo")}
+                      placeholder="Ej: Zibatá, Juriquilla, etc."
                       className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
                     />
                   </div>

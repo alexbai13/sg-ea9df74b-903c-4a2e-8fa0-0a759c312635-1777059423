@@ -363,8 +363,7 @@ export function Hero() {
                     priority
                     quality={90}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
-                    className="object-cover object-center scale-105"
-                    style={{ transform: "scale(1.05)" }}
+                    className="object-contain object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" aria-hidden="true" />
                 </motion.div>
