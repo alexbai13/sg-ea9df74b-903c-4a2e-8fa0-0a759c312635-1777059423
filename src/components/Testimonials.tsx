@@ -10,7 +10,7 @@ const testimonials = [
     zone: "Juriquilla",
     type: "Crédito Hipotecario",
     quote: "La verdad pensé que buscar hipoteca iba a ser súper tedioso. Me contactó Rodrigo y en unos días ya teníamos varias opciones. Me ahorré bastante en intereses y no tuve que dar tantas vueltas al banco.",
-    rating: 5,
+    rating: 4,
     savings: "$180,000",
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     zone: "El Refugio",
     type: "Crédito Hipotecario",
     quote: "Llevaba meses atorado con mi banco de toda la vida. Con ellos en un par de semanas ya tenía mi carta de autorización, y con mejor tasa de la que yo creía. Muy recomendables.",
-    rating: 4,
+    rating: 5,
     savings: "$120,000",
   },
 ];
@@ -83,11 +83,11 @@ export function Testimonials() {
               />
 
               <div className="flex items-center gap-1 mb-5">
-                {Array.from({ length: t.rating }).map((_, j) => (
+                {Array.from({ length: 5 }).map((_, j) => (
                   <Star
                     key={j}
                     size={18}
-                    className="fill-amber-400 text-amber-400"
+                    className={j < t.rating ? "fill-amber-400 text-amber-400" : "text-amber-400/20"}
                   />
                 ))}
               </div>

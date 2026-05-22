@@ -97,14 +97,14 @@ export function Navigation() {
       >
         <div className="container flex items-center justify-between h-20 md:h-24 lg:h-28">
           <Link href="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-lg transition-transform hover:scale-[1.02]" onClick={() => setMobileOpen(false)}>
-            <div className="relative h-16 md:h-24 lg:h-28 w-auto" style={{ width: "380px" }}>
+            <div className="relative h-20 md:h-28 lg:h-32 w-auto" style={{ width: "420px" }}>
               <Image
                 src="/ALDALU_Logo_imago_corregidos-01.png"
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
                 quality={100}
-                sizes="380px"
+                sizes="420px"
                 className="object-contain object-left block dark:hidden"
               />
               <Image
@@ -113,7 +113,7 @@ export function Navigation() {
                 fill
                 priority
                 quality={100}
-                sizes="380px"
+                sizes="420px"
                 className="object-contain object-left hidden dark:block"
               />
             </div>

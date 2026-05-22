@@ -53,10 +53,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-heading font-bold text-sm mb-4 text-primary">Zonas en Querétaro</h4>
+            <h4 className="font-heading font-bold text-sm mb-4 text-primary">Querétaro metropolitano</h4>
             <div className="flex flex-wrap gap-2">
               {zones.map((zone) => (
-                <span key={zone} className="text-xs bg-background/10 text-background/60 px-2.5 py-1 rounded-full">
+                <span key={zone} className="text-sm bg-background/10 text-background/70 px-3 py-1.5 rounded-full">
                   {zone}
                 </span>
               ))}
