@@ -24,17 +24,20 @@ export function Footer() {
   return (
     <footer className="bg-foreground text-background pt-16 pb-8">
       <div className="container">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          <div>
-            <div className="mb-6 relative h-20 md:h-24 lg:h-28 w-auto" style={{ width: "300px" }}>
-              <Image
-                src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
-                alt="ALDALU"
-                fill
-                sizes="300px"
-                className="object-contain object-left"
-              />
-            </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          <div className="md:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-background/20 rounded-lg transition-transform hover:scale-[1.02]">
+              <div className="relative h-32 w-auto" style={{ width: "280px" }}>
+                <Image
+                  src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
+                  alt="ALDALU Logo"
+                  fill
+                  sizes="280px"
+                  quality={100}
+                  className="object-contain object-left"
+                />
+              </div>
+            </Link>
             <p className="text-sm text-background/60 leading-relaxed mb-4">
               Brokers de Creditaria en Querétaro. Expertos en crédito hipotecario, automotriz asociados a Kavak y préstamos personales a pensionados del IMSS.
             </p>
