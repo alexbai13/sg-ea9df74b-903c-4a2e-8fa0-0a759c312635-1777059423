@@ -1,4 +1,4 @@
-# 📧 Configuración de Envío de Correos - ALDALU
+# 📧 Configuración de Envío de Correos - ALDALU (IONOS SMTP)
 
 ## 🎯 ¿Qué hace esto?
 
@@ -7,145 +7,191 @@ Cuando un usuario llena el formulario de contacto, el sistema:
 1. ✅ **Envía notificación al equipo ALDALU** con todos los datos del lead
 2. ✅ **Envía confirmación automática al cliente** confirmando que recibieron su solicitud
 
----
-
-## ⚡ Configuración Rápida (5 minutos)
-
-### Paso 1: Crear cuenta en Resend (GRATIS)
-
-1. Ve a: **https://resend.com/signup**
-2. Regístrate con tu correo (Google login disponible)
-3. Confirma tu email
-
-**Costo:** GRATIS hasta 100 emails/día (3,000/mes) - suficiente para empezar
+El sistema usa **tu servidor SMTP de IONOS** (tu propia infraestructura de correo).
 
 ---
 
-### Paso 2: Obtener tu API Key
+## ⚡ Configuración (3 minutos)
 
-1. Una vez dentro, ve a: **https://resend.com/api-keys**
-2. Click en **"Create API Key"**
-3. Dale un nombre: `ALDALU Production`
-4. Permisos: **"Full access"** o **"Sending access"**
-5. **COPIA la clave** (empieza con `re_...`) - solo la verás una vez
+### Paso 1: Obtener credenciales SMTP de IONOS
+
+Necesitas 4 datos de tu cuenta de correo IONOS:
+
+1. **Host SMTP:** `smtp.ionos.mx` (para México) o `smtp.ionos.com`
+2. **Puerto:** `587` (recomendado - STARTTLS)
+3. **Usuario:** Tu correo completo (ej: `info@aldalu.com.mx`)
+4. **Contraseña:** La contraseña de ese correo en IONOS
+
+#### ¿Dónde encuentro esto?
+
+**Opción A: Panel de IONOS**
+1. Inicia sesión en: https://www.ionos.mx/
+2. Ve a **Productos → Email**
+3. Selecciona tu correo (`info@aldalu.com.mx`)
+4. Busca **Configuración SMTP** o **Configuración de cliente de correo**
+
+**Opción B: Documentación IONOS**
+- Host: `smtp.ionos.mx` (México) o `smtp.ionos.com`
+- Puerto: `587` (STARTTLS) o `465` (SSL/TLS)
+- Autenticación: Requerida
 
 ---
 
-### Paso 3: Configurar variables de entorno
+### Paso 2: Configurar variables de entorno
 
 1. Abre el archivo `.env.local` en la raíz del proyecto
-2. Pega tu API Key:
+2. Completa con tus datos de IONOS:
 
 ```bash
-RESEND_API_KEY=re_TuClaveAquiCopiada123456789
+# Configuración SMTP de IONOS
+SMTP_HOST=smtp.ionos.mx
+SMTP_PORT=587
+SMTP_USER=info@aldalu.com.mx
+SMTP_PASS=TuContraseñaReal
 
-# Cambia este correo por el que quieres recibir notificaciones
+# Remitente (debe coincidir con SMTP_USER)
+EMAIL_FROM=info@aldalu.com.mx
+
+# Destinatario de notificaciones
 EMAIL_TO=info@aldalu.com.mx
-
-# Este es el remitente (déjalo así por ahora)
-EMAIL_FROM=onboarding@resend.dev
 ```
 
 3. **IMPORTANTE:** Reinicia el servidor de desarrollo:
-   - Detén el servidor (Ctrl+C)
-   - Ejecuta: `npm run dev`
+   - Detén el servidor (Ctrl+C en la terminal)
+   - Ejecuta de nuevo: `npm run dev`
+   - O usa el botón **"Restart Server"** en Softgen (arriba a la derecha)
 
 ---
 
-### Paso 4: ¡Probar!
+### Paso 3: ¡Probar!
 
-1. Ve a tu sitio web
-2. Llena el formulario de contacto
+1. Ve a tu sitio web en el navegador
+2. Llena el formulario de contacto con datos de prueba
 3. Verifica:
-   - ✅ Recibes notificación en `EMAIL_TO`
-   - ✅ El cliente recibe confirmación automática
-   - ✅ No hay errores en la consola
+   - ✅ El formulario se envía sin errores
+   - ✅ Recibes notificación en tu bandeja de `info@aldalu.com.mx`
+   - ✅ El email de prueba recibe confirmación automática
+   - ✅ No hay errores en la consola del servidor
 
 ---
 
-## 🚀 Configuración Avanzada (Opcional - Producción)
+## 🔧 Configuraciones Alternativas
 
-### Verificar tu dominio propio
-
-Para enviar desde `@aldalu.com.mx` en vez de `@resend.dev`:
-
-1. Ve a: **https://resend.com/domains**
-2. Click en **"Add Domain"**
-3. Ingresa: `aldalu.com.mx`
-4. Resend te dará registros DNS para configurar:
-   - SPF
-   - DKIM
-   - DMARC
-5. Configura estos registros en tu proveedor de dominios (GoDaddy, Cloudflare, etc.)
-6. Espera verificación (5 min - 24 hrs)
-7. Una vez verificado, actualiza `.env.local`:
+### Si usas puerto 465 (SSL/TLS)
 
 ```bash
-EMAIL_FROM=info@aldalu.com.mx
+SMTP_PORT=465
 ```
 
-**Beneficios:**
-- ✅ Mejor deliverability (menos spam)
-- ✅ Marca profesional
-- ✅ Tracking de emails
+### Si tienes autenticación de 2 factores (2FA)
+
+IONOS puede requerir una **contraseña de aplicación** específica:
+
+1. Ve a tu panel de IONOS
+2. Configuración de seguridad del correo
+3. Genera una "contraseña de aplicación"
+4. Usa esa contraseña en `SMTP_PASS` en vez de tu contraseña normal
 
 ---
 
 ## 📊 Monitoreo
 
-### Ver emails enviados
+### Ver correos enviados
 
-Ve a: **https://resend.com/emails**
+Dependiendo de tu plan de IONOS:
 
-Aquí puedes:
-- Ver todos los correos enviados
-- Estado de entrega (delivered, bounced, opened)
-- Logs de errores
+- **Panel IONOS:** Algunos planes tienen logs de envío
+- **Consola del servidor:** Los logs aparecen en tu terminal donde corre `npm run dev`
+- **Bandeja de Salida:** Verifica en tu cliente de correo (Outlook, Gmail, etc.)
 
 ---
 
 ## 🔧 Solución de Problemas
 
-### ❌ "RESEND_API_KEY no configurada"
+### ❌ "Configuración SMTP incompleta"
 
-**Problema:** No configuraste la API Key  
+**Problema:** Faltan datos en `.env.local`  
 **Solución:**
-1. Verifica que `.env.local` tiene `RESEND_API_KEY=re_...`
-2. Reinicia el servidor (detén y ejecuta `npm run dev` de nuevo)
+1. Verifica que **todas** las variables estén configuradas (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)
+2. Asegúrate de que no haya espacios antes/después de los valores
+3. Reinicia el servidor
 
 ---
 
-### ❌ Los correos no llegan
+### ❌ "Error de autenticación" o "535 Authentication failed"
 
-**Problema:** Correos enviados pero no recibidos  
+**Problema:** Usuario o contraseña incorrectos  
 **Solución:**
-1. Revisa la carpeta de SPAM/Promociones
-2. Verifica en https://resend.com/emails el estado del envío
-3. Si usas `@resend.dev`, algunos correos pueden bloquearlo
-4. Considera verificar tu dominio propio
+1. Verifica que `SMTP_USER` sea tu correo COMPLETO: `info@aldalu.com.mx`
+2. Verifica que la contraseña sea correcta
+3. Si tienes 2FA activado, usa una **contraseña de aplicación**
+4. Prueba iniciar sesión en webmail de IONOS con las mismas credenciales
 
 ---
 
-### ❌ Error 401 Unauthorized
+### ❌ "Connection timeout" o "ECONNREFUSED"
 
-**Problema:** API Key inválida  
+**Problema:** No puede conectar al servidor SMTP  
 **Solución:**
-1. Genera una nueva API Key en Resend
-2. Cópiala bien (sin espacios)
-3. Actualiza `.env.local`
-4. Reinicia servidor
+1. Verifica el `SMTP_HOST`: 
+   - México: `smtp.ionos.mx`
+   - Internacional: `smtp.ionos.com`
+2. Verifica el puerto: `587` o `465`
+3. Asegúrate de tener conexión a internet
+4. Verifica que tu firewall no bloquee el puerto
 
 ---
 
-## 💰 Precios Resend
+### ❌ Los correos llegan a SPAM
 
-| Plan | Emails/mes | Costo |
-|------|-----------|-------|
-| **Gratis** | 3,000 | $0 USD |
-| **Pro** | 50,000 | $20 USD/mes |
-| **Enterprise** | Ilimitado | Contactar |
+**Problema:** Correos van a carpeta de spam  
+**Solución:**
+1. **SPF/DKIM:** Verifica que tu dominio tenga configurados estos registros DNS en IONOS
+2. **Dominio verificado:** Asegúrate de usar un correo `@aldalu.com.mx` verificado
+3. **Contenido:** Evita palabras spam en el asunto
+4. **Agrega a contactos:** Pide a los destinatarios agregar `info@aldalu.com.mx` a sus contactos
 
-**Para ALDALU:** Plan Gratis es suficiente al inicio (100 leads/día)
+---
+
+### ❌ "Self signed certificate"
+
+**Problema:** Error de certificado SSL  
+**Solución:**
+Ya está configurado `rejectUnauthorized: false` para desarrollo.  
+Para producción en Vercel, cambia a `true` en `src/pages/api/lead.ts`.
+
+---
+
+## 🔐 Seguridad
+
+### ✅ Protección de Credenciales
+
+- ✅ **NUNCA** subas `.env.local` a Git (ya está en `.gitignore`)
+- ✅ **NUNCA** compartas tu `SMTP_PASS` públicamente
+- ✅ En producción (Vercel), configura las variables de entorno en el panel de Vercel
+- ✅ Usa contraseñas fuertes o contraseñas de aplicación
+
+### 🚀 Configuración para Producción (Vercel)
+
+Cuando despliegues a Vercel:
+
+1. Ve a tu proyecto en Vercel
+2. Settings → Environment Variables
+3. Agrega cada variable:
+   - `SMTP_HOST` = `smtp.ionos.mx`
+   - `SMTP_PORT` = `587`
+   - `SMTP_USER` = `info@aldalu.com.mx`
+   - `SMTP_PASS` = `TuContraseña`
+   - `EMAIL_FROM` = `info@aldalu.com.mx`
+   - `EMAIL_TO` = `info@aldalu.com.mx`
+4. Re-deploy el proyecto
+
+---
+
+## 💰 Costos
+
+**IONOS SMTP:** Ya incluido en tu plan de correo electrónico actual.  
+Sin costos adicionales por envío de correos (límites según tu plan de IONOS).
 
 ---
 
@@ -156,31 +202,24 @@ Aquí puedes:
 Los templates HTML están en: `src/lib/email-templates.ts`
 
 Puedes modificar:
-- Colores (actualmente usa colores de ALDALU)
-- Textos
-- Estructura
-- Agregar logo
-
----
-
-## 🔐 Seguridad
-
-- ✅ **NUNCA** subas `.env.local` a Git (ya está en `.gitignore`)
-- ✅ **NUNCA** compartas tu `RESEND_API_KEY` públicamente
-- ✅ Si expones la clave, regenera una nueva inmediatamente
+- Colores (actualmente usa la paleta de ALDALU)
+- Textos y mensajes
+- Estructura del correo
+- Agregar logo de ALDALU
+- Agregar footer personalizado
 
 ---
 
 ## ✅ Checklist de Implementación
 
-- [ ] Cuenta Resend creada
-- [ ] API Key obtenida
-- [ ] `.env.local` configurado con API Key
-- [ ] `EMAIL_TO` configurado con correo del equipo
-- [ ] Servidor reiniciado
+- [ ] Credenciales SMTP de IONOS obtenidas
+- [ ] `.env.local` configurado con todas las variables
+- [ ] Servidor reiniciado (`npm run dev`)
 - [ ] Prueba realizada exitosamente
-- [ ] Emails recibidos (admin + cliente)
-- [ ] (Opcional) Dominio verificado para producción
+- [ ] Email recibido en bandeja del equipo
+- [ ] Confirmación automática recibida por cliente
+- [ ] (Producción) Variables configuradas en Vercel
+- [ ] (Opcional) SPF/DKIM verificados para mejor deliverability
 
 ---
 
@@ -188,10 +227,36 @@ Puedes modificar:
 
 Si tienes problemas:
 
-1. **Documentación Resend:** https://resend.com/docs
-2. **Status de Resend:** https://status.resend.com
-3. **Soporte Resend:** support@resend.com
+1. **Soporte IONOS México:** 
+   - Tel: 800 953 0084
+   - https://www.ionos.mx/ayuda
+
+2. **Documentación IONOS SMTP:**
+   - https://www.ionos.mx/ayuda/correo/configurar-correo-en-outlook/configuracion-smtp-de-ionos/
+
+3. **Verificar estado de servicios IONOS:**
+   - https://status.ionos.com/
 
 ---
 
-**¡Listo!** 🎉 Tu sistema de correos está configurado y funcionando.
+## 📧 Datos SMTP de Referencia IONOS
+
+### México
+```
+Host: smtp.ionos.mx
+Puerto: 587 (STARTTLS) o 465 (SSL/TLS)
+Seguridad: STARTTLS o SSL/TLS
+Autenticación: Requerida
+```
+
+### Internacional
+```
+Host: smtp.ionos.com
+Puerto: 587 (STARTTLS) o 465 (SSL/TLS)
+Seguridad: STARTTLS o SSL/TLS
+Autenticación: Requerida
+```
+
+---
+
+**¡Listo!** 🎉 Tu sistema de correos IONOS está configurado y funcionando.

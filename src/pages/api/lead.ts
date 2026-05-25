@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { leadFormSchema } from "@/lib/validations";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { getAdminEmailHTML, getClientEmailHTML } from "@/lib/email-templates";
 
 type ResponseData = {
@@ -9,7 +9,25 @@ type ResponseData = {
   errors?: any;
 };
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Configurar transporter de Nodemailer con IONOS SMTP
+const createTransporter = () => {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || "587"),
+    secure: process.env.SMTP_PORT === "465", // true para puerto 465, false para otros
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false // Útil para desarrollo, en producción considera quitarlo
+    }
+  });
+};
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,9 +42,10 @@ export default async function handler(
     const validData = leadFormSchema.parse(req.body);
 
     // 2. VERIFICAR CONFIGURACIÓN DE CORREO
-    if (!process.env.RESEND_API_KEY) {
-      console.error("⚠️ RESEND_API_KEY no configurada en .env.local");
-      // Continuamos sin enviar correo pero registrando el lead
+    const transporter = createTransporter();
+    
+    if (!transporter) {
+      console.error("⚠️ Configuración SMTP incompleta en .env.local");
       console.log("📝 Lead capturado (sin envío de correo):", validData);
       return res.status(200).json({
         success: true,
@@ -35,12 +54,12 @@ export default async function handler(
     }
 
     // 3. ENVIAR CORREO AL ADMIN (ALDALU)
-    const emailFrom = process.env.EMAIL_FROM || "onboarding@resend.dev";
-    const emailTo = process.env.EMAIL_TO || "info@aldalu.com.mx";
+    const emailFrom = process.env.EMAIL_FROM || process.env.SMTP_USER;
+    const emailTo = process.env.EMAIL_TO || process.env.SMTP_USER;
 
     try {
-      await resend.emails.send({
-        from: emailFrom,
+      await transporter.sendMail({
+        from: `"ALDALU - Nuevo Lead" <${emailFrom}>`,
         to: emailTo,
         subject: `🎯 Nuevo Lead: ${validData.servicio} - ${validData.nombre}`,
         html: getAdminEmailHTML(validData),
@@ -48,14 +67,14 @@ export default async function handler(
 
       console.log(`✅ Email enviado al admin: ${emailTo}`);
     } catch (emailError: any) {
-      console.error("❌ Error enviando email al admin:", emailError);
+      console.error("❌ Error enviando email al admin:", emailError.message);
       // No bloqueamos la respuesta si falla el email
     }
 
     // 4. ENVIAR CONFIRMACIÓN AL CLIENTE
     try {
-      await resend.emails.send({
-        from: emailFrom,
+      await transporter.sendMail({
+        from: `"ALDALU" <${emailFrom}>`,
         to: validData.correo,
         subject: "✅ Solicitud Recibida - ALDALU",
         html: getClientEmailHTML(validData.nombre),
@@ -63,7 +82,7 @@ export default async function handler(
 
       console.log(`✅ Email de confirmación enviado a: ${validData.correo}`);
     } catch (emailError: any) {
-      console.error("❌ Error enviando confirmación al cliente:", emailError);
+      console.error("❌ Error enviando confirmación al cliente:", emailError.message);
       // No bloqueamos la respuesta si falla el email
     }
 
@@ -74,7 +93,7 @@ export default async function handler(
     });
 
   } catch (error: any) {
-    console.error("Error de validación en el servidor:", error);
+    console.error("Error procesando lead:", error);
 
     if (error.name === "ZodError") {
       return res.status(400).json({
