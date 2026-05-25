@@ -14,6 +14,7 @@ export const leadFormSchema = z.object({
   valorInmueble: z.string().optional(),
   enganche: z.string().optional(),
   ingresos: z.string().optional(),
+  desarrollo: z.string().optional(),
   situacionLaboral: z.string().optional(),
   estadoCivil: z.string().optional(),
   estatusInfonavit: z.string().optional(),

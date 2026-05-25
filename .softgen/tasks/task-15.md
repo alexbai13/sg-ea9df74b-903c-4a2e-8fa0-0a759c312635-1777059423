@@ -1,6 +1,6 @@
 ---
 title: Configurar envío de correos desde formularios
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [email, backend, api]

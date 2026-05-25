@@ -1,3 +1,5 @@
+import type { LeadFormData } from "./validations";
+
 type LeadData = {
   nombre: string;
   edad: string;
@@ -19,7 +21,7 @@ type LeadData = {
   prestamoActivo?: string;
 };
 
-export function getAdminEmailHTML(data: LeadData): string {
+export function getAdminEmailHTML(data: LeadFormData): string {
   const optionalFields = [];
 
   if (data.servicio === "Crédito Hipotecario") {
