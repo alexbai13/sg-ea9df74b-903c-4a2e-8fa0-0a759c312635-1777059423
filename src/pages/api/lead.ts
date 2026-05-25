@@ -40,12 +40,14 @@ export default async function handler(
   try {
     // 1. VALIDACIÓN EN EL SERVIDOR
     const validData = leadFormSchema.parse(req.body);
+    console.log("📋 Lead validado:", { nombre: validData.nombre, servicio: validData.servicio });
 
     // 2. VERIFICAR CONFIGURACIÓN DE CORREO
     const transporter = createTransporter();
     
     if (!transporter) {
       console.error("⚠️ Configuración SMTP incompleta en .env.local");
+      console.error("Verifica: SMTP_HOST, SMTP_USER, SMTP_PASS");
       console.log("📝 Lead capturado (sin envío de correo):", validData);
       return res.status(200).json({
         success: true,
@@ -53,47 +55,81 @@ export default async function handler(
       });
     }
 
-    // 3. ENVIAR CORREO AL ADMIN (ALDALU)
+    // 3. CONFIGURAR REMITENTE Y DESTINATARIOS
     const emailFrom = process.env.EMAIL_FROM || process.env.SMTP_USER;
     const emailTo = process.env.EMAIL_TO || process.env.SMTP_USER;
 
+    console.log("📧 Configuración de correo:");
+    console.log(`   FROM: ${emailFrom}`);
+    console.log(`   TO (Admin): ${emailTo}`);
+    console.log(`   TO (Cliente): ${validData.correo}`);
+
+    // Array para recolectar errores sin bloquear
+    const emailErrors: string[] = [];
+
+    // 4. ENVIAR CORREO AL ADMIN (ALDALU) - CON INFORMACIÓN DEL FORMULARIO
     try {
-      await transporter.sendMail({
+      console.log("📤 Intentando enviar email al admin...");
+      
+      const adminEmailResult = await transporter.sendMail({
         from: `"ALDALU - Nuevo Lead" <${emailFrom}>`,
         to: emailTo,
+        replyTo: validData.correo, // Permite responder directamente al cliente
         subject: `🎯 Nuevo Lead: ${validData.servicio} - ${validData.nombre}`,
         html: getAdminEmailHTML(validData),
       });
 
-      console.log(`✅ Email enviado al admin: ${emailTo}`);
+      console.log(`✅ Email ADMIN enviado exitosamente`);
+      console.log(`   MessageID: ${adminEmailResult.messageId}`);
+      console.log(`   Respuesta: ${adminEmailResult.response}`);
+      
     } catch (emailError: any) {
-      console.error("❌ Error enviando email al admin:", emailError.message);
-      // No bloqueamos la respuesta si falla el email
+      console.error("❌ ERROR enviando email al admin:");
+      console.error(`   Código: ${emailError.code}`);
+      console.error(`   Mensaje: ${emailError.message}`);
+      console.error(`   Respuesta SMTP: ${emailError.response}`);
+      emailErrors.push(`Admin: ${emailError.message}`);
     }
 
-    // 4. ENVIAR CONFIRMACIÓN AL CLIENTE
+    // 5. ENVIAR CONFIRMACIÓN AL CLIENTE
     try {
-      await transporter.sendMail({
+      console.log("📤 Intentando enviar confirmación al cliente...");
+      
+      const clientEmailResult = await transporter.sendMail({
         from: `"ALDALU" <${emailFrom}>`,
         to: validData.correo,
         subject: "✅ Solicitud Recibida - ALDALU",
         html: getClientEmailHTML(validData.nombre),
       });
 
-      console.log(`✅ Email de confirmación enviado a: ${validData.correo}`);
+      console.log(`✅ Email CLIENTE enviado exitosamente`);
+      console.log(`   MessageID: ${clientEmailResult.messageId}`);
+      console.log(`   Respuesta: ${clientEmailResult.response}`);
+      
     } catch (emailError: any) {
-      console.error("❌ Error enviando confirmación al cliente:", emailError.message);
-      // No bloqueamos la respuesta si falla el email
+      console.error("❌ ERROR enviando confirmación al cliente:");
+      console.error(`   Código: ${emailError.code}`);
+      console.error(`   Mensaje: ${emailError.message}`);
+      console.error(`   Respuesta SMTP: ${emailError.response}`);
+      emailErrors.push(`Cliente: ${emailError.message}`);
     }
 
-    // 5. RESPUESTA EXITOSA
+    // 6. RESPUESTA FINAL
+    if (emailErrors.length > 0) {
+      console.warn("⚠️ Lead registrado pero con errores en envío de correos:", emailErrors);
+      return res.status(200).json({
+        success: true,
+        message: "Lead registrado. Algunos correos no se enviaron: " + emailErrors.join(", ")
+      });
+    }
+
     return res.status(200).json({
       success: true,
       message: "Lead registrado y correos enviados correctamente."
     });
 
   } catch (error: any) {
-    console.error("Error procesando lead:", error);
+    console.error("💥 Error general procesando lead:", error);
 
     if (error.name === "ZodError") {
       return res.status(400).json({
