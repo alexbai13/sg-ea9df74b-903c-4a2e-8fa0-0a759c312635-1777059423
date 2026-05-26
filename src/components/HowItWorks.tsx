@@ -4,31 +4,31 @@ import { motion } from "framer-motion";
 import { MessageCircle, Search, BarChart3, FileCheck } from "lucide-react";
 
 const steps = [
-  {
-    icon: MessageCircle,
-    number: "01",
-    title: "Cuéntanos tu meta",
-    description: "¿Casa, auto o préstamo? Nos compartes tu situación y nosotros tomamos el volante.",
-  },
-  {
-    icon: Search,
-    number: "02",
-    title: "Analizamos tu perfil",
-    description: "Revisamos tus ingresos, historial y necesidades para determinar qué crédito te conviene.",
-  },
-  {
-    icon: BarChart3,
-    number: "03",
-    title: "Comparamos el mercado",
-    description: "Buscamos entre todos los bancos e instituciones para encontrar la mejor tasa y condiciones.",
-  },
-  {
-    icon: FileCheck,
-    number: "04",
-    title: "Te acompañamos hasta la firma",
-    description: "Desde la preaprobación hasta las escrituras o entrega. Sin complicaciones, sin costo.",
-  },
-];
+{
+  icon: MessageCircle,
+  number: "01",
+  title: "Cuéntanos tu meta",
+  description: "¿Casa, auto o préstamo? Nos compartes tu situación y nosotros tomamos el volante."
+},
+{
+  icon: Search,
+  number: "02",
+  title: "Analizamos tu perfil",
+  description: "Revisamos tus ingresos, historial y necesidades para determinar qué crédito te conviene."
+},
+{
+  icon: BarChart3,
+  number: "03",
+  title: "Comparamos el mercado",
+  description: "Buscamos entre todos los bancos e instituciones para encontrar la mejor tasa y condiciones."
+},
+{
+  icon: FileCheck,
+  number: "04",
+  title: "Te acompañamos hasta la firma",
+  description: "Desde la preaprobación hasta las escrituras o entrega. Sin complicaciones, sin costo."
+}];
+
 
 export function HowItWorks() {
   return (
@@ -45,8 +45,8 @@ export function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
-          >
+            className="text-center lg:text-left">
+            
             <span className="inline-block bg-secondary text-secondary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-4">
               Proceso simple
             </span>
@@ -63,17 +63,17 @@ export function HowItWorks() {
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative"
-          >
+            className="relative">
+            
             <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[450px] rounded-3xl overflow-hidden border border-border/40 shadow-2xl shadow-primary/10">
               <Image
-                src="/13.png"
+                src="/andalu_cuadrado1_1_.png"
                 alt="Pareja revisando documentos financieros con asesor ALDALU"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
                 className="object-cover object-center"
-                quality={90}
-              />
+                quality={90} />
+              
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 mix-blend-overlay pointer-events-none" aria-hidden="true" />
             </div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-accent/15 border border-accent/25 backdrop-blur-sm flex items-center justify-center">
@@ -95,8 +95,8 @@ export function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
-                className="relative text-center"
-              >
+                className="relative text-center">
+                
                 <div className="relative mx-auto w-20 h-20 rounded-full bg-muted flex items-center justify-center mb-5 border-2 border-primary/20">
                   <Icon size={28} className="text-primary" />
                   <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-accent text-accent-foreground text-xs font-bold flex items-center justify-center shadow-lg shadow-accent/20">
@@ -109,11 +109,11 @@ export function HowItWorks() {
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
                   {step.description}
                 </p>
-              </motion.div>
-            );
+              </motion.div>);
+
           })}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
