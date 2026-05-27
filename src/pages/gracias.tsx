@@ -60,7 +60,7 @@ export default function Gracias() {
               </div>
               <Button asChild variant="outline" className="w-full md:w-auto border-primary text-primary hover:bg-primary/5 whitespace-nowrap">
                 <a 
-                  href="https://wa.me/525541389710?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20en%20su%20sitio%20web%20y%20me%20gustar%C3%ADa%20atenci%C3%B3n%20r%C3%A1pida." 
+                  href="https://wa.me/52442506819?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20en%20su%20sitio%20web%20y%20me%20gustar%C3%ADa%20atenci%C3%B3n%20r%C3%A1pida." 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2"

@@ -241,7 +241,9 @@ export function Navigation() {
                   
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground">¿Necesitas ayuda inmediata?</p>
-                    <a href="tel:5541389710" className="text-primary font-bold text-lg mt-1 block">55 4138 9710</a>
+                    <a href="tel:+52442506819" className="text-primary font-bold text-lg mt-1 block">
+                      +52 442 250 6819
+                    </a>
                   </div>
                 </div>
               </div>
