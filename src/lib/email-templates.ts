@@ -146,8 +146,9 @@ export function getAdminEmailHTML(data: LeadFormData): string {
 
           <!-- CTA -->
           <tr>
-            <td style="padding: 0 40px 40px 40px; text-align: center;">
-              <a href="https://wa.me/52${data.telefono}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; transition: background-color 0.2s;">
+            <td style="padding-top: 20px; text-align: center;">
+              <a href="https://wa.me/52442506819?text=Hola%20ALDALU" 
+                 style="display: inline-block; padding: 14px 28px; background-color: #25D366; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">
                 💬 Contactar por WhatsApp
               </a>
             </td>
@@ -221,21 +222,20 @@ export function getClientEmailHTML(nombre: string): string {
                 </ul>
               </div>
 
-              <p style="margin: 24px 0 0 0; color: #666; font-size: 15px; line-height: 1.7;">
+              <p style="margin: 24px 0 20px; color: #64748b; font-size: 15px; line-height: 1.6;">
                 Mientras tanto, si tienes alguna duda o prefieres contactarnos directamente, puedes escribirnos por WhatsApp.
               </p>
-            </td>
-          </tr>
-
-          <!-- CTA -->
-          <tr>
-            <td style="padding: 0 40px 40px 40px; text-align: center;">
-              <a href="https://wa.me/524421234567" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 8px; font-weight: 600; font-size: 16px; margin-bottom: 16px;">
-                💬 Escríbenos por WhatsApp
-              </a>
-              <p style="margin: 0; color: #999; font-size: 13px;">
-                Estamos disponibles de Lun-Vie 9:00-18:00 hrs
-              </p>
+              
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 24px 0;">
+                <tr>
+                  <td align="center">
+                    <a href="https://wa.me/52442506819?text=Hola%20ALDALU" 
+                       style="display: inline-block; padding: 14px 28px; background-color: #25D366; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">
+                      💬 Escríbenos por WhatsApp
+                    </a>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 

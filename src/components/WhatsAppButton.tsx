@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 
-const WHATSAPP_NUMBER = "5215541389710";
+const WHATSAPP_NUMBER = "52442506819";
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hola, me interesa recibir asesoría financiera gratuita en Querétaro. ¿Podrían ayudarme?"
+  "Hola ALDALU, me gustaría recibir asesoría financiera."
 );
 
 export function WhatsAppButton() {

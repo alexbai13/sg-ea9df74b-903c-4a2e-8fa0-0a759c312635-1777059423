@@ -38,10 +38,10 @@ export function StickyCTA() {
               <ArrowRight size={18} />
             </button>
             <a
-              href="https://wa.me/525541389710?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20financiera%20gratuita"
+              href="https://wa.me/52442506819?text=Hola%20ALDALU%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20financiera."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-[#25D366] text-white shrink-0 hover:scale-105 transition-transform"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full font-semibold shadow-lg transition-all duration-300 hover:scale-105"
               aria-label="Contactar por WhatsApp"
             >
               <MessageCircle size={24} />
