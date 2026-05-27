@@ -361,7 +361,7 @@ export function Hero() {
                     alt="Pareja feliz recibiendo llaves de su nuevo hogar - Crédito hipotecario ALDALU"
                     fill
                     priority
-                    quality={90}
+                    quality={100}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
                     className="object-contain object-center" />
                   

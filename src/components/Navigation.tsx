@@ -103,8 +103,7 @@ export function Navigation() {
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
-                quality={100}
-                sizes="500px"
+                unoptimized
                 className="object-contain object-left block dark:hidden"
               />
               <Image
@@ -112,8 +111,7 @@ export function Navigation() {
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
-                quality={100}
-                sizes="500px"
+                unoptimized
                 className="object-contain object-left hidden dark:block"
               />
             </div>

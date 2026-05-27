@@ -72,7 +72,7 @@ export function HowItWorks() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
                 className="object-cover object-center"
-                quality={90} />
+                quality={100} />
               
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 mix-blend-overlay pointer-events-none" aria-hidden="true" />
             </div>

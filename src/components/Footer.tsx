@@ -32,8 +32,7 @@ export function Footer() {
                   src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
                   alt="ALDALU Logo"
                   fill
-                  sizes="280px"
-                  quality={100}
+                  unoptimized
                   className="object-contain object-left"
                 />
               </div>

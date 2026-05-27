@@ -100,6 +100,7 @@ export function ServicesSection() {
           src="/generated/young-professional-1.png"
           alt="Joven profesional hipoteca"
           fill
+          quality={100}
           sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 500px"
           className="object-cover scale-110"
         />
@@ -128,6 +129,7 @@ export function ServicesSection() {
             src="/generated/young-professional-2.png"
             alt="Joven cliente feliz"
             fill
+            quality={100}
             sizes="(max-width: 768px) 96px, (max-width: 1024px) 128px, 160px"
             className="object-cover object-center scale-105"
           />
@@ -157,6 +159,7 @@ export function ServicesSection() {
             src="/generated/young-professional-3.png"
             alt="Joven automotriz"
             fill
+            quality={100}
             sizes="(max-width: 768px) 80px, (max-width: 1024px) 96px, 128px"
             className="object-cover object-center scale-105"
           />
