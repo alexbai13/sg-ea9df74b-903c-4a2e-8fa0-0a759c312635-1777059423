@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 const contactFormSchema = z.object({
   nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -274,9 +275,9 @@ export default function Contacto() {
 
                   <p className="text-xs text-muted-foreground text-center">
                     Al enviar este formulario, aceptas nuestra{" "}
-                    <a href="/privacidad" className="text-primary hover:underline">
+                    <Link href="/privacidad" className="text-primary hover:underline">
                       Política de Privacidad
-                    </a>
+                    </Link>
                   </p>
                 </form>
               </div>
