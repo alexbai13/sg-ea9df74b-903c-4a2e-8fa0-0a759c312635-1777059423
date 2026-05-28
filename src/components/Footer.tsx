@@ -51,6 +51,7 @@ export function Footer() {
               <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Crédito Hipotecario</button></li>
               <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Crédito Automotriz (Kavak)</button></li>
               <li><button onClick={() => scrollTo("#servicios")} className="text-sm text-background/60 hover:text-primary transition-colors">Préstamos Personales IMSS</button></li>
+              <li><Link href="/contacto" className="text-sm text-background/60 hover:text-primary transition-colors">Contacto</Link></li>
             </ul>
           </div>
 

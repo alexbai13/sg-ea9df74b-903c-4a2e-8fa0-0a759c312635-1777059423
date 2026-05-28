@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Menu, X, ArrowRight, Home, CreditCard, Car, Users, HelpCircle, BookOpen } from "lucide-react";
+import { Menu, X, ArrowRight, Home, CreditCard, Car, Users, HelpCircle, BookOpen, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
 
@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Nosotros", href: "#valores", icon: Users },
   { label: "FAQ", href: "#faq", icon: HelpCircle },
   { label: "Blog", href: "/blog", icon: BookOpen },
+  { label: "Contacto", href: "/contacto", icon: MessageSquare },
 ];
 
 export function Navigation() {
