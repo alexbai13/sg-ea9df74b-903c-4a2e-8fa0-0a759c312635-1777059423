@@ -2,70 +2,92 @@ import { SEO } from "@/components/SEO";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { leadFormSchema, type LeadFormData } from "@/lib/validations";
+import { useRouter } from "next/router";
 
-const contactFormSchema = z.object({
-  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  correo: z.string().email("Correo electrónico no válido"),
-  telefono: z.string().min(10, "Teléfono debe tener al menos 10 dígitos"),
-  asunto: z.string().min(3, "El asunto es requerido"),
-  mensaje: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
-});
-
-type ContactFormData = z.infer<typeof contactFormSchema>;
+const servicios = [
+  "Crédito Hipotecario",
+  "Crédito Automotriz (Kavak)",
+  "Préstamos Personales IMSS",
+] as const;
 
 export default function Contacto() {
+  const router = useRouter();
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    watch,
+    formState: { errors, isSubmitting },
     reset
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
+  } = useForm<LeadFormData>({
+    resolver: zodResolver(leadFormSchema),
+    defaultValues: {
+      nombre: "",
+      edad: "",
+      correo: "",
+      telefono: "",
+      servicio: "",
+      valorInmueble: "",
+      enganche: "",
+      ingresos: "",
+      desarrollo: "",
+      situacionLaboral: "",
+      estadoCivil: "",
+      estatusInfonavit: "",
+      valorAuto: "",
+      engancheAuto: "",
+      historialCrediticio: "",
+      tipoPension: "",
+      montoPension: "",
+      prestamoActivo: "",
+    },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
+  const selectedServicio = watch("servicio");
 
+  const onSubmit = async (data: LeadFormData) => {
     try {
       const response = await fetch("/api/contacto", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
 
-      if (result.success) {
-        toast({
-          title: "¡Mensaje enviado!",
-          description: "Nos pondremos en contacto contigo pronto.",
-        });
-        reset();
-      } else {
-        throw new Error(result.message);
+      if (!response.ok) {
+        throw new Error(result.message || "Ocurrió un error al enviar la solicitud.");
       }
-    } catch (error) {
+
       toast({
-        title: "Error",
-        description: "No se pudo enviar el mensaje. Intenta de nuevo.",
+        title: "¡Solicitud enviada con éxito!",
+        description: "Un asesor certificado te contactará muy pronto.",
+        variant: "default",
+        className: "bg-primary text-primary-foreground border-none",
+      });
+
+      reset();
+      
+      setTimeout(() => {
+        router.push("/gracias");
+      }, 2000);
+      
+    } catch (error: any) {
+      toast({
+        title: "Error al enviar",
+        description: error.message || "Por favor, inténtalo de nuevo más tarde.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -182,103 +204,310 @@ export default function Contacto() {
             <div>
               <div className="bg-card border border-border rounded-2xl p-8 shadow-lg">
                 <h2 className="font-serif text-3xl font-bold text-foreground mb-2">
-                  Envíanos un Mensaje
+                  Solicita Información
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Completa el formulario y nos pondremos en contacto contigo lo antes posible
+                  Completa tus datos y un asesor certificado te contactará para encontrar tu mejor opción de crédito
                 </p>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div>
-                    <Label htmlFor="nombre">Nombre Completo *</Label>
-                    <Input
+                    <label htmlFor="nombre" className="block text-sm font-medium text-foreground mb-1.5">Nombre completo *</label>
+                    <input
                       id="nombre"
+                      type="text"
                       {...register("nombre")}
-                      placeholder="Juan Pérez"
-                      className={errors.nombre ? "border-destructive" : ""}
+                      placeholder="Tu nombre completo"
+                      className={`w-full px-4 py-3 rounded-lg border ${errors.nombre ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                     />
-                    {errors.nombre && (
-                      <p className="text-sm text-destructive mt-1">{errors.nombre.message}</p>
-                    )}
+                    {errors.nombre && <p className="text-xs text-destructive mt-1">{errors.nombre.message}</p>}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="edad" className="block text-sm font-medium text-foreground mb-1.5">Edad *</label>
+                      <input
+                        id="edad"
+                        type="number"
+                        {...register("edad")}
+                        placeholder="Edad"
+                        min="18"
+                        max="99"
+                        className={`w-full px-4 py-3 rounded-lg border ${errors.edad ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
+                      />
+                      {errors.edad && <p className="text-xs text-destructive mt-1">{errors.edad.message}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="telefono" className="block text-sm font-medium text-foreground mb-1.5">Teléfono *</label>
+                      <input
+                        id="telefono"
+                        type="tel"
+                        {...register("telefono")}
+                        placeholder="10 dígitos"
+                        className={`w-full px-4 py-3 rounded-lg border ${errors.telefono ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
+                      />
+                      {errors.telefono && <p className="text-xs text-destructive mt-1">{errors.telefono.message}</p>}
+                    </div>
                   </div>
 
                   <div>
-                    <Label htmlFor="correo">Correo Electrónico *</Label>
-                    <Input
+                    <label htmlFor="correo" className="block text-sm font-medium text-foreground mb-1.5">Correo electrónico *</label>
+                    <input
                       id="correo"
                       type="email"
                       {...register("correo")}
-                      placeholder="juan@ejemplo.com"
-                      className={errors.correo ? "border-destructive" : ""}
+                      placeholder="tu@correo.com"
+                      className={`w-full px-4 py-3 rounded-lg border ${errors.correo ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
                     />
-                    {errors.correo && (
-                      <p className="text-sm text-destructive mt-1">{errors.correo.message}</p>
-                    )}
+                    {errors.correo && <p className="text-xs text-destructive mt-1">{errors.correo.message}</p>}
                   </div>
 
                   <div>
-                    <Label htmlFor="telefono">Teléfono *</Label>
-                    <Input
-                      id="telefono"
-                      type="tel"
-                      {...register("telefono")}
-                      placeholder="442 250 6819"
-                      className={errors.telefono ? "border-destructive" : ""}
-                    />
-                    {errors.telefono && (
-                      <p className="text-sm text-destructive mt-1">{errors.telefono.message}</p>
-                    )}
+                    <label htmlFor="servicio" className="block text-sm font-medium text-foreground mb-1.5">Servicio de interés *</label>
+                    <select
+                      id="servicio"
+                      {...register("servicio")}
+                      className={`w-full px-4 py-3 rounded-lg border ${errors.servicio ? "border-destructive" : "border-input"} bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors`}
+                    >
+                      <option value="">Selecciona un servicio</option>
+                      {servicios.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                    {errors.servicio && <p className="text-xs text-destructive mt-1">{errors.servicio.message}</p>}
                   </div>
 
-                  <div>
-                    <Label htmlFor="asunto">Asunto *</Label>
-                    <Input
-                      id="asunto"
-                      {...register("asunto")}
-                      placeholder="¿En qué podemos ayudarte?"
-                      className={errors.asunto ? "border-destructive" : ""}
-                    />
-                    {errors.asunto && (
-                      <p className="text-sm text-destructive mt-1">{errors.asunto.message}</p>
-                    )}
-                  </div>
+                  {selectedServicio === "Crédito Hipotecario" && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="grid grid-cols-2 gap-4 mt-4 bg-muted/40 p-5 rounded-xl border border-primary/10"
+                    >
+                      <div className="col-span-2">
+                        <p className="text-sm font-semibold text-foreground mb-1">Precalificación Hipotecaria (Opcional)</p>
+                        <p className="text-xs text-muted-foreground mb-3">Estos datos nos ayudan a darte una mejor respuesta más rápido.</p>
+                      </div>
+                      
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="situacionLaboral" className="block text-xs font-medium text-foreground mb-1">Situación Laboral</label>
+                        <select
+                          id="situacionLaboral"
+                          {...register("situacionLaboral")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Asalariado">Asalariado (Nómina)</option>
+                          <option value="Independiente">Independiente (Persona Física)</option>
+                          <option value="Empresario">Empresario (Persona Moral)</option>
+                        </select>
+                      </div>
+                      
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="estadoCivil" className="block text-xs font-medium text-foreground mb-1">Estado Civil</label>
+                        <select
+                          id="estadoCivil"
+                          {...register("estadoCivil")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Soltero">Soltero/a</option>
+                          <option value="Casado">Casado/a</option>
+                          <option value="Concubinato">Unión Libre / Concubinato</option>
+                        </select>
+                      </div>
 
-                  <div>
-                    <Label htmlFor="mensaje">Mensaje *</Label>
-                    <Textarea
-                      id="mensaje"
-                      {...register("mensaje")}
-                      placeholder="Cuéntanos más sobre tu consulta..."
-                      rows={6}
-                      className={errors.mensaje ? "border-destructive" : ""}
-                    />
-                    {errors.mensaje && (
-                      <p className="text-sm text-destructive mt-1">{errors.mensaje.message}</p>
-                    )}
-                  </div>
+                      <div className="col-span-2">
+                        <label htmlFor="estatusInfonavit" className="block text-xs font-medium text-foreground mb-1">Estatus Infonavit / Fovissste</label>
+                        <select
+                          id="estatusInfonavit"
+                          {...register("estatusInfonavit")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Tengo puntos Infonavit">Ya chequé, sí tengo puntos Infonavit</option>
+                          <option value="Tengo puntos Fovissste">Ya chequé, sí tengo Fovissste</option>
+                          <option value="No se como checarlo">No sé cómo checar mis puntos</option>
+                          <option value="No cotizo">No cotizo en ninguna institución</option>
+                        </select>
+                      </div>
 
-                  <Button
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="valorInmueble" className="block text-xs font-medium text-foreground mb-1">Valor Inmueble (Aprox)</label>
+                        <input
+                          id="valorInmueble"
+                          type="number"
+                          {...register("valorInmueble")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        />
+                      </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="enganche" className="block text-xs font-medium text-foreground mb-1">Enganche Disponible</label>
+                        <input
+                          id="enganche"
+                          type="number"
+                          {...register("enganche")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        />
+                      </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="ingresos" className="block text-xs font-medium text-foreground mb-1">Ingresos Mensuales</label>
+                        <input
+                          id="ingresos"
+                          type="number"
+                          {...register("ingresos")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        />
+                      </div>
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="desarrollo" className="block text-xs font-medium text-foreground mb-1">Desarrollo / Fraccionamiento</label>
+                        <input
+                          id="desarrollo"
+                          type="text"
+                          {...register("desarrollo")}
+                          placeholder="Ej: Zibatá, Juriquilla, etc."
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {selectedServicio === "Crédito Automotriz (Kavak)" && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="grid grid-cols-2 gap-4 mt-4 bg-secondary/20 p-5 rounded-xl border border-secondary/30"
+                    >
+                      <div className="col-span-2">
+                        <p className="text-sm font-semibold text-foreground mb-1">Perfil Automotriz (Opcional)</p>
+                        <p className="text-xs text-muted-foreground mb-3">Ayúdanos a encontrar el coche perfecto para ti con Kavak.</p>
+                      </div>
+
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="valorAuto" className="block text-xs font-medium text-foreground mb-1">Valor del Auto (Aprox)</label>
+                        <input
+                          id="valorAuto"
+                          type="number"
+                          {...register("valorAuto")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                        />
+                      </div>
+
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="engancheAuto" className="block text-xs font-medium text-foreground mb-1">Enganche Disponible</label>
+                        <input
+                          id="engancheAuto"
+                          type="number"
+                          {...register("engancheAuto")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                        />
+                      </div>
+
+                      <div className="col-span-2">
+                        <label htmlFor="historialCrediticio" className="block text-xs font-medium text-foreground mb-1">¿Cómo consideras tu Buró de Crédito?</label>
+                        <select
+                          id="historialCrediticio"
+                          {...register("historialCrediticio")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-colors"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Excelente">Excelente (Nunca me atraso)</option>
+                          <option value="Bueno">Bueno (Algunos atrasos leves)</option>
+                          <option value="Regular">Regular (Tuve problemas pero ya pagué)</option>
+                          <option value="No se / Sin historial">No tengo historial o no lo sé</option>
+                        </select>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {selectedServicio === "Préstamos Personales IMSS" && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="grid grid-cols-2 gap-4 mt-4 bg-accent/5 p-5 rounded-xl border border-accent/20"
+                    >
+                      <div className="col-span-2">
+                        <p className="text-sm font-semibold text-foreground mb-1">Perfil Pensionado IMSS (Opcional)</p>
+                        <p className="text-xs text-muted-foreground mb-3">Conocer tu pensión nos permite ofrecerte la mejor tasa.</p>
+                      </div>
+
+                      <div className="col-span-2">
+                        <label htmlFor="tipoPension" className="block text-xs font-medium text-foreground mb-1">Tipo de Pensión IMSS</label>
+                        <select
+                          id="tipoPension"
+                          {...register("tipoPension")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                        >
+                          <option value="">Selecciona una opción</option>
+                          <option value="Vejez">Vejez (Ley 73)</option>
+                          <option value="Cesantia">Cesantía en Edad Avanzada</option>
+                          <option value="Viudez">Viudez</option>
+                          <option value="Incapacidad">Incapacidad Parcial/Permanente</option>
+                          <option value="Otra">Otra / No estoy seguro</option>
+                        </select>
+                      </div>
+
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="montoPension" className="block text-xs font-medium text-foreground mb-1">Pensión Mensual Neta</label>
+                        <input
+                          id="montoPension"
+                          type="number"
+                          {...register("montoPension")}
+                          placeholder="$"
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                        />
+                      </div>
+
+                      <div className="col-span-2 sm:col-span-1">
+                        <label htmlFor="prestamoActivo" className="block text-xs font-medium text-foreground mb-1">¿Tienes préstamos activos?</label>
+                        <select
+                          id="prestamoActivo"
+                          {...register("prestamoActivo")}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors"
+                        >
+                          <option value="">Selecciona</option>
+                          <option value="Si">Sí, me descuentan actualmente</option>
+                          <option value="No">No, mi recibo está libre</option>
+                        </select>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  <div className="flex items-start gap-3 pt-3">
+                    <input
+                      type="checkbox"
+                      {...register("privacidad")}
+                      id="privacidad"
+                      className="mt-1 w-4 h-4 rounded border-input text-primary focus:ring-primary/30"
+                    />
+                    <label htmlFor="privacidad" className="text-xs text-muted-foreground leading-relaxed">
+                      Acepto el{" "}
+                      <Link href="/privacidad" className="text-primary underline hover:text-primary/80">
+                        aviso de privacidad
+                      </Link>{" "}
+                      y autorizo el contacto comercial por teléfono, correo o WhatsApp. *
+                    </label>
+                  </div>
+                  {errors.privacidad && <p className="text-xs text-destructive -mt-2">{errors.privacidad.message}</p>}
+
+                  <button
                     type="submit"
-                    size="lg"
-                    className="w-full"
                     disabled={isSubmitting}
+                    className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 mt-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      "Enviando..."
+                      <div className="w-5 h-5 border-2 border-accent-foreground border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        <Send className="w-5 h-5 mr-2" />
-                        Enviar Mensaje
+                        <Send size={18} />
+                        Enviar solicitud
                       </>
                     )}
-                  </Button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    Al enviar este formulario, aceptas nuestra{" "}
-                    <Link href="/privacidad" className="text-primary hover:underline">
-                      Política de Privacidad
-                    </Link>
-                  </p>
+                  </button>
                 </form>
               </div>
             </div>
