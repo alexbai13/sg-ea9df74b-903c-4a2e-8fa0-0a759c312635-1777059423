@@ -47,7 +47,7 @@ export function HowItWorks() {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left">
             
-            <span className="inline-block bg-secondary text-secondary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-secondary text-secondary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-4" style={{ fontSize: "16px" }}>
               Proceso simple
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
