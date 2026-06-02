@@ -232,7 +232,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 bg-muted px-5 py-2.5 rounded-full mb-8 border border-primary/10">
               
               <Shield size={18} className="text-primary" />
-              <span className="text-base font-medium text-muted-foreground">
+              <span className="text-base font-medium text-muted-foreground" style={{ fontSize: "18px" }}>
                 Brokers Hipotecarios de Creditaria
               </span>
             </motion.div>
@@ -441,7 +441,7 @@ export function Hero() {
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
           aria-label="Desplazarse a la sección de servicios">
           
-          <span className="text-sm font-medium">Descubre más</span>
+          <span className="text-sm font-medium" style={{ fontSize: "18px" }}>Descubre más</span>
           <ChevronDown size={22} className="animate-bounce" aria-hidden="true" />
         </motion.button>
       </motion.div>
