@@ -1,0 +1,86 @@
+[TAILING] Tailing last 50 lines for [all] processes (change the value with --lines option)
+/home/softgen/.pm2/pm2.log last 50 lines:
+PM2        | 2026-06-02T17:02:20: PM2 log: Stopping app:nextjs id:0
+PM2        | 2026-06-02T17:02:20: PM2 log: pid=1485 msg=failed to kill - retrying in 100ms
+PM2        | 2026-06-02T17:02:21: PM2 log: pid=1485 msg=failed to kill - retrying in 100ms
+PM2        | 2026-06-02T17:02:21: PM2 log: pid=1485 msg=failed to kill - retrying in 100ms
+PM2        | 2026-06-02T17:02:21: PM2 log: pid=1485 msg=failed to kill - retrying in 100ms
+PM2        | 2026-06-02T17:02:21: PM2 log: App [nextjs:0] exited with code [0] via signal [SIGINT]
+PM2        | 2026-06-02T17:02:21: PM2 log: pid=1485 msg=process killed
+PM2        | 2026-06-02T17:02:21: PM2 log: App [nextjs:0] starting in -fork mode-
+PM2        | 2026-06-02T17:02:21: PM2 log: App [nextjs:0] online
+
+/home/softgen/.pm2/logs/nextjs-out.log last 50 lines:
+0|nextjs   | [?25h
+0|nextjs   | 
+0|nextjs   | > softgen-starter@2.4.4 dev
+0|nextjs   | > next dev --turbopack
+0|nextjs   | 
+0|nextjs   |    ▲ Next.js 15.5.9 (Turbopack)
+0|nextjs   |    - Local:        http://localhost:3000
+0|nextjs   |    - Network:      http://172.20.0.14:3000
+0|nextjs   |    - Environments: .env.local
+0|nextjs   |    - Experiments (use with caution):
+0|nextjs   |      · turbo
+0|nextjs   | 
+0|nextjs   |  ✓ Starting...
+0|nextjs   |  ✓ Ready in 1200ms
+0|nextjs   |  ○ Compiling / ...
+0|nextjs   |  ✓ Compiled / in 11.8s
+0|nextjs   |  GET /?refresh=uvmvf0xx 200 in 13327ms
+0|nextjs   |  ✓ Compiled /api/lead in 131ms
+0|nextjs   | 📋 Lead validado: { nombre: 'Correo de prueba', servicio: 'Préstamos Personales IMSS' }
+0|nextjs   | 📧 Configuración de correo:
+0|nextjs   |    FROM: info@aldalu.com.mx
+0|nextjs   |    TO (Admin): info@aldalu.com.mx,la-espitia@creditaria.com
+0|nextjs   |    TO (Cliente): lujanivan92@gmail.com
+0|nextjs   | 📤 Intentando enviar email al admin...
+0|nextjs   | 📤 Intentando enviar confirmación al cliente...
+0|nextjs   |  POST /api/lead 200 in 812ms
+0|nextjs   |  ✓ Compiled /gracias in 444ms
+0|nextjs   | 📋 Lead validado: { nombre: 'Correo de prueba', servicio: 'Préstamos Personales IMSS' }
+0|nextjs   | 📧 Configuración de correo:
+0|nextjs   |    FROM: info@aldalu.com.mx
+0|nextjs   |    TO (Admin): info@aldalu.com.mx,la-espitia@creditaria.com
+0|nextjs   |    TO (Cliente): lujanivan92@gmail.com
+0|nextjs   | 📤 Intentando enviar email al admin...
+0|nextjs   | 📤 Intentando enviar confirmación al cliente...
+0|nextjs   |  POST /api/lead 200 in 741ms
+
+/home/softgen/.pm2/logs/nextjs-error.log last 50 lines:
+0|nextjs   |  ⚠ The config property `experimental.turbo` is deprecated. Move this setting to `config.turbopack` or run `npx @next/codemod@latest next-experimental-turbo-to-turbopack .`
+0|nextjs   | Image with src "/andalu_cuadrado1.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+0|nextjs   | Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+0|nextjs   | Image with src "/generated/young-professional-1.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+0|nextjs   | Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+0|nextjs   | Image with src "/generated/young-professional-2.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+0|nextjs   | Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+0|nextjs   | Image with src "/generated/young-professional-3.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+0|nextjs   | Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+0|nextjs   | Image with src "/andalu_cuadrado1_1_.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+0|nextjs   | Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+0|nextjs   | ❌ ERROR enviando email al admin:
+0|nextjs   |    Código: EAUTH
+0|nextjs   |    Mensaje: Invalid login: 535 Authentication credentials invalid
+0|nextjs   |    Respuesta SMTP: 535 Authentication credentials invalid
+0|nextjs   | ❌ ERROR enviando confirmación al cliente:
+0|nextjs   |    Código: EAUTH
+0|nextjs   |    Mensaje: Invalid login: 535 Authentication credentials invalid
+0|nextjs   |    Respuesta SMTP: 535 Authentication credentials invalid
+0|nextjs   | ⚠️ Lead registrado pero con errores en envío de correos: [
+0|nextjs   |   'Admin: Invalid login: 535 Authentication credentials invalid',
+0|nextjs   |   'Cliente: Invalid login: 535 Authentication credentials invalid'
+0|nextjs   | ]
+0|nextjs   | ❌ ERROR enviando email al admin:
+0|nextjs   |    Código: EAUTH
+0|nextjs   |    Mensaje: Invalid login: 535 Authentication credentials invalid
+0|nextjs   |    Respuesta SMTP: 535 Authentication credentials invalid
+0|nextjs   | ❌ ERROR enviando confirmación al cliente:
+0|nextjs   |    Código: EAUTH
+0|nextjs   |    Mensaje: Invalid login: 535 Authentication credentials invalid
+0|nextjs   |    Respuesta SMTP: 535 Authentication credentials invalid
+0|nextjs   | ⚠️ Lead registrado pero con errores en envío de correos: [
+0|nextjs   |   'Admin: Invalid login: 535 Authentication credentials invalid',
+0|nextjs   |   'Cliente: Invalid login: 535 Authentication credentials invalid'
+0|nextjs   | ]
+

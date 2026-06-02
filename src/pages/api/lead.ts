@@ -29,6 +29,30 @@ const createTransporter = () => {
   });
 };
 
+function getEmailTransporter() {
+  const smtpPass = process.env.SMTP_PASS || "";
+  
+  console.log("🔐 Verificando credenciales SMTP:");
+  console.log("   Usuario:", process.env.SMTP_USER);
+  console.log("   Contraseña length:", smtpPass.length, "caracteres");
+  console.log("   Tiene caracteres especiales:", /[&~?!@#$%^*()+=]/.test(smtpPass));
+  
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || "587"),
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: smtpPass,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+    debug: true,
+    logger: true,
+  });
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>

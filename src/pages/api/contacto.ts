@@ -9,24 +9,29 @@ type ResponseData = {
   errors?: any;
 };
 
-const createTransporter = () => {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    return null;
-  }
-
+function getEmailTransporter() {
+  const smtpPass = process.env.SMTP_PASS || "";
+  
+  console.log("🔐 Verificando credenciales SMTP:");
+  console.log("   Usuario:", process.env.SMTP_USER);
+  console.log("   Contraseña length:", smtpPass.length, "caracteres");
+  console.log("   Tiene caracteres especiales:", /[&~?!@#$%^*()+=]/.test(smtpPass));
+  
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: process.env.SMTP_PORT === "465",
+    secure: false,
     auth: {
       user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      pass: smtpPass,
     },
     tls: {
-      rejectUnauthorized: false
-    }
+      rejectUnauthorized: false,
+    },
+    debug: true,
+    logger: true,
   });
-};
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -40,7 +45,7 @@ export default async function handler(
     const validData = leadFormSchema.parse(req.body);
     console.log("📋 Lead validado desde página de contacto:", { nombre: validData.nombre, servicio: validData.servicio });
 
-    const transporter = createTransporter();
+    const transporter = getEmailTransporter();
     
     if (!transporter) {
       console.error("⚠️ Configuración SMTP incompleta en .env.local");
