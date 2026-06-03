@@ -5,39 +5,39 @@ import { Star, Quote, MapPin } from "lucide-react";
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
 const testimonials = [
-  {
-    name: "Fer López",
-    zone: "Juriquilla",
-    type: "Crédito Hipotecario",
-    quote: "La verdad pensé que buscar hipoteca iba a ser súper tedioso. Me contactó Rodrigo y en unos días ya teníamos varias opciones. Me ahorré bastante en intereses y no tuve que dar tantas vueltas al banco.",
-    rating: 4,
-    savings: "$180,000",
-  },
-  {
-    name: "Carlos E. Ramírez",
-    zone: "Zibatá",
-    type: "Crédito Automotriz",
-    quote: "Quería comprar coche pero los del banco tardaban mucho en contestar. Los contacté por Whats y me ayudaron súper rápido. Muy buena atención, aunque me pidieron reenviar un papel.",
-    rating: 4,
-    savings: "Tasa del 11.5%",
-  },
-  {
-    name: "Doña Rosy Martínez",
-    zone: "Centro Histórico",
-    type: "Préstamo IMSS",
-    quote: "Soy pensionada y necesitaba liquidez. Mi asesora Lupita me tuvo mucha paciencia porque no le sé mucho al celular. Me acompañó paso a paso, muy linda señorita.",
-    rating: 5,
-    savings: "Trámite fácil",
-  },
-  {
-    name: "Javier Hernández",
-    zone: "El Refugio",
-    type: "Crédito Hipotecario",
-    quote: "Llevaba meses atorado con mi banco de toda la vida. Con ellos en un par de semanas ya tenía mi carta de autorización, y con mejor tasa de la que yo creía. Muy recomendables.",
-    rating: 5,
-    savings: "$120,000",
-  },
-];
+{
+  name: "Fer López",
+  zone: "Juriquilla",
+  type: "Crédito Hipotecario",
+  quote: "La verdad pensé que buscar hipoteca iba a ser súper tedioso. Me contactó Rodrigo y en unos días ya teníamos varias opciones. Me ahorré bastante en intereses y no tuve que dar tantas vueltas al banco.",
+  rating: 4,
+  savings: "$180,000"
+},
+{
+  name: "Carlos E. Ramírez",
+  zone: "Zibatá",
+  type: "Crédito Automotriz",
+  quote: "Quería comprar coche pero los del banco tardaban mucho en contestar. Los contacté por Whats y me ayudaron súper rápido. Muy buena atención, aunque me pidieron reenviar un papel.",
+  rating: 4,
+  savings: "Tasa del 11.5%"
+},
+{
+  name: "Doña Rosy Martínez",
+  zone: "Centro Histórico",
+  type: "Préstamo IMSS",
+  quote: "Soy pensionada y necesitaba liquidez. Mi asesora Lupita me tuvo mucha paciencia porque no le sé mucho al celular. Me acompañó paso a paso, muy linda señorita.",
+  rating: 5,
+  savings: "Trámite fácil"
+},
+{
+  name: "Javier Hernández",
+  zone: "El Refugio",
+  type: "Crédito Hipotecario",
+  quote: "Llevaba meses atorado con mi banco de toda la vida. Con ellos en un par de semanas ya tenía mi carta de autorización, y con mejor tasa de la que yo creía. Muy recomendables.",
+  rating: 5,
+  savings: "$120,000"
+}];
+
 
 export function Testimonials() {
   return (
@@ -51,8 +51,8 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="text-center mb-16"
-        >
+          className="text-center mb-16">
+          
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent text-base font-medium px-5 py-2 rounded-full mb-5">
             <Star size={16} className="fill-accent" />
             Lo que dicen nuestros clientes
@@ -67,34 +67,34 @@ export function Testimonials() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-              whileHover={{ y: -4 }}
-              className="relative bg-card border border-border rounded-3xl p-7 md:p-9 hover:shadow-xl hover:shadow-primary/5 transition-shadow"
-            >
+          {testimonials.map((t, i) =>
+          <motion.div
+            key={t.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+            whileHover={{ y: -4 }}
+            className="relative bg-card border border-border rounded-3xl p-7 md:p-9 hover:shadow-xl hover:shadow-primary/5 transition-shadow">
+            
               <Quote
-                size={44}
-                className="absolute top-6 right-6 text-primary/10"
-              />
+              size={44}
+              className="absolute top-6 right-6 text-primary/10" />
+            
 
               <div className="flex items-center gap-1 mb-5">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Star
-                    key={j}
-                    size={18}
-                    className={j < t.rating ? "fill-amber-400 text-amber-400" : "text-amber-400/20"}
-                  />
-                ))}
+                {Array.from({ length: 5 }).map((_, j) =>
+              <Star
+                key={j}
+                size={18}
+                className={j < t.rating ? "fill-amber-400 text-amber-400" : "text-amber-400/20"} />
+
+              )}
               </div>
 
-              <p className="text-foreground/90 leading-relaxed mb-7 text-base md:text-lg">
-                &ldquo;{t.quote}&rdquo;
-              </p>
+              <p className="text-foreground/90 leading-relaxed mb-7 text-base md:text-lg">“Quería comprar coche pero en el banco tardaban mucho en contestar. Los contacté por WhatsApp y me ayudaron bastante rápido. La atención fue buena, aunque tuve que reenviar un documento que ya había enviado antes.”
+
+            </p>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-border/50">
                 <div>
@@ -111,19 +111,19 @@ export function Testimonials() {
                     {t.type}
                   </span>
                 </div>
-                {t.savings && (
-                  <div className="sm:text-right bg-accent/5 sm:bg-transparent p-3 sm:p-0 rounded-lg">
+                {t.savings &&
+              <div className="sm:text-right bg-accent/5 sm:bg-transparent p-3 sm:p-0 rounded-lg">
                     <p className="text-xs sm:text-sm text-muted-foreground">Ahorro</p>
                     <p className="text-xl md:text-2xl font-heading font-bold text-accent">
                       {t.savings}
                     </p>
                   </div>
-                )}
+              }
               </div>
             </motion.div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
