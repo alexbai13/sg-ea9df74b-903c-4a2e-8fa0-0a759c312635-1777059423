@@ -5,18 +5,18 @@ import { useRouter } from "next/router";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 const zones = [
-  "Juriquilla",
-  "Jurica",
-  "Corregidora",
-  "El Pueblito",
-  "Zákia",
-  "Candiles",
-  "San Juan del Río",
-  "Tequisquiapan",
-  "Santa Rosa Jáuregui",
-  "La Cañada",
-  "Y todo Querétaro"
-];
+"Juriquilla",
+"Jurica",
+"Corregidora",
+"El Pueblito",
+"Zákia",
+"Candiles",
+"San Juan del Río",
+"Tequisquiapan",
+"Santa Rosa Jáuregui",
+"La Cañada",
+"Y todo Querétaro"];
+
 
 export function Footer() {
   const router = useRouter();
@@ -41,7 +41,7 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-background/20 rounded-lg transition-transform hover:scale-[1.02]">
               <div className="relative h-32 w-auto" style={{ width: "280px" }}>
                 <Image
-                  src="/logo_andalu.png"
+                  src="/Disen_o_sin_ti_tulo_10_.png"
                   alt="ALDALU Logo"
                   fill
                   unoptimized
