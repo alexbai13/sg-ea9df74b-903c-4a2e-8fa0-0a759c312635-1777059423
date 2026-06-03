@@ -14,7 +14,7 @@ export function Footer() {
       router.push(`/${id}`);
       return;
     }
-    
+
     const el = document.querySelector(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -29,12 +29,12 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-background/20 rounded-lg transition-transform hover:scale-[1.02]">
               <div className="relative h-32 w-auto" style={{ width: "280px" }}>
                 <Image
-                  src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
+                  src="/Disen_o_sin_ti_tulo_10_.png"
                   alt="ALDALU Logo"
                   fill
                   unoptimized
-                  className="object-contain object-left"
-                />
+                  className="object-contain object-left" />
+                
               </div>
             </Link>
             <p className="text-sm text-background/60 leading-relaxed mb-4">
@@ -56,13 +56,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-heading font-bold text-sm mb-4 text-primary">Querétaro metropolitano</h4>
+            <h4 className="font-heading font-bold text-sm mb-4 text-primary">Todo Querétaro</h4>
             <div className="flex flex-wrap gap-2">
-              {zones.map((zone) => (
-                <span key={zone} className="text-sm bg-background/10 text-background/70 px-3 py-1.5 rounded-full">
+              {zones.map((zone) =>
+              <span key={zone} className="text-sm bg-background/10 text-background/70 px-3 py-1.5 rounded-full">
                   {zone}
                 </span>
-              ))}
+              )}
             </div>
           </div>
 
@@ -77,8 +77,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={16} className="text-primary flex-shrink-0" />
-                <a href="mailto:alonso.espitia.t@gmail.com" className="text-sm text-background/60 hover:text-primary transition-colors">
-                  alonso.espitia.t@gmail.com
+                <a href="mailto:alonso.espitia.t@gmail.com" className="text-sm text-background/60 hover:text-primary transition-colors">la-espitia@creditaria.com
+
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
@@ -103,6 +103,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
