@@ -89,8 +89,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={16} className="text-primary flex-shrink-0" />
-                <a href="mailto:alonso.espitia.t@gmail.com" className="text-sm text-background/60 hover:text-primary transition-colors">la-espitia@creditaria.com
-
+                <a href="mailto:info@aldalu.mx" className="text-sm text-background/60 hover:text-primary transition-colors">
+                  info@aldalu.mx
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
