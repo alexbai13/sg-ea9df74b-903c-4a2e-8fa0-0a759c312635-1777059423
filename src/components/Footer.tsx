@@ -29,7 +29,7 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-background/20 rounded-lg transition-transform hover:scale-[1.02]">
               <div className="relative h-32 w-auto" style={{ width: "280px" }}>
                 <Image
-                  src="/Disen_o_sin_ti_tulo_10_.png"
+                  src="/logo_andalu.png"
                   alt="ALDALU Logo"
                   fill
                   unoptimized
