@@ -67,7 +67,7 @@ export function HowItWorks() {
             
             <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[450px] rounded-3xl overflow-hidden border border-border/40 shadow-2xl shadow-primary/10">
               <Image
-                src="/andalu_cuadrado1_1_.png"
+                src="/contrato_2.png"
                 alt="Pareja revisando documentos financieros con asesor ALDALU"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 50vw"
