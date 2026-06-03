@@ -108,7 +108,7 @@ export function Navigation() {
                 className="object-contain object-left block dark:hidden" />
               
               <Image
-                src="/ALDALU_Logo_imago_corregidos_blancos-03.png"
+                src="/Disen_o_sin_ti_tulo_10_.png"
                 alt="ALDALU - Brokers Hipotecarios"
                 fill
                 priority
