@@ -357,7 +357,7 @@ export function Hero() {
                   className="w-full h-[350px] sm:h-[450px] lg:h-[500px] overflow-hidden bg-primary/5 relative rounded-3xl shadow-2xl shadow-primary/10 border border-border/40">
                   
                   <Image
-                    src="/andalu_cuadrado1.png"
+                    src="/andalu_cuadrado1_2_.png"
                     alt="Pareja feliz recibiendo llaves de su nuevo hogar - Crédito hipotecario ALDALU"
                     fill
                     priority
