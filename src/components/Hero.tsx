@@ -334,7 +334,6 @@ export function Hero() {
                 
                   <p className="text-3xl md:text-4xl font-heading font-bold text-primary tabular-nums">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                    {stat.suffix === "%" ? "%" : ""}
                   </p>
                   <p className="text-base text-muted-foreground mt-1.5">{stat.label}</p>
                 </motion.div>
